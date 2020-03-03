@@ -1,0 +1,40 @@
+ion-content {
+    --background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+
+#conteudo-principal {
+   display: flex;
+   flex: 1;
+   margin-top: 100px;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   h1 { margin-bottom: 100px; text-transform: uppercase;}
+}
+
+#formulario {
+    border: 1px solid rgb(126, 126, 126);
+    width: 90%;
+    height: 300px;
+    border-radius: 20px;
+    background:  rgb(199, 199, 199);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    #logo { 
+        margin-top: -100px;
+        height: 200px; 
+        width: 200px; 
+        align-self: center; 
+        background-color: rgb(235, 232, 232);
+        border: 1px solid lightgrey;
+        border-radius: 100px;
+        margin-bottom: 10px;
+    }
+}
+
+ion-input  {
+    --background: white;
+}
