@@ -1,20 +1,77 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div id="header2">
+    <!-- BTN SAIR -->
+    <p id="sair" (click)="sair()" class="ion-activatable ripple-parent">
+      SAIR
+      <ion-ripple-effect></ion-ripple-effect>
+    </p>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- USUARIO -->
+    <p id="usuario"> Logado como <b>{{usuario?.nome}}</b> </p>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <h1>Casa do Pobre</h1>
+    <h2>Prontuário Eletrônico</h2>
   </div>
+
+  <div id="opcoes">
+    <!-- HISTÓRICO -->
+    <div class="opcao ion-activatable ripple-parent">
+      <ion-icon slot="start" name="home-outline"></ion-icon>
+      <p>Histórico</p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+
+    <!-- PROFISSIONAIS -->
+    <div class="opcao ion-activatable ripple-parent">
+      <ion-icon name="people-outline"></ion-icon>
+      <p>Profissionais</p>      
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+    
+    <!-- IDOSOS -->
+    <div class="opcao  ion-activatable ripple-parent">
+      <ion-icon name="man-outline"></ion-icon>
+      <p>Idosos</p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+
+    <!-- IDOSAS -->
+    <div class="opcao  ion-activatable ripple-parent">
+      <ion-icon name="woman-outline"></ion-icon>
+      <p>Idosas</p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+
+    <!-- CALENDARIO -->
+    <div class="opcao ion-activatable ripple-parent">
+      <ion-icon slot="start" name="calendar-outline"></ion-icon>
+      <p>Calendário</p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+    
+    <!-- FOTOS -->
+    <div class="opcao ion-activatable ripple-parent">
+      <ion-icon slot="start" name="camera-outline"></ion-icon>
+      <p>Fotos</p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+
+    <!-- NOTIFICACAO -->
+    <div class="opcao ion-activatable ripple-parent">
+      <ion-icon name="notifications-outline"></ion-icon>
+      <p>Notificação</p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+
+    <!-- CONTATOS -->
+    <div class="opcao ion-activatable ripple-parent">
+      <ion-icon name="call-outline"></ion-icon>
+      <p>Contatos</p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+
+
+  </div>
+
+  
 </ion-content>
