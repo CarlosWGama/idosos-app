@@ -1,19 +1,22 @@
-<ion-content>
-  <div id="conteudo-principal">
-
+<ion-content id="main1"> 
+  <div id="header">
     <h1>Casa do Pobre</h1>
-
-    <div id="formulario">
-      <img id="logo" src="assets/imgs/elder-icon.png" />
-      
-      <ion-input type="number" [(ngModel)]="login.codigo" position="floating" placeholder="Digite seu código de acesso"></ion-input>
-      <ion-input type="password" [(ngModel)]="login.senha" placeholder="Digite sua senha"></ion-input>
-
-      <ion-button (click)="logar()" [disabled]="!login.codigo || !login.senha" expand="block" color="dark">
-        Entrar
-      </ion-button>
-    </div>   
-
   </div>
+    <div id="conteudo-principal">
+  
+  
+      <div id="formulario">
+        <img id="logo" src="assets/imgs/elder-icon.png" />
+        
+        <ion-input type="number" [(ngModel)]="login.codigo" position="floating" placeholder="Digite seu código de acesso"></ion-input>
+        <ion-input type="password" [(ngModel)]="login.senha" placeholder="Digite sua senha"></ion-input>
+  
+        <ion-button (click)="logar()" [disabled]="!login.codigo || !login.senha" expand="block" color="dark">
+          Entrar
+        </ion-button>
+      </div>   
+  
+    </div>
+ 
 
 </ion-content>
