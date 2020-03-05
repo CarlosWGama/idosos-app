@@ -1,10 +1,28 @@
+h2 {
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    margin-top: 50px;
+}
+
 #conteudo-principal {
-   display: flex;
-   flex: 1;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   h1 { margin-bottom: 100px; text-transform: uppercase;}
+    display: flex;
+    flex:1;
+    justify-content: center;
+}
+
+#versao {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+#autor {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
 }
 
 #formulario {
