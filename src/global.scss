@@ -90,11 +90,26 @@ ion-content {
     width:100%;
     margin: -20px 0px 50px;
     padding: 20px;
-    height: 170px;
+    height: 130px;
 
     h1 { color: white; text-align: center; font-size: 30px; margin-top: 50px}
 
     h2 { text-align: center; color: white; font-size:20px; }
+}
+
+.header-pequeno {
+    height: 120px !important;
+}
+
+.header-largo {
+    height: 170px !important;
+}
+
+#btn-voltar {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: white;
 }
 
 .ripple-parent { position: relative; overflow: hidden; }

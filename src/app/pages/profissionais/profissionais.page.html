@@ -1,0 +1,22 @@
+<ion-content>
+  <div id="header2" class="header-largo">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+
+    <h1>Profissionais</h1>
+    <h2>Equipe</h2>
+  </div>
+
+  <div id="conteudo">
+    <!-- PROFISSIONAIS -->
+    <ion-card *ngFor="let prof of profissionais">
+      <ion-card-header>
+        <ion-card-subtitle>{{prof.profissao}}</ion-card-subtitle>
+        <ion-card-title>{{prof.nome}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>  
+  </div>
+
+
+</ion-content>

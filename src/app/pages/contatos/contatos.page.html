@@ -1,0 +1,21 @@
+<ion-content>
+  <div id="header" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+
+    <h1>Contatos</h1>
+  </div>
+
+  <div id="conteudo">
+    <!-- PROFISSIONAIS -->
+    <ion-card *ngFor="let contato of contatos">
+      <ion-card-header>
+        <ion-card-subtitle>{{contato.campo}}</ion-card-subtitle>
+        <ion-card-title>{{contato.valor}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>  
+  </div>
+
+
+</ion-content>

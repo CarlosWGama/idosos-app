@@ -1,5 +1,5 @@
 <ion-content>
-  <div id="header2">
+  <div id="header2"  class="header-largo">
     <!-- BTN SAIR -->
     <p id="sair" (click)="sair()" class="ion-activatable ripple-parent">
       SAIR
@@ -15,14 +15,14 @@
 
   <div id="opcoes">
     <!-- HISTÓRICO -->
-    <div class="opcao ion-activatable ripple-parent">
+    <div class="opcao ion-activatable ripple-parent" (click)="navegar('/historico')">
       <ion-icon slot="start" name="home-outline"></ion-icon>
       <p>Histórico</p>
       <ion-ripple-effect></ion-ripple-effect>
     </div>
 
     <!-- PROFISSIONAIS -->
-    <div class="opcao ion-activatable ripple-parent">
+    <div class="opcao ion-activatable ripple-parent" (click)="navegar('/profissionais')">
       <ion-icon name="people-outline"></ion-icon>
       <p>Profissionais</p>      
       <ion-ripple-effect></ion-ripple-effect>
@@ -57,14 +57,14 @@
     </div>
 
     <!-- NOTIFICACAO -->
-    <div class="opcao ion-activatable ripple-parent">
+    <div class="opcao ion-activatable ripple-parent" (click)="navegar('/notificacoes')">
       <ion-icon name="notifications-outline"></ion-icon>
-      <p>Notificação</p>
+      <p>Notificação <ion-badge color="danger" mode="ios" *ngIf="totalAvisos > 0">{{totalAvisos}}</ion-badge> </p>
       <ion-ripple-effect></ion-ripple-effect>
     </div>
 
     <!-- CONTATOS -->
-    <div class="opcao ion-activatable ripple-parent">
+    <div class="opcao ion-activatable ripple-parent" (click)="navegar('/contatos')">
       <ion-icon name="call-outline"></ion-icon>
       <p>Contatos</p>
       <ion-ripple-effect></ion-ripple-effect>

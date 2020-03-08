@@ -1,0 +1,28 @@
+<ion-content>
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+
+    <h1>Notificações</h1>
+  </div>
+
+  <div id="conteudo">
+    <!-- PROFISSIONAIS -->
+    <ion-list id="notificacoes">
+      <ion-item-sliding *ngFor="let not of notificacoes">
+        <ion-item (click)="abrirNotificacao(not)">
+            <ion-label><ion-badge color="danger" mode="ios" *ngIf="!not.lido">Novo</ion-badge> {{not.autor.nome}} </ion-label>
+            <ion-label>{{not.titulo}}</ion-label>
+            <ion-label>{{not.dataCadastro|dataBrasil}}</ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="excluir(not)">Excluir</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+  </div>
+
+
+</ion-content>

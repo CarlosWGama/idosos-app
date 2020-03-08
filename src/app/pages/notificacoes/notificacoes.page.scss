@@ -1,0 +1,17 @@
+#conteudo {
+    margin-top: -20px;
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 180px);
+    overflow: scroll;
+}
+
+#notificacoes {
+    margin: 10px;
+    border-radius: 20px;
+
+    .notificacao-item {
+        display: flex;
+        justify-content: space-between;
+    }
+}
