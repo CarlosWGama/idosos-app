@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { DataBrasilPipe } from './pipes/data-brasil.pipe';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { DataBrasilPipe } from './pipes/data-brasil.pipe';
     StatusBar,
     SplashScreen,
     ScreenOrientation,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

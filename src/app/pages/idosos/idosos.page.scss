@@ -1,0 +1,36 @@
+ion-fab {
+    right: calc(30px + var(--ion-safe-area-right, 0px));
+}
+
+#idosos {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+
+    .idoso {
+        margin: 0px 10px;
+        // border: 1px solid lightgray;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        p { 
+            font-size: 18px; 
+            width: 100px; 
+            text-overflow: ellipsis; 
+            overflow: hidden;
+            margin-top:-21px;  
+            white-space: nowrap; 
+            text-align: center; 
+            padding: 0px 5px;
+            background: rgba(0, 0, 0, 0.4); 
+            color: white;
+        }
+
+        img {height: 100px; width: 100px; border-radius: 10px 10px 0px 0px;}
+    }
+}

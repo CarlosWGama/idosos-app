@@ -1,9 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>idosos</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div id="header" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+
+    <h1><ion-icon  [name]="icone"></ion-icon>{{titulo}}</h1>
+  </div>
+
+  <!-- BOTÂO ADICIONAR NOVO IDOSO -->
+  <ion-fab vertical="top" horizontal="end" routerLink="/cadastrar-idoso">
+    <ion-fab-button color="light" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+    
+  <!-- IDOSOS -->
+  <div id="idosos">
+    <div class="idoso" *ngFor="let idoso of idosos">
+      <img [src]="idoso.foto" />
+      <p>{{idoso.nome}}</p>
+    </div>    
+  </div>
+
 
 </ion-content>

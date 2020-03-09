@@ -1,0 +1,8 @@
+#foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    img { border-radius: 200px; background-color: white; width: 250px;}
+    p { position: absolute; color: white; font-size: 30px; width: 220px; text-align: center; text-shadow: 2px 0px 0px black; }
+}

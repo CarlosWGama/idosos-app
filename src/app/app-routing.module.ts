@@ -10,11 +10,16 @@ const routes: Routes = [
     { path: 'historico', loadChildren: () => import('./pages/historico/historico.module').then( m => m.HistoricoPageModule) },
     { path: 'profissionais', loadChildren: () => import('./pages/profissionais/profissionais.module').then( m => m.ProfissionaisPageModule) },
     { path: 'idosos', loadChildren: () => import('./pages/idosos/idosos.module').then( m => m.IdososPageModule) },
+    { path: 'idosas', loadChildren: () => import('./pages/idosos/idosos.module').then( m => m.IdososPageModule) },
     { path: 'calendario', loadChildren: () => import('./pages/calendario/calendario.module').then( m => m.CalendarioPageModule) },
     { path: 'fotos', loadChildren: () => import('./pages/fotos/fotos.module').then( m => m.FotosPageModule) },
     { path: 'notificacoes', loadChildren: () => import('./pages/notificacoes/notificacoes.module').then( m => m.NotificacoesPageModule) },
     { path: 'contatos', loadChildren: () => import('./pages/contatos/contatos.module').then( m => m.ContatosPageModule) }
   ]},
+  {
+    path: 'cadastrar-idoso',
+    loadChildren: () => import('./pages/cadastrar-idoso/cadastrar-idoso.module').then( m => m.CadastrarIdosoPageModule)
+  },
 ];
 
 @NgModule({
