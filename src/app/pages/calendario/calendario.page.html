@@ -1,9 +1,12 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>calendario</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div id="header" class="header-medio">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
 
+    <h1>Calendário</h1>
+    <h2>Lista de eventos</h2>
+  </div>
+
+  <data-calendario [evento]="evento" *ngFor="let evento of eventos" (click)="exibirObservacao(evento)"></data-calendario>
 </ion-content>

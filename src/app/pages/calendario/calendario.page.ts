@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Evento } from 'src/app/models/evento';
+import { CasaDoPobreService } from 'src/app/services/casa-do-pobre.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-calendario',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarioPage implements OnInit {
 
-  constructor() { }
+  eventos:Evento[] = []
+  constructor(private casaDoPobreSrv:CasaDoPobreService, private alertCtrl:AlertController) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.eventos = await this.casaDoPobreSrv.eventos();
+  }
+
+  /** Exibie informações do calendário */
+  exibirObservacao(evento: Evento) {
+    this.alertCtrl.create({
+      header: evento.descricao,
+      message: evento.observacao,
+      buttons:['Ok']
+    }).then(a => a.present())
   }
 
 }

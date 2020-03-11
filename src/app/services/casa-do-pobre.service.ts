@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Contato } from '../models/Contato';
+import { Evento } from '../models/evento';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class CasaDoPobreService extends ApiService {
     })
   }
 
+  /** Retorna os contatos da casa do pobre */
   public async contatos(): Promise<Contato[]> {
     return new Promise(resolve => {
       resolve([
@@ -28,5 +30,17 @@ export class CasaDoPobreService extends ApiService {
         new Contato(0, 'Diretoria', '8888-8888')
       ])
     })
+  }
+
+  /** Retorna os eventos do calendário */
+  public async eventos(): Promise<Evento[]> {
+    return new Promise(resolve => {
+      resolve([
+        new Evento(1, 'Reunião com os médicos', '2020-05-11', 'Reunião com todos os médicos na sala da diretoria'),
+        new Evento(2, 'Visita de colégio', '2020-06-15', 'O colégio SST irá levar alguns alunos para realizar uma visita a casa do pobre'),
+        new Evento(3, 'Mutirão', '2020-07-09', 'Será realizado um mutirão com os idosos envolvendo todos os médicos'),
+        new Evento(4, 'Confraternização', '2020-12-10', 'Confratenização na pizzaria piratas.'),
+      ])
+    }) 
   }
 }

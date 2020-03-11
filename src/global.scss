@@ -71,7 +71,7 @@ ion-content {
     width:100%;
     margin: -20px 0px 20px;
     padding: 20px;
-    height: 230px;
+    height: 130px;
 
     h1 { color: white; text-align: center; font-size: 30px; margin-top: 50px}
 
@@ -101,8 +101,12 @@ ion-content {
     height: 120px !important;
 }
 
-.header-largo {
+.header-medio {
     height: 170px !important;
+}
+
+.header-largo {
+    height: 230px !important;
 }
 
 #btn-voltar {
