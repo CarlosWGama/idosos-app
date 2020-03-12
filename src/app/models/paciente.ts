@@ -2,5 +2,6 @@
 export class Paciente {
 
     public constructor(public codigo?: number, public nome?: string, public dataNascimento?:string,
-        public foto:string = 'assets/imgs/avatar.png', public masculino: boolean = true) {}
+        public foto:string = 'assets/imgs/avatar.png', public masculino: boolean = true, public escolaridade?, 
+        public naturalidade?, public dataAdmissao?, public motivoAdmissao?) {}
 }

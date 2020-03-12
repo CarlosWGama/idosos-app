@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
     </ion-buttons>
   
-    <h1>Cadastro de idoso</h1>
+    <h1>Atualizar paciente</h1>
   </div>
 
   <form [formGroup]="form" (ngSubmit)="salvar()">
@@ -99,7 +99,7 @@
 
     <!-- SALVAR -->
     <ion-button expand="full" color="primary" type="submit" [disabled]="form.invalid">
-      Cadastrar
+      Atualizar
     </ion-button>
   </form>
 </ion-content>

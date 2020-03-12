@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'cadastrar-idoso',
     loadChildren: () => import('./pages/cadastrar-idoso/cadastrar-idoso.module').then( m => m.CadastrarIdosoPageModule)
   },
+  {
+    path: 'prontuarios',
+    loadChildren: () => import('./pages/prontuarios/prontuarios.module').then( m => m.ProntuariosPageModule)
+  },
 ];
 
 @NgModule({

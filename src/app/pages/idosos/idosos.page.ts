@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Paciente } from 'src/app/models/paciente';
 import { PacientesService } from 'src/app/services/pacientes.service';
+import { NavExtrasService } from 'src/app/services/nav-extras.service';
 
 @Component({
   selector: 'app-idosos',
@@ -13,7 +14,7 @@ export class IdososPage implements OnInit {
   titulo = '';
   icone = '';
   idosos: Paciente[] = []
-  constructor(private router:Router, private pacienteSrv:PacientesService) { }
+  constructor(private router:Router, private pacienteSrv:PacientesService, private navExtra:NavExtrasService) { }
 
   ngOnInit() {
   }
@@ -23,6 +24,12 @@ export class IdososPage implements OnInit {
     this.titulo = (genero == 1? 'Idosos': 'Idosas');
     this.icone = (genero == 1? 'male': 'female');
     this.idosos = await this.pacienteSrv.getPacientes(genero);
+  }
+
+  /** Confirma se o idoso que quer visualizar */
+  selecionaIdoso(idoso:Paciente) {
+    this.navExtra.set('paciente', idoso);
+    this.router.navigateByUrl('/idosos/selecionar-idoso');
   }
 
 }

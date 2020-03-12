@@ -1,37 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { PacientesService } from './../../services/pacientes.service';
-import { Paciente } from 'src/app/models/paciente';
+import { PacientesService } from 'src/app/services/pacientes.service';
 import { ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { NavExtrasService } from 'src/app/services/nav-extras.service';
+import { Paciente } from 'src/app/models/paciente';
 import { Location } from '@angular/common';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
+import { Camera } from '@ionic-native/camera/ngx';
 
 @Component({
-  selector: 'app-cadastrar-idoso',
-  templateUrl: './cadastrar-idoso.page.html',
-  styleUrls: ['./cadastrar-idoso.page.scss'],
+  selector: 'app-identificacao-paciente',
+  templateUrl: './identificacao-paciente.page.html',
+  styleUrls: ['./identificacao-paciente.page.scss'],
 })
-export class CadastrarIdosoPage implements OnInit {
-
+export class IdentificacaoPacientePage implements OnInit {
+  
   form:FormGroup;
   foto: string = 'assets/imgs/camera.png';
-
+  private paciente: Paciente = new Paciente()
 
   constructor(private formBuilder: FormBuilder, private pacientesSrv:PacientesService,
               private toastController: ToastController, private location:Location,
-              private camera: Camera) { }
+              private camera: Camera, private navExtra: NavExtrasService) { }
 
   ngOnInit() {
+    this.paciente = this.navExtra.get('paciente', new Paciente(), false);
     this.form = this.formBuilder.group({
-      'nome': ['', [Validators.required]],
-      'dataNascimento': ['', [Validators.required]],
-      'genero': [true],
-      'escolaridade': ['', [Validators.required]],
-      'naturalidade': ['', [Validators.required]],
-      'dataAdmissao': ['', [Validators.required]],
-      'motivoAdmissao': ['', [Validators.required]]
+      'nome': [this.paciente.nome, [Validators.required]],
+      'dataNascimento': [this.paciente.dataNascimento, [Validators.required]],
+      'genero': [this.paciente.masculino],
+      'escolaridade': [this.paciente.escolaridade, [Validators.required]],
+      'naturalidade': [this.paciente.naturalidade, [Validators.required]],
+      'dataAdmissao': [this.paciente.dataAdmissao, [Validators.required]],
+      'motivoAdmissao': [this.paciente.motivoAdmissao, [Validators.required]]
     })
   }
 
@@ -54,8 +55,9 @@ export class CadastrarIdosoPage implements OnInit {
   /** Salva */
   async salvar() {
     const dados = Object.assign(new Paciente, this.form.value);
-    const retorno = await this.pacientesSrv.cadastrar(dados);
+    const retorno = await this.pacientesSrv.atualizar(dados);
     if (retorno.sucesso) {
+      this.navExtra.set('paciente', this.paciente);
       this.toastController.create({message: 'Cadastrado com sucesso', duration: 2000}).then(t => t.present())
       this.location.back()
     } else {

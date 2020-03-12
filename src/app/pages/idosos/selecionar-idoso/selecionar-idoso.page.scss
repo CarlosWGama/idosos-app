@@ -1,0 +1,13 @@
+#conteudo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+    h1 { margin: 0px; text-align: center;}
+    p { margin: 2px; font-size: 18px;}
+
+    img { height: 200px; border-radius: 10px;}
+}

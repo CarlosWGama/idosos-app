@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: IdososPage
+  },
+  {
+    path: 'selecionar-idoso',
+    loadChildren: () => import('./selecionar-idoso/selecionar-idoso.module').then( m => m.SelecionarIdosoPageModule)
   }
 ];
 

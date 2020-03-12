@@ -1,0 +1,37 @@
+<ion-content>
+  <div id="header2" class="header-medio">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/idosos/selecionar-idoso"></ion-back-button> VOLTAR
+    </ion-buttons>
+
+    <h1>Prontuários</h1>
+    <h2>{{paciente.nome}}</h2>
+  </div>
+
+  <ion-list>
+    <!-- IDENTIFICAÇÃO -->
+    <ion-item button routerLink="/prontuarios/identificacao-paciente">
+      <ion-label>Identificação do Paciente</ion-label>
+    </ion-item>
+    <!-- DADOS CLINICOS-->
+    <ion-item button>
+      <ion-label>Dados Clínicos Gerais</ion-label>
+    </ion-item>
+    <!-- ENFERMAGEM-->
+    <ion-item button>
+      <ion-label>Enfermagem</ion-label>
+    </ion-item>
+    <!-- EDUCAÇÃO FÍSICA -->
+    <ion-item button>
+      <ion-label>Educação Física</ion-label>
+    </ion-item>
+    <!-- FISIOTERAPIA -->
+    <ion-item button>
+      <ion-label>Fisioterapia</ion-label>
+    </ion-item>
+    <!-- NUTRIÇÃO -->
+    <ion-item button>
+      <ion-label>Nutrição</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

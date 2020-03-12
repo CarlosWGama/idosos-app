@@ -1,12 +1,11 @@
 .evento {
     
-    border: 1px solid rgb(92, 92, 92);
-    margin: 10px;
+    // border-left: 20px black solid transparent;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin: 0px 0px;
     padding: 10px;
     height: 100px;
-    border-radius: 20px;
-    background-color: white;
-    box-shadow: rgb(92, 92, 92) 2px 2px 0px 0px;
 
     .data {
         width: 60px;
@@ -30,4 +29,5 @@
 
 .normal {
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    // background-color: lightgrey;
 }

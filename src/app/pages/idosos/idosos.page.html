@@ -16,7 +16,7 @@
     
   <!-- IDOSOS -->
   <div id="idosos">
-    <div class="idoso" *ngFor="let idoso of idosos">
+    <div class="idoso" *ngFor="let idoso of idosos" (click)="selecionaIdoso(idoso)">
       <img [src]="idoso.foto" />
       <p>{{idoso.nome}}</p>
     </div>    

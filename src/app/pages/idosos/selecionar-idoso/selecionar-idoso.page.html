@@ -1,0 +1,18 @@
+<ion-content>
+  <div id="header" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/idosos"></ion-back-button> VOLTAR
+    </ion-buttons>
+
+    <h1>Confirmar idoso(a)</h1>
+  </div>
+
+  <div id="conteudo">
+    <h1>{{idoso.nome}}</h1>
+    <p>Data de nascimento: {{idoso.dataNascimento|dataBrasil}}</p>
+    <img [src]="idoso.foto">
+    <ion-button routerLink="/prontuarios" size="large" expand="block" >
+      Confirmar
+    </ion-button>
+  </div>
+</ion-content>

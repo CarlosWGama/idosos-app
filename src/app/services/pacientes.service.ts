@@ -19,6 +19,17 @@ export class PacientesService extends ApiService {
 
   }
 
+   /**
+   * Atualiza um paciente
+   * @param paciente 
+   */
+  public async atualizar(paciente: Paciente): Promise<{sucesso:boolean, error?:string}> {
+    return new Promise(resolve => {
+      resolve({sucesso:true})
+    })
+
+  }
+
   /** 
    * Retorna os pacientes
    * @param genero 0 - Idosas | 1 - Idosos | 2 - Todos
