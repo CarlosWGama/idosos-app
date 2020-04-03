@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: CalendarioPage
+  },
+  {
+    path: 'novo',
+    loadChildren: () => import('./calendario-novo/calendario-novo.module').then( m => m.CalendarioNovoPageModule)
   }
 ];
 

@@ -8,5 +8,15 @@
     <h2>Lista de eventos</h2>
   </div>
 
-  <data-calendario [evento]="evento" *ngFor="let evento of eventos" (click)="exibirObservacao(evento)"></data-calendario>
+  
+  <!-- BOTÂO ADICIONAR NOVO ALUNO -->
+  <ion-fab vertical="top" horizontal="end" *ngIf="usuario.nivel_acesso == 1">
+    <ion-fab-button color="light" routerLink="/calendario/novo">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div id="conteudo">
+    <data-calendario [evento]="evento" *ngFor="let evento of eventos" (click)="exibirObservacao(evento)"></data-calendario>
+  </div>
 </ion-content>

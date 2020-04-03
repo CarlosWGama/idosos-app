@@ -38,6 +38,30 @@ export class CasaDoPobreService extends ApiService {
     }) 
   }
 
+  /**
+   * Cadastra um novo evento
+   * @param evento 
+   */
+  public async cadastrarEvento(evento: Evento): Promise<{sucesso:boolean, error?:string}> {
+    console.log(evento)
+    return this.post('/casa/agenda', {evento}, true).then(resposta => { return {sucesso: true} })
+    .catch(erro => {
+      return {sucesso: false, error:Object.values(erro.error).join(',')}
+    })
+  }
+
+  /**
+   * Remove um evento
+   * @param evento 
+   */
+  public async excluirEvento(eventoID: number): Promise<{sucesso:boolean, error?:string}> {
+    return this.delete(`/casa/agenda/${eventoID}`, true).then(resposta => { return {sucesso: true} })
+    .catch(erro => {
+      return {sucesso: false, error:Object.values(erro.error).join(',')}
+    })
+  }
+
+
   /** Retorna as fotos da casa do Pobre */
   public async getFotos(): Promise<Foto[]> {
     return this.get('/casa/fotos').then(resposta => {

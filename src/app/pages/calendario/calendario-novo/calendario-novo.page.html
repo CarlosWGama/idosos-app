@@ -1,0 +1,67 @@
+<ion-content>
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/calendario"></ion-back-button> VOLTAR
+    </ion-buttons>
+
+    <h1><ion-icon  [name]="icone"></ion-icon>Novo evento</h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <!-- DESCRICAO -->
+    <ion-item>
+      <ion-label position="floating">Descrição <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="descricao" type="text"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="form.get('descricao').invalid && form.get('descricao').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Descrição é obrigatório
+      </ion-text>
+    </ion-item>
+   
+    <!-- NIVEL ACESSO -->
+    <ion-list>
+      <ion-radio-group formControlName="recorrente" >
+        <ion-list-header>
+          <ion-label>Evento recorrente</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Sim</ion-label>
+          <ion-radio [value]="true"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Não</ion-label>
+          <ion-radio [value]="false"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <ion-item lines="none">
+        <p class="legenda">Evento recorrente não tem data fixa*</p>
+      </ion-item>
+    </ion-list>
+
+    <!-- DATA DO EVENTO -->
+    <div [hidden]="form.get('recorrente').value">
+      <ion-item>
+        <ion-label position="floating">Data do evento <ion-text color="danger">*</ion-text></ion-label>
+        <ion-datetime display-format="DD/MM/YYYY" max="2030-12-31" min="2020-01-01" [required]="!form.get('recorrente').value" formControlName="data" cancelText="Cancelar" doneText="Ok"></ion-datetime>
+      </ion-item>
+      <ion-item *ngIf="form.get('data').invalid && form.get('data').touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          Data do evento é obrigatório
+        </ion-text>
+      </ion-item>
+    </div>
+    
+    <!-- OBSERVACAO -->
+    <ion-item>
+      <ion-label position="floating">Observação</ion-label>
+      <ion-input formControlName="observacao" type="text"></ion-input>
+    </ion-item>
+   
+    <!-- SALVAR -->
+    <ion-button expand="full" color="primary" type="submit" [disabled]="form.invalid">
+      Salvar
+    </ion-button>
+  </form>
+
+</ion-content>

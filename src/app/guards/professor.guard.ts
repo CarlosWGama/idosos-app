@@ -16,7 +16,6 @@ export class ProfessorGuard implements CanActivate {
     if (!permitido)
       this.router.navigateByUrl('/home');
     return permitido;
-    //return true;
   }
   
 }
