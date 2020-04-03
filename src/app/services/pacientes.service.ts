@@ -16,7 +16,6 @@ export class PacientesService extends ApiService {
     return new Promise(resolve => {
       resolve({sucesso:true})
     })
-
   }
 
    /**

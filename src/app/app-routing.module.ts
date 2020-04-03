@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AutenticacaoGuard } from './guards/autenticacao.guard';
+import { ProfessorGuard } from './guards/professor.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -14,16 +15,15 @@ const routes: Routes = [
     { path: 'calendario', loadChildren: () => import('./pages/calendario/calendario.module').then( m => m.CalendarioPageModule) },
     { path: 'fotos', loadChildren: () => import('./pages/fotos/fotos.module').then( m => m.FotosPageModule) },
     { path: 'notificacoes', loadChildren: () => import('./pages/notificacoes/notificacoes.module').then( m => m.NotificacoesPageModule) },
-    { path: 'contatos', loadChildren: () => import('./pages/contatos/contatos.module').then( m => m.ContatosPageModule) }
+    { path: 'contatos', loadChildren: () => import('./pages/contatos/contatos.module').then( m => m.ContatosPageModule) },
+    { path: 'cadastrar-idoso', loadChildren: () => import('./pages/cadastrar-idoso/cadastrar-idoso.module').then( m => m.CadastrarIdosoPageModule)},
+    { path: 'prontuarios', loadChildren: () => import('./pages/prontuarios/prontuarios.module').then( m => m.ProntuariosPageModule) },
+
+    //Precisa ser Professor
+    { path: '', canActivate:[ProfessorGuard], children: [
+      { path: 'alunos', loadChildren: () => import('./pages/alunos/alunos.module').then( m => m.AlunosPageModule)},
+    ]},
   ]},
-  {
-    path: 'cadastrar-idoso',
-    loadChildren: () => import('./pages/cadastrar-idoso/cadastrar-idoso.module').then( m => m.CadastrarIdosoPageModule)
-  },
-  {
-    path: 'prontuarios',
-    loadChildren: () => import('./pages/prontuarios/prontuarios.module').then( m => m.ProntuariosPageModule)
-  },
 ];
 
 @NgModule({

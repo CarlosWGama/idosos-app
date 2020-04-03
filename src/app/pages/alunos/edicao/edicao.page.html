@@ -1,0 +1,67 @@
+<ion-content>
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/alunos"></ion-back-button> VOLTAR
+    </ion-buttons>
+
+    <h1><ion-icon  [name]="icone"></ion-icon>Gerenciar aluno</h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <!-- NOME -->
+    <ion-item>
+      <ion-label position="floating">Nome <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="nome" type="text"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="form.get('nome').invalid && form.get('nome').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Nome é obrigatório
+      </ion-text>
+    </ion-item>
+
+    <!-- SENHA -->
+    <ion-item>
+      <div *ngIf="aluno.id != null">
+        <ion-label position="floating">Nova Senha (opcional)</ion-label>
+      </div>
+      <div *ngIf="aluno.id == null">
+        <ion-label position="floating">Senha <ion-text color="danger">*</ion-text></ion-label>
+      </div>
+      <ion-input formControlName="senha" type="password"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="aluno.id == null && form.get('senha').invalid && form.get('senha').touched" lines="none">
+      <ion-text color="danger" class="form-error"> 
+        Senha é obrigatório com pelo menos 4 caracteres
+      </ion-text>
+    </ion-item>
+   
+    <!-- NIVEL ACESSO -->
+    <ion-list>
+      <ion-radio-group name="auto" formControlName="nivel_acesso" >
+        <ion-list-header>
+          <ion-label>Nivel de Acessó</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Moderador</ion-label>
+          <ion-radio [value]="2"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Aluno</ion-label>
+          <ion-radio [value]="3"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <ion-item lines="none">
+        <p class="legenda">Moderador tem acesso completo ao paciente*</p>
+      </ion-item>
+      <ion-item>
+        <p class="legenda">Aluno tem acesso restrito ao paciente*</p>
+      </ion-item>
+    </ion-list>
+
+    <!-- SALVAR -->
+    <ion-button expand="full" color="primary" type="submit" [disabled]="form.invalid">
+      Salvar
+    </ion-button>
+  </form>
+
+</ion-content>

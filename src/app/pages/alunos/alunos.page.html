@@ -1,0 +1,34 @@
+<ion-content>
+  <div id="header" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+
+    <h1><ion-icon  [name]="icone"></ion-icon>Alunos</h1>
+  </div>
+
+  <!-- BOTÂO ADICIONAR NOVO ALUNO -->
+  <ion-fab vertical="top" horizontal="end">
+    <ion-fab-button color="light" routerLink="/alunos/edicao">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list *ngIf="alunos.length > 0">
+    <ion-item-sliding *ngFor="let aluno of alunos">
+      <ion-item (click)="editar(aluno)">
+        <ion-label>
+          <b>Código {{aluno.id}} </b>
+          <ion-badge color="primary" mode="ios" *ngIf="aluno.nivel_acesso == 2">Moderador</ion-badge>  
+          <ion-badge color="success" mode="ios" *ngIf="aluno.nivel_acesso == 3">Aluno</ion-badge>  
+          <br/>
+          {{aluno.nome}}
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="remover(aluno)" color="danger">Remover</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

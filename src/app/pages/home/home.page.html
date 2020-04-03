@@ -70,6 +70,20 @@
       <ion-ripple-effect></ion-ripple-effect>
     </div>
 
+    <!-- RELATORIOS -->
+    <div class="opcao ion-activatable ripple-parent" (click)="recursosIndisponivel()" *ngIf="usuario.nivel_acesso == 1">
+      <ion-icon name="document-text-outline"></ion-icon>
+      <p>Relatórios</p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+
+    <!-- ALUNOS -->
+    <div class="opcao ion-activatable ripple-parent" (click)="navegar('/alunos')" *ngIf="usuario.nivel_acesso == 1">
+      <ion-icon name="people-circle-outline"></ion-icon>
+      <p>Alunos</p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+
 
   </div>
 

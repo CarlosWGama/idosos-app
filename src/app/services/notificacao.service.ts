@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Notificacao } from '../models/notificacao';
 import { ApiService } from './api.service';
-import { Profissional } from '../models/profissional';
 import { Usuario } from '../models/usuario';
 
 @Injectable({

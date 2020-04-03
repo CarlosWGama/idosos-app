@@ -1,4 +1,3 @@
-import { Profissional } from './profissional';
 import { Usuario } from './usuario';
 
 export class Notificacao {

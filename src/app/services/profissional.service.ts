@@ -19,4 +19,51 @@ export class ProfissionalService extends ApiService {
         return equipe;
       })
   }
+
+  /** Retorna os alunos de um professor */
+  public async getAlunos(): Promise<Usuario[]> {
+    return this.get('/usuarios/alunos', true).then(resposta => {
+      const alunos: Usuario[] = [];
+      resposta.alunos.forEach(usuario => {
+        alunos.push(Object.assign(new Usuario, usuario))
+      });
+
+      return alunos;
+    })
+  }
+
+  /**
+   * Cadastra um novo aluno
+   * @param aluno 
+   */
+  public async cadastrarAluno(aluno: Usuario): Promise<{sucesso:boolean, error?:string}> {
+    return this.post('/usuarios/alunos', {aluno}, true).then(resposta => { return {sucesso: true} })
+    .catch(erro => {
+      return {sucesso: false, error:Object.values(erro.error).join(',')}
+    })
+  }
+
+  /**
+   * Atualiza um aluno
+   * @param aluno 
+   */
+  public async atualizarAluno(aluno: Usuario): Promise<{sucesso:boolean, error?:string}> {
+    return this.put(`/usuarios/alunos/${aluno.id}`, {aluno}, true).then(resposta => { return {sucesso: true} })
+      .catch(erro => {
+        
+        return {sucesso: false, error: Object.values(erro.error).join(',')}
+      })
+  }
+
+  /**
+   * Excluir um aluno
+   * @param aluno 
+   */
+  public async removerAluno(alunoID:number): Promise<{sucesso:boolean, error?:string}> {
+    return this.delete(`/usuarios/alunos/${alunoID}`, true).then(resposta => { return {sucesso: true} })
+      .catch(erro => {
+        return {sucesso: false, error: erro}
+      })
+  }
+
 }
