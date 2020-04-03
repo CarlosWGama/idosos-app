@@ -15,7 +15,8 @@ export class HomePage implements OnInit {
   totalAvisos = 0;
   constructor(private usuarioSrv:UsuariosService, private router:Router, private notificacoesSrv:NotificacaoService) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.usuarioSrv.initialize();
     this.usuario = this.usuarioSrv.usuarioLogado;
   }
 

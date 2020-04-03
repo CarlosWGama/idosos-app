@@ -1,9 +1,20 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>fotos</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+
+    <h1>Fotos</h1>
+  </div>
+
+  <div id="conteudo">
+      <!-- FOTOS -->
+      <div class="foto ion-activatable ripple-parent" *ngFor="let foto of fotos" (click)="abrirFoto(foto)">
+        <img [src]="foto.url" />
+        <p>{{foto.legenda}}</p>
+        <ion-ripple-effect></ion-ripple-effect>
+
+      </div>
+  </div>
 
 </ion-content>

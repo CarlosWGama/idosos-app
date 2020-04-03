@@ -26,13 +26,13 @@ export class NotificacoesPage implements OnInit {
       buttons: ['OK']
     }).then(a => a.present())
 
-    this.notificacaoSrv.ler(notificacao.codigo);
+    this.notificacaoSrv.ler(notificacao.id);
   }
 
   /** Remove uma notificação */
   public async excluir(notificacao: Notificacao) {
     this.toastCtrl.create({message:'Notificação removida', duration: 2000}).then(t => t.present());
-    this.notificacaoSrv.excluir(notificacao.codigo);
+    this.notificacaoSrv.excluir(notificacao.id);
     this.notificacoes = await this.notificacaoSrv.getNotificacoes();
 
   }

@@ -14,7 +14,12 @@
         p { margin: 2px}
         .mes { font-size: 25px; font-weight: bolder; }
     }
-
+    .recorrente { 
+        width: 80px;
+        float: left;
+        text-align: left;
+        p { font-size: 17px; margin: 0px; font-weight: bolder; color:rgb(112, 9, 9) }
+    }
 
     .descricao {
         display: flex;

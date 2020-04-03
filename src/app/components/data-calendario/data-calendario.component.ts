@@ -18,8 +18,10 @@ export class DataCalendarioComponent implements OnInit {
   }
 
   ngOnInit() {
-    [this.dia, this.mes, this.ano] = this.evento.data.split('-').reverse()
-    this.ajustaMes()
+    if (!this.evento.recorrente) {
+      [this.dia, this.mes, this.ano] = this.evento.data.split('-').reverse()
+      this.ajustaMes()
+    }
   }
 
   /** Retorna o mês formatado */

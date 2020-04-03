@@ -26,16 +26,16 @@ export class UsuariosService extends ApiService {
    * @param senha 
    */
   async logar(codigo:number, senha: string): Promise<{sucesso:boolean, error?:string}> {
-    return new Promise(resolve => {
+    return this.post('/login', {codigo, senha}).then(resposta => {
 
-      if (codigo == 1 && senha == '123456') {
-        let usuario = Object.assign(new Usuario, {nome:'Carlos'})
-        this.storage.set('usuario', usuario);
-        // this.setJWT(resposta.jwt);
-        this._usuarioLogado = usuario;
+      const usuario = Object.assign(new Usuario, resposta.usuario);
+      this.storage.set('usuario', usuario);
+      this._usuarioLogado = usuario;
+      this.setJWT(resposta.jwt);
 
-        resolve({sucesso: true})
-      } else resolve({sucesso: false, error: 'Login ou senha incorreta'})
+      return {sucesso: true};
+    }).catch(erro => {
+      return {sucesso: false, error: 'Login ou senha incorreta'}
     })
   }
 

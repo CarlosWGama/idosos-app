@@ -1,4 +1,4 @@
 export class Contato {
 
-    public constructor(public codigo?: number, public campo?:string, public valor?:string) {}
+    public constructor(public id?: number, public campo?:string, public valor?:string) {}
 }

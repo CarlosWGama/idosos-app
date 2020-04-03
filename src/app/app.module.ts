@@ -13,6 +13,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { DataBrasilPipe } from './pipes/data-brasil.pipe';
 import { Camera } from '@ionic-native/camera/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { Camera } from '@ionic-native/camera/ngx';
     SplashScreen,
     ScreenOrientation,
     Camera,
+    PhotoViewer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -46,7 +46,6 @@ export class ApiService {
   protected async post(url: string, params?: any, autenticado: boolean = false):Promise<any> {
     let headers = {}
     if (autenticado) headers['headers'] = {'Authorization': await this.getJWT()}
-    console.log(headers)
     return this.http.post(this.api(url), params, headers).toPromise()
   }
 

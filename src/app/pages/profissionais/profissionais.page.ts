@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfissionalService } from 'src/app/services/profissional.service';
-import { Profissional } from 'src/app/models/profissional';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-profissionais',
@@ -9,11 +9,11 @@ import { Profissional } from 'src/app/models/profissional';
 })
 export class ProfissionaisPage implements OnInit {
 
-  profissionais: Profissional[] = []
+  profissionais: Usuario[] = []
   constructor(private profissionaisSrv: ProfissionalService) { }
 
   async ngOnInit() {
-    this.profissionais = await this.profissionaisSrv.getProfissionais(); 
+    this.profissionais = await this.profissionaisSrv.getEquipeProfissional(); 
   }
 
 }

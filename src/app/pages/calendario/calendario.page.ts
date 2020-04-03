@@ -21,6 +21,7 @@ export class CalendarioPage implements OnInit {
   exibirObservacao(evento: Evento) {
     this.alertCtrl.create({
       header: evento.descricao,
+      subHeader: evento.autor.nome,
       message: evento.observacao,
       buttons:['Ok']
     }).then(a => a.present())
