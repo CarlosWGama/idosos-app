@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UsuariosService } from 'src/app/services/usuarios.service';
-import { ToastController } from '@ionic/angular';
 import { Usuario } from 'src/app/models/usuario';
-import { Location } from '@angular/common';
-import { NavExtrasService } from 'src/app/services/nav-extras.service';
+import { ToastController } from '@ionic/angular';
 import { ProfissionalService } from 'src/app/services/profissional.service';
+import { NavExtrasService } from 'src/app/services/nav-extras.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-edicao',
-  templateUrl: './edicao.page.html',
-  styleUrls: ['./edicao.page.scss'],
+  selector: 'app-aluno-edicao',
+  templateUrl: './aluno-edicao.page.html',
+  styleUrls: ['./aluno-edicao.page.scss'],
 })
-export class AlunosEdicaoPage implements OnInit {
+export class AlunoEdicaoPage implements OnInit {
 
   form:FormGroup;
   foto: string = 'assets/imgs/camera.png';
   aluno: Usuario = null;
 
   constructor(private formBuilder: FormBuilder, private profSrv:ProfissionalService, private navExtra:NavExtrasService,
-              private toastController: ToastController, private location:Location ) { }
+              private toastController: ToastController, private router:Router ) { }
 
   ngOnInit() {    
     this.aluno = this.navExtra.get('aluno', new Usuario());
@@ -40,10 +39,11 @@ export class AlunosEdicaoPage implements OnInit {
     
     if (retorno.sucesso) {
       this.toastController.create({message: 'Operação realizada com sucesso', duration: 2000}).then(t => t.present())
-      this.location.back()
+      this.router.navigateByUrl('alunos');
     } else {
       this.toastController.create({message: 'Falha na operação.' + retorno.error, duration: 2000}).then(t => t.present())
     }
   }
+
 
 }

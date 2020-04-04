@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'edicao',
-    loadChildren: () => import('./edicao/edicao.module').then( m => m.AlunosEdicaoPageModule)
+    loadChildren: () => import('./aluno-edicao/aluno-edicao.module').then( m => m.AlunoEdicaoPageModule)
   }
 ];
 

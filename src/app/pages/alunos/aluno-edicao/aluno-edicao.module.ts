@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AlunosEdicaoPageRoutingModule } from './edicao-routing.module';
+import { AlunoEdicaoPageRoutingModule } from './aluno-edicao-routing.module';
 
-import { AlunosEdicaoPage } from './edicao.page';
+import { AlunoEdicaoPage } from './aluno-edicao.page';
 
 @NgModule({
   imports: [
@@ -14,9 +14,8 @@ import { AlunosEdicaoPage } from './edicao.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    AlunosEdicaoPageRoutingModule
+    AlunoEdicaoPageRoutingModule
   ],
-  providers: [Location],
-  declarations: [AlunosEdicaoPage]
+  declarations: [AlunoEdicaoPage]
 })
-export class AlunosEdicaoPageModule {}
+export class AlunoEdicaoPageModule {}
