@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Paciente } from 'src/app/models/paciente';
 import { PacientesService } from 'src/app/services/pacientes.service';
 import { NavExtrasService } from 'src/app/services/nav-extras.service';
+import { Usuario } from 'src/app/models/usuario';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-idosos',
@@ -14,9 +16,12 @@ export class IdososPage implements OnInit {
   titulo = '';
   icone = '';
   idosos: Paciente[] = []
-  constructor(private router:Router, private pacienteSrv:PacientesService, private navExtra:NavExtrasService) { }
+  usuario: Usuario = new Usuario;
+  constructor(private router:Router, private pacienteSrv:PacientesService, private navExtra:NavExtrasService, private usuarioSrv: UsuariosService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.usuarioSrv.initialize();
+    this.usuario = this.usuarioSrv.usuarioLogado;
   }
   
   async ionViewWillEnter() {

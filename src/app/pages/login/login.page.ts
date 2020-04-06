@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { NavExtrasService } from 'src/app/services/nav-extras.service';
 
@@ -18,7 +18,7 @@ export class LoginPage  {
   login: {codigo: number, senha: string} = { codigo: null, senha: null }
 
   constructor(private usuarioSrv: UsuariosService, private toastCtrl:ToastController, 
-              private router:Router, private navExtra:NavExtrasService) { }
+              private router:Router, private navExtra:NavExtrasService, private alertCtrl: AlertController) { }
 
   /** Comando para realizar o login do usuário */
   async logar() {

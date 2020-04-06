@@ -11,6 +11,14 @@ const routes: Routes = [
   {
     path: 'selecionar-idoso',
     loadChildren: () => import('./selecionar-idoso/selecionar-idoso.module').then( m => m.SelecionarIdosoPageModule)
+  },
+  {
+    path: 'identificacao',
+    loadChildren: () => import('./idoso-identificacao/idoso-identificacao.module').then( m => m.IdosoIdentificacaoPageModule)
+  },
+  {
+    path: 'novo',
+    loadChildren: () => import('./idoso-identificacao/idoso-identificacao.module').then( m => m.IdosoIdentificacaoPageModule)
   }
 ];
 

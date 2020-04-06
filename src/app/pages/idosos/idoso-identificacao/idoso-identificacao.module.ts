@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CadastrarIdosoPageRoutingModule } from './cadastrar-idoso-routing.module';
+import { IdosoIdentificacaoPageRoutingModule } from './idoso-identificacao-routing.module';
 
-import { CadastrarIdosoPage } from './cadastrar-idoso.page';
+import { IdosoIdentificacaoPage } from './idoso-identificacao.page';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { CadastrarIdosoPage } from './cadastrar-idoso.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    CadastrarIdosoPageRoutingModule
+    IdosoIdentificacaoPageRoutingModule
   ],
-  declarations: [CadastrarIdosoPage]
+  declarations: [IdosoIdentificacaoPage]
 })
-export class CadastrarIdosoPageModule {}
+export class IdosoIdentificacaoPageModule {}

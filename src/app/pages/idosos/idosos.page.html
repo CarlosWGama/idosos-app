@@ -8,7 +8,7 @@
   </div>
 
   <!-- BOTÂO ADICIONAR NOVO IDOSO -->
-  <ion-fab vertical="top" horizontal="end" routerLink="/cadastrar-idoso">
+  <ion-fab vertical="top" horizontal="end" routerLink="novo" *ngIf="usuario.nivel_acesso != 3">
     <ion-fab-button color="light" >
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

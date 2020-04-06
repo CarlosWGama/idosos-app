@@ -117,3 +117,7 @@ ion-content {
 }
 
 .ripple-parent { position: relative; overflow: hidden; }
+
+
+//Sem quebrar o SELECT 
+.alert-radio-label{ white-space: pre-line !important; height: auto !important;}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavExtrasService } from 'src/app/services/nav-extras.service';
 import { Paciente } from 'src/app/models/paciente';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-selecionar-idoso',
@@ -11,6 +12,7 @@ import { Paciente } from 'src/app/models/paciente';
 export class SelecionarIdosoPage implements OnInit {
 
   idoso:Paciente;
+  anos:number = null;
   constructor(private router:Router, private navExtra:NavExtrasService) { }
 
   ngOnInit() {

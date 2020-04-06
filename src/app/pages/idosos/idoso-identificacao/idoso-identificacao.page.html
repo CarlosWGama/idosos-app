@@ -1,0 +1,152 @@
+<ion-content>
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Cadastro de idoso</h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <!-- NOME -->
+    <ion-item>
+      <ion-label position="floating">Nome <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="nome" type="text"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="form.get('nome').invalid && form.get('nome').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Nome é obrigatório
+      </ion-text>
+    </ion-item>
+
+    <!-- DATA DE NASCIMENTO -->
+    <ion-item>
+      <ion-label>Data de nascimento <ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime display-format="DD/MM/YYYY" formControlName="data_nascimento" cancelText="Cancelar" doneText="Ok" (ionChange)="atualizarIdade()"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="form.get('data_nascimento').invalid && form.get('data_nascimento').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Data de nascimento é obrigatório
+      </ion-text>
+    </ion-item>
+    <ion-item  *ngIf="form.get('data_nascimento').valid" lines="none">
+      <p class="anos">{{idade}} ano(s)</p>
+    </ion-item>
+
+    <!-- SEXO -->
+    <ion-list>
+      <ion-radio-group name="auto" formControlName="masculino" >
+        <ion-list-header>
+          <ion-label>Sexo</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Masculino</ion-label>
+          <ion-radio [value]="true"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Feminino</ion-label>
+          <ion-radio [value]="false"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <!-- ESCOLARIDADE -->
+    <ion-item>
+      <ion-label position="floating">Escolaridade <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select required formControlName="escolaridade" value="peperoni" placeholder="Selecione">
+        <ion-select-option [value]="0">Analfabeto</ion-select-option>
+        <ion-select-option text-wrap [value]="1">Estudou menos que 4 anos</ion-select-option>
+        <ion-select-option text-wrap [value]="2">Estudou mais que 4 anos</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="form.get('escolaridade').invalid && form.get('escolaridade').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Escolaridade é obrigatório
+      </ion-text>
+    </ion-item>
+
+    <!-- TEM FILHOS -->
+    <ion-item>
+      <ion-label>Tem filhos</ion-label>
+      <ion-checkbox slot="end" formControlName="tem_filhos"></ion-checkbox>
+    </ion-item>
+
+    <!-- ESTADO CIVIIL -->
+    <ion-item>
+      <ion-label  position="floating">Estado Civil <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select formControlName="estado_civil" placeholder="Selecione">
+        <ion-select-option [value]="1">Solteiro</ion-select-option>
+        <ion-select-option [value]="2">Casado</ion-select-option>
+        <ion-select-option [value]="3">Viúvo</ion-select-option>
+        <ion-select-option [value]="4">Divorciado/Separado</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="form.get('estado_civil').invalid && form.get('estado_civil').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Estado Cívil é obrigatório
+      </ion-text>
+    </ion-item>
+
+    <!-- DATA DE ADMISSAO -->
+    <ion-item>
+      <ion-label position="floating">Data de Admissão <ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime display-format="DD/MM/YYYY" formControlName="data_admissao" cancelText="Cancelar" doneText="Ok" (ionChange)="atualizarTempoCasa()"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="form.get('data_admissao').invalid && form.get('data_admissao').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Data de Admissão é obrigatório
+      </ion-text>
+    </ion-item>
+    <ion-item  *ngIf="form.get('data_admissao').valid" lines="none">
+      <p class="anos">{{tempoCasa}} anos</p>
+    </ion-item>
+    
+    <!-- Motivo de Admissão -->
+    <ion-item>
+      <ion-label  position="floating">Motivo da Institucionalização <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select formControlName="motivo_admissao" placeholder="Selecione">
+        <ion-select-option [value]="1">Ter tranquilidade</ion-select-option>
+        <ion-select-option [value]="2">Tratamento</ion-select-option>
+        <ion-select-option [value]="3">Idade</ion-select-option>
+        <ion-select-option [value]="4">Morava Sozinho</ion-select-option>
+        <ion-select-option [value]="5">Financeiro</ion-select-option>
+        <ion-select-option [value]="6">Não tinha onde morar</ion-select-option>
+        <ion-select-option [value]="7">Doença</ion-select-option>
+        <ion-select-option [value]="8">Filho, Neta ou Cônjulgue achou melhor opção</ion-select-option>
+        <ion-select-option [value]="9">Ficou sem família</ion-select-option>
+        <ion-select-option [value]="10">Não soube responder</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="form.get('motivo_admissao').invalid && form.get('motivo_admissao').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Motivo de Admissão é obrigatório
+      </ion-text>
+    </ion-item>
+
+    <!-- Frequência de visita Familair de Admissão -->
+    <ion-item>
+      <ion-label position="floating">Frequência de visita de familiares <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select formControlName="frequencia_familiar" placeholder="Selecione">
+        <ion-select-option [value]="0">Nunca/Raramente</ion-select-option>
+        <ion-select-option [value]="1">Às vezes</ion-select-option>
+        <ion-select-option [value]="2">Sempre</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="form.get('frequencia_familiar').invalid && form.get('frequencia_familiar').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Frequência familiar é obrigatório
+      </ion-text>
+    </ion-item>
+
+    <!-- FOTO -->
+    <div id="foto" (click)="tirarFoto()">
+      <p *ngIf="foto == 'assets/imgs/camera.png'">Clique aqui para tirar uma foto</p>
+      <img [src]="foto" />
+    </div>
+
+    <!-- SALVAR -->
+    <ion-button expand="full" color="primary" type="submit" [disabled]="form.invalid || foto == 'assets/imgs/camera.png'">
+      Cadastrar
+    </ion-button>
+  </form>
+</ion-content>

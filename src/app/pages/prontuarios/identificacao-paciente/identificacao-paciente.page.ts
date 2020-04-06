@@ -27,12 +27,12 @@ export class IdentificacaoPacientePage implements OnInit {
     this.paciente = this.navExtra.get('paciente', new Paciente(), false);
     this.form = this.formBuilder.group({
       'nome': [this.paciente.nome, [Validators.required]],
-      'dataNascimento': [this.paciente.dataNascimento, [Validators.required]],
+      'data_nascimento': [this.paciente.data_nascimento, [Validators.required]],
       'genero': [this.paciente.masculino],
+      'tem_filhos': [false],
       'escolaridade': [this.paciente.escolaridade, [Validators.required]],
-      'naturalidade': [this.paciente.naturalidade, [Validators.required]],
-      'dataAdmissao': [this.paciente.dataAdmissao, [Validators.required]],
-      'motivoAdmissao': [this.paciente.motivoAdmissao, [Validators.required]]
+      'data_admissao': [this.paciente.data_admissao, [Validators.required]],
+      'motivo_admissao': [this.paciente.motivo_admissao, [Validators.required]]
     })
   }
 
