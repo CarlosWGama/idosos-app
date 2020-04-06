@@ -9,8 +9,8 @@ const routes: Routes = [
     component: ProntuariosPage
   },
   {
-    path: 'identificacao-paciente',
-    loadChildren: () => import('./identificacao-paciente/identificacao-paciente.module').then( m => m.IdentificacaoPacientePageModule)
+    path: 'identificacao',
+    loadChildren: () => import('./../idoso-identificacao/idoso-identificacao.module').then( m => m.IdosoIdentificacaoPageModule)
   }
 ];
 

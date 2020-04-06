@@ -24,10 +24,10 @@ export class PacientesService extends ApiService {
    * @param paciente 
    */
   public async atualizar(paciente: Paciente): Promise<{sucesso:boolean, error?:string}> {
-    return new Promise(resolve => {
-      resolve({sucesso:true})
+    return this.put(`/pacientes/${paciente.id}`, {paciente}, true).then(resposta => { return {sucesso: true} })
+    .catch(erro => {
+      return {sucesso: false, error:Object.values(erro.error).join(',')}
     })
-
   }
 
   /** 

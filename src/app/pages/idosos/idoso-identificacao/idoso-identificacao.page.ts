@@ -6,6 +6,9 @@ import { ToastController } from '@ionic/angular';
 import { Location } from '@angular/common';
 import { Camera } from '@ionic-native/camera/ngx';
 import * as moment from 'moment';
+import { NavExtrasService } from 'src/app/services/nav-extras.service';
+import { Usuario } from 'src/app/models/usuario';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-idoso-identificacao',
@@ -17,13 +20,18 @@ export class IdosoIdentificacaoPage implements OnInit {
   foto: string = 'assets/imgs/camera.png';
   idade = null;
   tempoCasa = null;
+  usuario = new Usuario
   paciente: Paciente = new Paciente;
 
   constructor(private formBuilder: FormBuilder, private pacientesSrv:PacientesService,
               private toastController: ToastController, private location:Location,
-              private camera: Camera) { }
+              private camera: Camera, private navExtra: NavExtrasService, private usuarioSrv: UsuariosService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.usuario = this.usuarioSrv.usuarioLogado;
+    //Busca os dados do usuário em caso de edição
+    this.paciente = this.navExtra.get('paciente', new Paciente());
+    console.log(this.paciente);
     this.form = this.formBuilder.group({
       'nome': [this.paciente.nome, [Validators.required]],
       'data_nascimento': [this.paciente.data_nascimento, [Validators.required]],
@@ -35,6 +43,13 @@ export class IdosoIdentificacaoPage implements OnInit {
       'motivo_admissao': [this.paciente.motivo_admissao, [Validators.required]],
       'frequencia_familiar': [this.paciente.frequencia_familiar, [Validators.required]]
     })
+
+    //Atualiza as informações dos usuários em caso de edição
+    if (this.paciente && this.paciente.id) {
+      this.foto = this.paciente.foto;
+      this.atualizarIdade();
+      this.atualizarTempoCasa();
+    } 
   }
 
   /** Exibe a idade do paciente */
@@ -67,7 +82,11 @@ export class IdosoIdentificacaoPage implements OnInit {
   async salvar() {
     const dados = Object.assign(this.paciente, this.form.value);
     console.log(dados);
-    const retorno = await this.pacientesSrv.cadastrar(dados);
+    if (!this.paciente.id)
+      var retorno = await this.pacientesSrv.cadastrar(dados);
+    else 
+      var retorno = await this.pacientesSrv.atualizar(dados);
+      
     if (retorno.sucesso) {
       this.toastController.create({message: 'Operaçãor realizada com sucesso', duration: 2000}).then(t => t.present())
       this.location.back()

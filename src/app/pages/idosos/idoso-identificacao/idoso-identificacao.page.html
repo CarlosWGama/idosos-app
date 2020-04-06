@@ -4,8 +4,8 @@
       <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
     </ion-buttons>
   
-    <h1>Cadastro de idoso</h1>
-  </div>
+    <h1>{{(paciente.id ? 'Identificação' : 'Cadastro')}} de idoso</h1>
+  </div> 
 
   <form [formGroup]="form" (ngSubmit)="salvar()">
     <!-- NOME -->
@@ -41,11 +41,11 @@
         </ion-list-header>
         <ion-item>
           <ion-label>Masculino</ion-label>
-          <ion-radio [value]="true"></ion-radio>
+          <ion-radio [value]="1"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label>Feminino</ion-label>
-          <ion-radio [value]="false"></ion-radio>
+          <ion-radio [value]="0"></ion-radio>
         </ion-item>
       </ion-radio-group>
     </ion-list>
@@ -145,8 +145,8 @@
     </div>
 
     <!-- SALVAR -->
-    <ion-button expand="full" color="primary" type="submit" [disabled]="form.invalid || foto == 'assets/imgs/camera.png'">
-      Cadastrar
+    <ion-button *ngIf="usuario.nivel_acesso != 3" expand="full" color="primary" type="submit" [disabled]="form.invalid || foto == 'assets/imgs/camera.png'">
+      Salvar
     </ion-button>
   </form>
 </ion-content>

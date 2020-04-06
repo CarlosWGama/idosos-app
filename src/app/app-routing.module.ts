@@ -16,7 +16,7 @@ const routes: Routes = [
     { path: 'fotos', loadChildren: () => import('./pages/fotos/fotos.module').then( m => m.FotosPageModule) },
     { path: 'notificacoes', loadChildren: () => import('./pages/notificacoes/notificacoes.module').then( m => m.NotificacoesPageModule) },
     { path: 'contatos', loadChildren: () => import('./pages/contatos/contatos.module').then( m => m.ContatosPageModule) },
-    { path: 'prontuarios', loadChildren: () => import('./pages/prontuarios/prontuarios.module').then( m => m.ProntuariosPageModule) },
+    { path: 'prontuarios', loadChildren: () => import('./pages/idosos/prontuarios/prontuarios.module').then( m => m.ProntuariosPageModule) },
 
     //Precisa ser Professor
     { path: '', canActivate:[ProfessorGuard], children: [
