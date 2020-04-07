@@ -1,0 +1,210 @@
+<ion-content>
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Dados Clínicos Gerais</h1>
+  </div> 
+
+  <!-- DADOS -->
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <!-- CONDIÇÕES CLINICAS -->
+    <ion-item>
+      <ion-label position="floating">Condição Clínica (Morbidades) <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select multiple="true" placeholder="Selecione a condição clínica" formControlName="condicoes_clinicas">
+        <ion-select-option [value]="1">Sem doença</ion-select-option>
+        <ion-select-option [value]="2">Hipertensão</ion-select-option>
+        <ion-select-option [value]="3">DCV</ion-select-option>
+        <ion-select-option [value]="4">Câncer</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="form.get('condicoes_clinicas').invalid && form.get('condicoes_clinicas').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Nome é obrigatório
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Outras condições clínicas</ion-label>
+      <ion-input formControlName="condicao_clinica_outras" type="text"></ion-input>
+    </ion-item>
+
+    <!-- PLANO SAÚDE -->
+    <ion-item>
+      <ion-label>Tem Plano de Saúde</ion-label>
+      <ion-toggle slot="end" formControlName="plano"></ion-toggle>
+    </ion-item>
+
+    <!-- CARTÃO SUS -->
+    <ion-item>
+      <ion-label>Tem cartão do SUS</ion-label>
+      <ion-toggle slot="end" formControlName="cartao_sus"></ion-toggle>
+    </ion-item>
+
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Hábitos de Vida</ion-label>
+      </ion-item-divider>
+
+      <!-- FUMANTE -->
+      <ion-item>
+        <ion-label>Fumante</ion-label>
+        <ion-toggle slot="end" formControlName="fumante"></ion-toggle>
+      </ion-item>
+
+      <!-- FUMANTE IDADE -->
+      <ion-item *ngIf="form.get('fumante').value">
+        <ion-label position="floating"><b>Fumante - </b>Caso sim, desde que idade? <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="fumante_idade" type="number"></ion-input>
+      </ion-item>
+
+      <!-- MEDIA CIGARROS -->
+      <ion-item *ngIf="form.get('fumante').value">
+        <ion-label position="floating"><b>Fumante - </b>Média de Cigarros? <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="fumante_media_cigarros" type="number"></ion-input>
+      </ion-item>
+
+       <!-- ETILISTA -->
+      <ion-item>
+        <ion-label position="floating">Etilista <ion-text color="danger">*</ion-text></ion-label>
+        <ion-select placeholder="Selecione a opção" formControlName="etilista">
+          <ion-select-option [value]="0">Nunca foi etilista</ion-select-option>
+          <ion-select-option [value]="1">Ex-Etilista</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- SONO -->
+      <ion-item>
+        <ion-label position="floating">Sono <ion-text color="danger">*</ion-text></ion-label>
+        <ion-select placeholder="Selecione a opção" formControlName="sono">
+          <ion-select-option [value]="0">Dorme bem</ion-select-option>
+          <ion-select-option [value]="1">Tem insônia</ion-select-option>
+          <ion-select-option [value]="2">Não sabe informar</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-item-group>
+
+    <!-- FAZ USO DE PROTESE -->
+    <ion-item>
+      <ion-label>Faz uso de protese dentária</ion-label>
+      <ion-toggle slot="end" formControlName="protese_dentaria"></ion-toggle>
+    </ion-item>
+
+    <!-- MEDICAMENTOS CONTINUOS -->
+    <ion-item>
+      <ion-label>Faz uso de medicamento contínuo?</ion-label>
+      <ion-toggle slot="end" formControlName="medicamento_continuo"></ion-toggle>
+    </ion-item>
+
+    <!-- DOAÇÃO MEDICAMENTOS -->
+    <ion-item>
+      <ion-label position="floating" text-wrap>Medicamentos que o Idoso (a) necessita são fornecidos gratuitamente <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select placeholder="Selecione a opção" formControlName="medicamento_fornecimento">
+        <ion-select-option [value]="0">Não</ion-select-option>
+        <ion-select-option [value]="1">Sim</ion-select-option>
+        <ion-select-option [value]="2">Alguns são fornecidos, outros comprados</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- QUEDA -->
+    <ion-item>
+      <ion-label position="floating">Levou quedas nos últimos 6 meses<ion-text color="danger">*</ion-text></ion-label>
+      <ion-select placeholder="Selecione a opção" formControlName="queda">
+        <ion-select-option [value]="0">Não</ion-select-option>
+        <ion-select-option [value]="1">Sim</ion-select-option>
+        <ion-select-option [value]="2">Não recorda</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- DISPOSITIVO ANDAR -->
+    <ion-item>
+      <ion-label position="floating">Utiliza algum dispositivo de auxilia a marcha<ion-text color="danger">*</ion-text></ion-label>
+      <ion-select placeholder="Selecione a opção" formControlName="dispositivo_andar">
+        <ion-select-option [value]="0">Nenhum</ion-select-option>
+        <ion-select-option [value]="1">Andador</ion-select-option>
+        <ion-select-option [value]="2">Utilizava cadeira de rodas</ion-select-option>
+        <ion-select-option [value]="3">Bengala</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- ATIVIDADE RECREATIVA -->
+    <ion-item>
+      <ion-label text-wrap>Realiza algum tipo de atividade física ou recreativa de lazer</ion-label>
+      <ion-toggle slot="end" formControlName="atividade_recreativa"></ion-toggle>
+    </ion-item>
+
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Capacidade Funcional</ion-label>
+      </ion-item-divider>
+      
+      <!-- BANHAR -->
+      <ion-item>
+        <ion-label position="floating">Banhar-se<ion-text color="danger">*</ion-text></ion-label>
+        <ion-select placeholder="Selecione a opção" formControlName="cf_banhar" required>
+          <ion-select-option [value]="0">Independente </ion-select-option>
+          <ion-select-option [value]="1">Necessita de ajuda não humana</ion-select-option>
+          <ion-select-option [value]="2">Dependência completa</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- VESTIR -->
+      <ion-item>
+        <ion-label position="floating">Vestir-se<ion-text color="danger">*</ion-text></ion-label>
+        <ion-select placeholder="Selecione a opção" formControlName="cf_vestir" required>
+          <ion-select-option [value]="0">Independente </ion-select-option>
+          <ion-select-option [value]="1">Necessita de ajuda não humana</ion-select-option>
+          <ion-select-option [value]="2">Dependência completa</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- USO DO BANHEIRO -->
+      <ion-item>
+        <ion-label position="floating">Uso do banheiro<ion-text color="danger">*</ion-text></ion-label>
+        <ion-select placeholder="Selecione a opção" formControlName="cf_uso_banheiro" required>
+          <ion-select-option [value]="0">Independente </ion-select-option>
+          <ion-select-option [value]="1">Necessita de ajuda não humana</ion-select-option>
+          <ion-select-option [value]="2">Dependência completa</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- TRANSFERIR-SE -->
+      <ion-item>
+        <ion-label position="floating">Transferir-se<ion-text color="danger">*</ion-text></ion-label>
+        <ion-select placeholder="Selecione a opção" formControlName="cf_transferir" required>
+          <ion-select-option [value]="0">Independente </ion-select-option>
+          <ion-select-option [value]="1">Necessita de ajuda não humana</ion-select-option>
+          <ion-select-option [value]="2">Dependência completa</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- TRANSFERIR-SE -->
+      <ion-item>
+        <ion-label position="floating">Continência<ion-text color="danger">*</ion-text></ion-label>
+        <ion-select placeholder="Selecione a opção" formControlName="cf_continencia" required>
+          <ion-select-option [value]="0">Tem completo controle sobre suas eliminações (urinar/evacuar)</ion-select-option>
+          <ion-select-option [value]="1">É parcial ou totalmente incontinente do intestino e bexiga </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- ALIMENTAR-SE -->
+      <ion-item>
+        <ion-label position="floating">Alimentar-se<ion-text color="danger">*</ion-text></ion-label>
+        <ion-select placeholder="Selecione a opção" formControlName="cf_alimentar" required>
+          <ion-select-option [value]="0">Independente </ion-select-option>
+          <ion-select-option [value]="1">Necessita de ajuda não humana</ion-select-option>
+          <ion-select-option [value]="2">Dependência completa</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-item-group>
+    
+
+
+    <!-- SALVAR -->
+    <ion-button *ngIf="usuario.nivel_acesso != 3" expand="full" color="primary" type="submit" [disabled]="form.invalid">
+      Salvar
+    </ion-button>
+  </form>
+
+</ion-content>

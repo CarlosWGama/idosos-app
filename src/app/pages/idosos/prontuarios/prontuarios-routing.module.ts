@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'identificacao',
     loadChildren: () => import('./../idoso-identificacao/idoso-identificacao.module').then( m => m.IdosoIdentificacaoPageModule)
+  },
+  {
+    path: 'dados-clinicos',
+    loadChildren: () => import('./dados-clinicos/dados-clinicos.module').then( m => m.DadosClinicosPageModule)
   }
 ];
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Paciente } from '../models/paciente';
+import { DadosClinicos } from '../models/dados-clinicos';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,29 @@ export class PacientesService extends ApiService {
 
       return pacientes;
     })
+  }
 
+  /**
+   * Busca os dados Clinicos de um Paciente
+   * @param pacienteID 
+   */
+  public async buscarDadosClinicos(pacienteID: number): Promise<DadosClinicos> {
+    return this.get(`/pacientes/dados-clinicos/${pacienteID}`, true).then(resposta => {
+      let dados: DadosClinicos = Object.assign(new DadosClinicos, resposta.dados);
+      return dados;
+    })
+  }
+
+  /**
+   * Atualiza dados clinicos de um paciente
+   * @param dados DadosClinicos
+   */
+  public async atualizaDadosClinicos(dados: DadosClinicos): Promise<{sucesso:boolean, error?:string}> {
+    console.log('b');
+    console.log(dados);
+    return this.put(`/pacientes/dados-clinicos/${dados.paciente_id}`, {dados}, true).then(resposta => { return {sucesso: true} })
+    .catch(erro => {
+      return {sucesso: false, error:Object.values(erro.error).join(',')}
+    })
   }
 }

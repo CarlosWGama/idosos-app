@@ -38,18 +38,8 @@ export class IdosoIdentificacaoPage implements OnInit {
 
   async ionViewWillEnter() {
     //Busca os dados do usuário em caso de edição
-    this.paciente = this.navExtra.get('paciente', new Paciente());
-    this.form = this.formBuilder.group({
-      'nome': [this.paciente.nome, [Validators.required]],
-      'data_nascimento': [this.paciente.data_nascimento, [Validators.required]],
-      'masculino': [this.paciente.masculino],
-      'escolaridade': [this.paciente.escolaridade, [Validators.required]],
-      'tem_filhos': [this.paciente.tem_filhos],
-      'estado_civil': [this.paciente.estado_civil, [Validators.required]],
-      'data_admissao': [this.paciente.data_admissao, [Validators.required]],
-      'motivo_admissao': [this.paciente.motivo_admissao, [Validators.required]],
-      'frequencia_familiar': [this.paciente.frequencia_familiar, [Validators.required]]
-    })
+    this.paciente = this.navExtra.get('paciente', new Paciente(), false);
+    this.form.patchValue(this.paciente);
 
     //Atualiza as informações dos usuários em caso de edição
     if (this.paciente && this.paciente.id) {
@@ -98,7 +88,7 @@ export class IdosoIdentificacaoPage implements OnInit {
     loading.dismiss();
     
     if (retorno.sucesso) {
-      this.toastController.create({message: 'Operaçãor realizada com sucesso', duration: 2000}).then(t => t.present())
+      this.toastController.create({message: 'Operação realizada com sucesso', duration: 2000}).then(t => t.present())
       this.location.back()
     } else {
       this.toastController.create({message: 'Falha na operação.' + retorno.error, duration: 2000}).then(t => t.present())
