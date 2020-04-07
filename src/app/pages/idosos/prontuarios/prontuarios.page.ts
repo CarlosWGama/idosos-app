@@ -16,7 +16,7 @@ export class ProntuariosPage implements OnInit {
 
   async ngOnInit() {
     //Usa esse default para teste
-    this.paciente = this.navExtra.get('paciente', new Paciente(1, 'Carlos', '1950-01-01', true, '...', 1, false, 1, 1, '2019-01-01', 1), false);
+    this.paciente = this.navExtra.get('paciente', new Paciente(1, 'Carlos', '1950-01-01', 1, '...', 1, false, 1, 1, '2019-01-01', 1), false);
     await this.usuarioSrv.initialize();
   }
 

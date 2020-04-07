@@ -4,7 +4,8 @@ import { AutenticacaoGuard } from './guards/autenticacao.guard';
 import { ProfessorGuard } from './guards/professor.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'inicial', pathMatch: 'full' },
+  { path: 'inicial', loadChildren: () => import('./pages/inicial/inicial.module').then( m => m.InicialPageModule)},
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)},
   { path: '', canActivate:[AutenticacaoGuard], children: [
     { path: 'home', loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)},

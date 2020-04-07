@@ -12,11 +12,10 @@ export class AutenticacaoGuard implements CanActivate {
   
   /** Bloquea o acesso do usuário se ele não tiver logado */
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    // const permitido = this.usuarioSrv.usuarioLogado != null;
-    // if (!permitido)
-    //   this.router.navigateByUrl('/login');
-    // return permitido;
-    return true;
+    const permitido = this.usuarioSrv.usuarioLogado != null;
+    if (!permitido)
+      this.router.navigateByUrl('/inicial');
+    return permitido;
   }
   
 }

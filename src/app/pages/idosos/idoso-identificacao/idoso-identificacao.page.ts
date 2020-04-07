@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PacientesService } from 'src/app/services/pacientes.service';
 import { Paciente } from 'src/app/models/paciente';
-import { ToastController } from '@ionic/angular';
+import { ToastController, LoadingController } from '@ionic/angular';
 import { Location } from '@angular/common';
 import { Camera } from '@ionic-native/camera/ngx';
 import * as moment from 'moment';
@@ -25,13 +25,20 @@ export class IdosoIdentificacaoPage implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private pacientesSrv:PacientesService,
               private toastController: ToastController, private location:Location,
-              private camera: Camera, private navExtra: NavExtrasService, private usuarioSrv: UsuariosService) { }
+              private camera: Camera, private navExtra: NavExtrasService, private usuarioSrv: UsuariosService,
+              private loadingCtrl:LoadingController) { }
 
   async ngOnInit() {
     this.usuario = this.usuarioSrv.usuarioLogado;
+    this.form = this.formBuilder.group({
+      'nome': null, 'data_nascimento': null, 'masculino': 1, 'escolaridade': null, 'tem_filhos': false,
+      'estado_civil': null, 'data_admissao': null, 'motivo_admissao': null, 'frequencia_familiar': null
+    }) 
+  }
+
+  async ionViewWillEnter() {
     //Busca os dados do usuário em caso de edição
     this.paciente = this.navExtra.get('paciente', new Paciente());
-    console.log(this.paciente);
     this.form = this.formBuilder.group({
       'nome': [this.paciente.nome, [Validators.required]],
       'data_nascimento': [this.paciente.data_nascimento, [Validators.required]],
@@ -49,7 +56,7 @@ export class IdosoIdentificacaoPage implements OnInit {
       this.foto = this.paciente.foto;
       this.atualizarIdade();
       this.atualizarTempoCasa();
-    } 
+    }
   }
 
   /** Exibe a idade do paciente */
@@ -80,13 +87,16 @@ export class IdosoIdentificacaoPage implements OnInit {
 
   /** Salva */
   async salvar() {
+    const loading = await this.loadingCtrl.create({spinner:'circles', message: 'Enviando dados', backdropDismiss: false});
     const dados = Object.assign(this.paciente, this.form.value);
     console.log(dados);
+    loading.present();
     if (!this.paciente.id)
       var retorno = await this.pacientesSrv.cadastrar(dados);
     else 
       var retorno = await this.pacientesSrv.atualizar(dados);
-      
+    loading.dismiss();
+    
     if (retorno.sucesso) {
       this.toastController.create({message: 'Operaçãor realizada com sucesso', duration: 2000}).then(t => t.present())
       this.location.back()
