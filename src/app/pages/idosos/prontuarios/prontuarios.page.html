@@ -17,21 +17,9 @@
     <ion-item button (click)="navegar('/prontuarios/dados-clinicos')">
       <ion-label>Dados Clínicos Gerais</ion-label>
     </ion-item>
-    <!-- ENFERMAGEM-->
-    <ion-item button>
-      <ion-label>Enfermagem</ion-label>
-    </ion-item>
-    <!-- EDUCAÇÃO FÍSICA -->
-    <ion-item button>
-      <ion-label>Educação Física</ion-label>
-    </ion-item>
-    <!-- FISIOTERAPIA -->
-    <ion-item button>
-      <ion-label>Fisioterapia</ion-label>
-    </ion-item>
-    <!-- NUTRIÇÃO -->
-    <ion-item button>
-      <ion-label>Nutrição</ion-label>
+    <!-- AREAS-->
+    <ion-item button *ngFor="let area of areas" (click)="abrirArea(area)">
+      <ion-label>{{area.nome}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

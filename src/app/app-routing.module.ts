@@ -23,7 +23,7 @@ const routes: Routes = [
     { path: '', canActivate:[ProfessorGuard], children: [
       { path: 'alunos', loadChildren: () => import('./pages/alunos/alunos.module').then( m => m.AlunosPageModule)},
     ]},
-  ]},
+  ]}
 ];
 
 @NgModule({

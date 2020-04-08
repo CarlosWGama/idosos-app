@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'dados-clinicos',
     loadChildren: () => import('./dados-clinicos/dados-clinicos.module').then( m => m.DadosClinicosPageModule)
+  },
+  {
+    path: 'selecao-area',
+    loadChildren: () => import('./selecao-area/selecao-area.module').then( m => m.SelecaoAreaPageModule)
   }
 ];
 

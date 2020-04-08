@@ -3,6 +3,7 @@ import { Paciente } from 'src/app/models/paciente';
 import { NavExtrasService } from 'src/app/services/nav-extras.service';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { Profissao } from 'src/app/models/Profissao';
 
 @Component({
   selector: 'app-prontuarios',
@@ -11,7 +12,13 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class ProntuariosPage implements OnInit {
 
-  paciente: Paciente = null
+  paciente: Paciente = null;
+
+  areas: Profissao[] = [
+    new Profissao(1, 'Nutrição'),
+    new Profissao(2, 'Odontologia'),
+  ]
+
   constructor(private navExtra:NavExtrasService, private router:Router, private usuarioSrv: UsuariosService) { }
 
   async ngOnInit() {
@@ -23,6 +30,12 @@ export class ProntuariosPage implements OnInit {
   navegar(url: string) {
     this.navExtra.set('paciente', this.paciente);
     this.router.navigateByUrl(url);
+  }
+
+  abrirArea(area: Profissao) {
+    this.navExtra.set('paciente', this.paciente);
+    this.navExtra.set('area', area);
+    this.router.navigateByUrl('/prontuarios/selecao-area')
   }
 
 }
