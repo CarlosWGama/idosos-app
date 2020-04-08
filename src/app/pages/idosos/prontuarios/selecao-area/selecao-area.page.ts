@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Profissao } from 'src/app/models/Profissao';
+import { Profissao } from 'src/app/models/profissao';
 import { Router } from '@angular/router';
 import { NavExtrasService } from 'src/app/services/nav-extras.service';
 import { ToastController } from '@ionic/angular';
@@ -17,10 +17,15 @@ export class SelecaoAreaPage implements OnInit {
   constructor(private router:Router, private navExtra:NavExtrasService, private toastCtrl:ToastController) { }
 
   ngOnInit() {
-    this.area = this.navExtra.get('area', new Profissao(1, 'Nutrição'), false);
+    this.area = this.navExtra.get('area', new Profissao(1, 'Nutrição', 'nutricao'), false);
     //Libera medicamento
     const areasComMedicamento = [1]; 
     this.temMedicamentos = areasComMedicamento.includes(this.area.id);
+  }
+
+  /** Abre a ficha de avaliação */
+  abrirFicha() {
+    this.router.navigateByUrl(`/prontuarios/${this.area.url}/ficha`)
   }
 
   naoImplementadoAinda() {

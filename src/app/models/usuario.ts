@@ -1,4 +1,4 @@
-import { Profissao } from './Profissao';
+import { Profissao } from './profissao';
 
 export class Usuario {
     /**

@@ -121,3 +121,17 @@ ion-content {
 
 //Sem quebrar o SELECT 
 .alert-radio-label{ white-space: pre-line !important; height: auto !important;}
+
+.content-white {
+    --background: white;
+}
+
+.titulo-secao {
+    text-transform: uppercase;
+    width: 100%  !important;
+    display: flex  !important;
+    justify-content: center  !important;
+    font-weight: bold  !important;
+    color: black  !important;
+    font-size: 16px  !important;
+}

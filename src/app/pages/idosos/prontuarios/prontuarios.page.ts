@@ -3,7 +3,7 @@ import { Paciente } from 'src/app/models/paciente';
 import { NavExtrasService } from 'src/app/services/nav-extras.service';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { Profissao } from 'src/app/models/Profissao';
+import { Profissao } from 'src/app/models/profissao';
 
 @Component({
   selector: 'app-prontuarios',
@@ -15,8 +15,8 @@ export class ProntuariosPage implements OnInit {
   paciente: Paciente = null;
 
   areas: Profissao[] = [
-    new Profissao(1, 'Nutrição'),
-    new Profissao(2, 'Odontologia'),
+    new Profissao(1, 'Nutrição', 'nutricao'),
+    new Profissao(2, 'Odontologia', 'odontologia'),
   ]
 
   constructor(private navExtra:NavExtrasService, private router:Router, private usuarioSrv: UsuariosService) { }

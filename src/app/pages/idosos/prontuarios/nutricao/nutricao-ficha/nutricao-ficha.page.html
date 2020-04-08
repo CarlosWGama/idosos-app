@@ -1,0 +1,697 @@
+<ion-content class="content-white">
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1 *ngIf="!ficha.id">Ficha Avaliação</h1>
+    <h1 *ngIf="ficha.id">Prontuário #{{ficha.id}}</h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    
+    
+    <!-- DATA DO PRONTUARIO -->
+    <ion-item>
+      <ion-label>Data da avaliação:<ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime display-format="DD/MM/YYYY" formControlName="data" cancelText="Cancelar" doneText="Ok"[disabled]="!acessoEdicao"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="form.get('data').invalid && form.get('data').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Data da avaliação é obrigatório
+      </ion-text>
+    </ion-item>
+    
+    <!-- ====================== DADOS CLÍNICOS E ALIMENTAR ============================ -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>Dados Clínicos e Alimentas</ion-label>
+      </ion-item-divider>
+    
+      <!-- Saúde Gastrointestinal -->
+      <ion-item>
+        <ion-label position="floating">Saúde Gastrointestinal</ion-label>
+        <ion-select formControlName="saude_gastrointestinal" multiple="true" placeholder="Selecione e arrasta as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Azia</ion-select-option>
+          <ion-select-option [value]="2">Refluxo</ion-select-option>
+          <ion-select-option [value]="3">Distensão Abdominal</ion-select-option>
+          <ion-select-option [value]="4">Náuseas e Vômitos</ion-select-option>
+          <ion-select-option [value]="5">Constipação</ion-select-option>
+          <ion-select-option [value]="6">Diarréia</ion-select-option>
+          <ion-select-option [value]="7">Flatulência</ion-select-option>
+          <ion-select-option [value]="8">Mastigação inadequada</ion-select-option>
+          <ion-select-option [value]="9">Disfagia</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Hábito intestinal Dia -->
+      <ion-item>
+        <ion-label>Hábito intestinal - Dia</ion-label>
+        <ion-input formControlName="habito_intestinal_dia" type="number" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Hábito intestinal Semana -->
+      <ion-item>
+        <ion-label>Hábito intestinal - Semana</ion-label>
+        <ion-input formControlName="habito_intestinal_semana" type="number" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Consistência das fezes -->
+      <ion-item>
+        <ion-label position="floating">Consistência das fezes</ion-label>
+        <ion-select required formControlName="consistencia_fezes" placeholder="Toque e arrasta para ver todas opções" [disabled]="!acessoEdicao">
+          <ion-select-option [value]="0">Normal</ion-select-option>
+          <ion-select-option [value]="1">Ressecada</ion-select-option>
+          <ion-select-option [value]="2">Amolecida</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Uso de laxante -->
+      <ion-item>
+        <ion-label>Uso de laxante</ion-label>
+        <ion-toggle formControlName="laxante" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!-- Apetite -->
+      <ion-item>
+        <ion-label position="floating">Apetite</ion-label>
+        <ion-select required formControlName="apetite" placeholder="Toque e arrasta para ver todas opções" [disabled]="!acessoEdicao">
+          <ion-select-option [value]="0">Preservado</ion-select-option>
+          <ion-select-option [value]="1">Aumentado</ion-select-option>
+          <ion-select-option [value]="2">Diminuído</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Quanto consome em cada refeição -->
+      <ion-item>
+        <ion-label position="floating">Quanto consome em cada refeição</ion-label>
+        <ion-select required formControlName="sobra_comida" placeholder="Toque e arrasta para ver todas opções" [disabled]="!acessoEdicao">
+          <ion-select-option [value]="0">Não deixa sobras</ion-select-option>
+          <ion-select-option [value]="1">Sempre deixa comida no prato</ion-select-option>
+          <ion-select-option [value]="2">Menos da metade</ion-select-option>
+          <ion-select-option [value]="3">Deixa metade</ion-select-option>
+          <ion-select-option [value]="4">Mais da metade do que oferece</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Aversão alimentar -->
+      <ion-item>
+        <ion-label>Aversão alimentar</ion-label>
+        <ion-input formControlName="aversao_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Intolerância alimentar -->
+      <ion-item>
+        <ion-label position="floating">Intolerância alimentar</ion-label>
+        <ion-input formControlName="intolerencia_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Alergia alimentar -->
+      <ion-item>
+        <ion-label position="floating">Alergia alimentar</ion-label>
+        <ion-input formControlName="alergia_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+    
+      <!-- Alergia alimentar -->
+      <ion-item>
+        <ion-label position="floating">Alergia alimentar</ion-label>
+        <ion-input formControlName="alergia_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Tem sede -->
+      <ion-item>
+        <ion-label>Tem sede</ion-label>
+        <ion-toggle formControlName="sede" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!-- Quantidade de líquidos que bebe diariamente -->
+      <ion-item>
+        <ion-label position="floating">Quantidade de líquidos que bebe diariamente</ion-label>
+        <ion-select required formControlName="liquidos_diarios" placeholder="Toque e arrasta para ver todas opções" [disabled]="!acessoEdicao">
+          <ion-select-option [value]="1">Quantidade de líquidos que bebe diariamente</ion-select-option>
+          <ion-select-option [value]="2">Entre 2 a 4 copos</ion-select-option>
+          <ion-select-option [value]="3">5 copos ou mais</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Qual líquido consome -->
+      <ion-item>
+        <ion-label position="floating">Qual líquido consome</ion-label>
+        <ion-select required formControlName="liquido_consumo" placeholder="Toque e arrasta para ver todas opções" [disabled]="!acessoEdicao">
+          <ion-select-option [value]="1">Mais água</ion-select-option>
+          <ion-select-option [value]="2">Mais suco</ion-select-option>
+          <ion-select-option [value]="3">Chá</ion-select-option>
+          <ion-select-option [value]="4">Leite</ion-select-option>
+          <ion-select-option [value]="5">Café</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Suplemento nutricional -->
+      <ion-item>
+        <ion-label>Suplemento nutricional</ion-label>
+        <ion-toggle formControlName="suplemento" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+    </ion-item-group>
+    
+    <!--========================  ANTROPOMETRIA ==============================-->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>ANTROPOMETRIA</ion-label>
+      </ion-item-divider>
+
+      <!-- Peso atual -->
+      <ion-item>
+        <ion-label>Peso atual <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="peso_atual" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
+        <ion-label>Kg</ion-label>
+      </ion-item>
+      <ion-item *ngIf="form.get('peso_atual').invalid && form.get('peso_atual').touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          Informação é obrigatório
+        </ion-text>
+      </ion-item>
+
+      <!-- Peso usual -->
+      <ion-item>
+        <ion-label>Peso usual <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="peso_usual" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
+        <ion-label>Kg</ion-label>
+      </ion-item>
+      <ion-item *ngIf="form.get('peso_usual').invalid && form.get('peso_usual').touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          Informação é obrigatório
+        </ion-text>
+      </ion-item>
+
+      <!-- Peso estimado -->
+      <ion-item>
+        <ion-label>Peso estimado <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="peso_estimado" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
+        <ion-label>Kg</ion-label>
+      </ion-item>
+      <ion-item *ngIf="form.get('peso_estimado').invalid && form.get('peso_estimado').touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          Informação é obrigatório
+        </ion-text>
+      </ion-item>
+
+      <!-- Perda Peso -->
+      <ion-item>
+        <ion-label>Perda de Peso <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="perda_peso" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
+        <ion-label>%</ion-label>
+      </ion-item>
+      <ion-item *ngIf="form.get('perda_peso').invalid && form.get('perda_peso').touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          Informação é obrigatório
+        </ion-text>
+      </ion-item>
+
+      <!-- Membro amputado -->
+      <ion-item>
+        <ion-label position="floating">Membro amputado</ion-label>
+        <ion-select formControlName="membro_amputado" multiple="true" placeholder="Selecione e arrasta as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Mão</ion-select-option>
+          <ion-select-option [value]="2">Antebraço</ion-select-option>
+          <ion-select-option [value]="3">Braço até o ombro</ion-select-option>
+          <ion-select-option [value]="4">Pé</ion-select-option>
+          <ion-select-option [value]="5">Perna até o joelho</ion-select-option>
+          <ion-select-option [value]="6">Perna inteira</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+       <!-- Segmento Corporal amputado -->
+       <ion-item *ngIf="form.get('membro_amputado').value.length > 0">
+        <ion-label text-wrap>Segmento Corporal amputado <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="segmentacao_amputado" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
+        <ion-label>%</ion-label>
+      </ion-item>
+
+        <!-- Altura -->
+        <ion-item>
+          <ion-label>Altura <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="altura" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>m</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('altura').invalid && form.get('altura').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+
+        <!-- Altura do Joelho -->
+        <ion-item>
+          <ion-label text-wrap>Altura do Joelho <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="altura_joelho" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>cm</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('altura_joelho').invalid && form.get('altura_joelho').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+
+        <!-- Semi-envergadura -->
+        <ion-item>
+          <ion-label>Semi-envergadura <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="semi_envergadura" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>cm</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('semi_envergadura').invalid && form.get('semi_envergadura').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+
+        <!-- Altura estimada -->
+        <ion-item>
+          <ion-label>Altura estimada <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="altura_estimada" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>cm</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('altura_estimada').invalid && form.get('altura_estimada').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+
+        <!-- IMC -->
+        <ion-item>
+          <ion-label>IMC <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="imc" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>kg/m²</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('imc').invalid && form.get('imc').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+
+        <!-- Circunferência da Panturrilha -->
+        <ion-item>
+          <ion-label text-wrap>Circunferência da Panturrilha <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="circunferencia_panturrilha" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>cm</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('circunferencia_panturrilha').invalid && form.get('circunferencia_panturrilha').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+    
+        <!-- Circunferência do braço -->
+        <ion-item>
+          <ion-label text-wrap>Circunferência do braço <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="circunferencia_braco" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>cm</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('circunferencia_braco').invalid && form.get('circunferencia_braco').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+
+        <!-- Circunferência do pulso -->
+        <ion-item>
+          <ion-label text-wrap>Circunferência do pulso <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="circunferencia_pulso" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>cm</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('circunferencia_pulso').invalid && form.get('circunferencia_pulso').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+
+        <!-- Dobra cultânea triciptal (DCT) -->
+        <ion-item>
+          <ion-label text-wrap>Dobra cultânea triciptal (DCT) <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="dct" type="number" placeholder="Digite o valor em mm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>mm</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('dct').invalid && form.get('dct').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+
+        <!-- Dobra cultânea subescapular (DCSE) -->
+        <ion-item>
+          <ion-label text-wrap>Dobra cultânea subescapular (DCSE) <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="dcse" type="number" placeholder="Digite o valor em mm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>cm</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('dcse').invalid && form.get('dcse').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+        
+        <!-- Circunferência Muscular do Braço -->
+        <ion-item>
+          <ion-label>Circunferência Muscular do Braço <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="circunferencia_muscular_braco" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>cm</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('circunferencia_muscular_braco').invalid && form.get('circunferencia_muscular_braco').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+
+        <!-- Circunferência da cintura -->
+        <ion-item>
+          <ion-label>Circunferência da cintura <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="circunferencia_cintura" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-label>cm</ion-label>
+        </ion-item>
+        <ion-item *ngIf="form.get('circunferencia_cintura').invalid && form.get('circunferencia_cintura').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+
+        <!-- CINRCUNFERÊNCIA DA CINTURA -->
+        <ion-item>
+          <ion-label position="floating">Circunferência da Cintura</ion-label>
+          <ion-select formControlName="circunferencia_cintura_tipo" placeholder="Selecione e arrasta as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="1">Visual</ion-select-option>
+            <ion-select-option [value]="2">2 dedos acima da cicatriz umbilical</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Portador de marcapasso ou prótese -->
+        <ion-item>
+          <ion-label>Portador de marcapasso ou prótese</ion-label>
+          <ion-toggle formControlName="marcapasso" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+        </ion-item>
+
+        <!-- Presença de edema -->
+        <ion-item>
+          <ion-label>Presença de edema</ion-label>
+          <ion-toggle formControlName="edema" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+        </ion-item>
+
+        <!-- Localização do edema -->
+        <ion-item *ngIf="form.get('edema').value">
+          <ion-label>Localização do edema <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="edema_localizacao" required type="text" placeholder="Informe o local" [disabled]="!acessoEdicao"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="form.get('edema_localizacao').invalid && form.get('edema_localizacao').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informação é obrigatório
+          </ion-text>
+        </ion-item>
+
+        <!-- Sinal de cacifo -->
+        <ion-item>
+          <ion-label>Sinal de cacifo</ion-label>
+          <ion-toggle formControlName="cacifo" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+        </ion-item>
+
+        <!-- LOCAL DOMINANTE -->
+        <ion-item>
+          <ion-label position="floating">Local dominante</ion-label>
+          <ion-select formControlName="lado_dominante" placeholder="Selecione e arrasta as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="1">Destro</ion-select-option>
+            <ion-select-option [value]="2">Canhoto</ion-select-option>
+          </ion-select>
+        </ion-item>
+   
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class="titulo-secao">AVALIAÇÃO DA FORÇA DE PREENSÃO PALMAR</ion-label>
+      </ion-item-divider>
+    
+      <!-- Mão Direita 1ª Medida -->
+      <ion-item>
+        <ion-label>Mão Direita 1ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="fp_mao_direita1" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-label>cm</ion-label>
+      </ion-item>
+      <ion-item *ngIf="form.get('fp_mao_direita1').invalid && form.get('fp_mao_direita1').touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          Informação é obrigatório
+        </ion-text>
+      </ion-item>
+
+      <!-- Mão Esquerda 1ª Medida -->
+      <ion-item>
+        <ion-label>Mão Esquerda 1ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="fp_mao_esquerda1" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-label>cm</ion-label>
+      </ion-item>
+      <ion-item *ngIf="form.get('fp_mao_esquerda1').invalid && form.get('fp_mao_esquerda1').touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          Informação é obrigatório
+        </ion-text>
+      </ion-item>
+
+      <!-- Mão Direita 2ª Medida -->
+      <ion-item>
+        <ion-label>Mão Direita 2ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="fp_mao_direita2" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-label>cm</ion-label>
+      </ion-item>
+      <ion-item *ngIf="form.get('fp_mao_direita2').invalid && form.get('fp_mao_direita2').touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          Informação é obrigatório
+        </ion-text>
+      </ion-item>
+
+      <!-- Mão Esquerda 2ª Medida -->
+      <ion-item>
+        <ion-label>Mão Esquerda 2ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="fp_mao_esquerda2" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-label>cm</ion-label>
+      </ion-item>
+      <ion-item *ngIf="form.get('fp_mao_esquerda2').invalid && form.get('fp_mao_esquerda2').touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          Informação é obrigatório
+        </ion-text>
+      </ion-item>
+
+      <!-- Mão Direita 3ª Medida -->
+      <ion-item>
+        <ion-label>Mão Direita 3ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="fp_mao_direita3" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-label>cm</ion-label>
+      </ion-item>
+      <ion-item *ngIf="form.get('fp_mao_direita3').invalid && form.get('fp_mao_direita3').touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          Informação é obrigatório
+        </ion-text>
+      </ion-item>
+
+      <!-- Mão Esquerda 3ª Medida -->
+      <ion-item>
+        <ion-label>Mão Esquerda 3ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="fp_mao_esquerda3" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao" (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-label>cm</ion-label>
+      </ion-item>
+      <ion-item *ngIf="form.get('fp_mao_esquerda3').invalid && form.get('fp_mao_esquerda3').touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          Informação é obrigatório
+        </ion-text>
+      </ion-item>
+    
+      <!-- MEDIA-->
+      <ion-item>
+        <ion-label><b>Mão Direita</b> <br/> {{mediaMaoDireita}}</ion-label>
+        <ion-label><b>Mão Esquerda</b> <br/>{{mediaMaoEsquerda}}</ion-label>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class="titulo-secao">EXAME FÍSICO</ion-label>
+      </ion-item-divider>
+
+      <!----  CABEÇA ----->
+      <ion-item><h3><b>Cabeça</b></h3></ion-item>
+      <!-- Consumo músculo temporal -->
+      <ion-item>
+        <ion-label text-wrap>Consumo músculo temporal</ion-label>
+        <ion-toggle formControlName="c_consumo_musculo_temporal" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!-- Consumo Bola Gordurosa de Bichart -->
+      <ion-item>
+        <ion-label text-wrap>Consumo Bola Gordurosa de Bichart</ion-label>
+        <ion-toggle formControlName="c_consumo_bola_gordurosa" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!-- Arco zigomático aparente -->
+      <ion-item>
+        <ion-label text-wrap>Arco zigomático aparente</ion-label>
+        <ion-toggle formControlName="c_arco_zigomatico_aparente" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+      
+      <!-- Depressão do masseter -->
+      <ion-item>
+        <ion-label text-wrap>Depressão do masseter</ion-label>
+        <ion-toggle formControlName="c_depressao_masseter" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+      
+      <!----  TRONCO ----->
+      <ion-item><h3><b>Tronco</b></h3></ion-item>
+      
+      <!-- Clavícula Aparente  -->
+      <ion-item>
+        <ion-label text-wrap>Clavícula Aparente</ion-label>
+        <ion-toggle formControlName="t_clavicula_aparente" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!-- Esterno aparente  -->
+      <ion-item>
+        <ion-label text-wrap>Esterno aparente</ion-label>
+        <ion-toggle formControlName="t_esterno_aparente" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!-- Ombros quadrados  -->
+      <ion-item>
+        <ion-label text-wrap>Ombros quadrados</ion-label>
+        <ion-toggle formControlName="t_ombros_quadrados" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!---- Pescoço ----->
+      <ion-item><h3><b>Pescoço</b></h3></ion-item>
+
+      <!-- Ombros quadrados  -->
+      <ion-item>
+        <ion-label text-wrap>Proeminência da região supra e infraclaviculares</ion-label>
+        <ion-toggle formControlName="p_proeminência_supra_infra" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!---- Olhos ----->
+      <ion-item><h3><b>Olhos</b></h3></ion-item>
+
+      <!-- Esclerótica ictérica  -->
+      <ion-item>
+        <ion-label text-wrap>Esclerótica ictérica</ion-label>
+        <ion-toggle formControlName="o_esclerotica" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+      
+      <!-- Mucosas hipocoradas  -->
+      <ion-item>
+        <ion-label text-wrap>Mucosas hipocoradas</ion-label>
+        <ion-toggle formControlName="o_mucosa_hipocoradas" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+      
+      <!-- Órbitas profundas  -->
+      <ion-item>
+        <ion-label text-wrap>Órbitas profundas</ion-label>
+        <ion-toggle formControlName="o_orbitas_profundas" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!---- Boca e Faringe ----->
+      <ion-item><h3><b>Boca e Faringe</b></h3></ion-item>
+
+       <!-- Coloração da mucosa -->
+       <ion-item>
+        <ion-label position="floating">Coloração da mucosa</ion-label>
+        <ion-select formControlName="cf_coloracao_mucosa" placeholder="Selecione e arrasta as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Hipocorada</ion-select-option>
+          <ion-select-option [value]="2">Normocorada</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!---- Membros Superiores ----->
+      <ion-item><h3><b>Membros Superiores</b></h3></ion-item>
+      
+      <!-- Edema  -->
+      <ion-item>
+        <ion-label text-wrap>Edema</ion-label>
+        <ion-toggle formControlName="ms_edema" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!---- Membros Inferiores ----->
+      <ion-item><h3><b>Membros Inferiores</b></h3></ion-item>
+
+      <!-- Edema  -->
+      <ion-item>
+        <ion-label text-wrap>Edema</ion-label>
+        <ion-toggle formControlName="mi_edema" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+      
+      <!-- Joelho quadrado  -->
+      <ion-item>
+        <ion-label text-wrap>Joelho quadrado</ion-label>
+        <ion-toggle formControlName="mi_joelho_quadrado" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!---- Pele ----->
+      <ion-item><h3><b>Pele</b></h3></ion-item>
+
+      <!-- Manchas e hematomas  -->
+      <ion-item>
+        <ion-label text-wrap>Manchas e hematomas</ion-label>
+        <ion-toggle formControlName="pele_manchas" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+  
+      <!-- Ressecamento e rachaduras  -->
+      <ion-item>
+        <ion-label text-wrap>Ressecamento e rachaduras</ion-label>
+        <ion-toggle formControlName="pele_ressecamento" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!-- Lesões/Feridas  -->
+      <ion-item>
+        <ion-label text-wrap>Lesões/Feridas</ion-label>
+        <ion-toggle formControlName="pele_lesoes" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!-- Turgor alterado   -->
+      <ion-item>
+        <ion-label text-wrap>Turgor alterado </ion-label>
+        <ion-toggle formControlName="pele_turgor" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!-- Prurido  -->
+      <ion-item>
+        <ion-label text-wrap>Prurido</ion-label>
+        <ion-toggle formControlName="pele_prurido" slot="end" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+    </ion-item-group>
+  
+    <!-- DIAGNOSTICO -->
+    <ion-item>
+      <ion-label position="floating">Diagnóstico nutricional<ion-text color="danger">*</ion-text></ion-label>
+      <ion-textarea placeholder="Digite seu diagnótisco" formControlName="diagnostico"></ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="form.get('diagnostico').invalid && form.get('diagnostico').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Informação é obrigatório
+      </ion-text>
+    </ion-item>
+
+    <!-- OBJETIVOS -->
+    <ion-item>
+      <ion-label  position="floating">Objetivos<ion-text color="danger">*</ion-text></ion-label>
+      <ion-textarea placeholder="Digite seu objetivo" formControlName="objetivos"></ion-textarea>
+     
+    </ion-item>
+    <ion-item *ngIf="form.get('objetivos').invalid && form.get('objetivos').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Informação é obrigatório
+      </ion-text>
+    </ion-item>
+
+    <!-- CONDUTA -->
+    <ion-item>
+      <ion-label position="floating">Conduta Nutricional<ion-text color="danger">*</ion-text></ion-label>
+      <ion-textarea placeholder="Digite sua conduta" formControlName="conduta"></ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="form.get('conduta').invalid && form.get('conduta').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Informação é obrigatório
+      </ion-text>
+    </ion-item>
+
+    <ion-button block color="primary" expand="full" type="submit" [disabled]="form.invalid">
+      Salvar
+    </ion-button>
+  </form>
+</ion-content>

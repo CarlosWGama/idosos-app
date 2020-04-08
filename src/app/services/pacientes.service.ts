@@ -63,8 +63,6 @@ export class PacientesService extends ApiService {
    * @param dados DadosClinicos
    */
   public async atualizaDadosClinicos(dados: DadosClinicos): Promise<{sucesso:boolean, error?:string}> {
-    console.log('b');
-    console.log(dados);
     return this.put(`/pacientes/dados-clinicos/${dados.paciente_id}`, {dados}, true).then(resposta => { return {sucesso: true} })
     .catch(erro => {
       return {sucesso: false, error:Object.values(erro.error).join(',')}
