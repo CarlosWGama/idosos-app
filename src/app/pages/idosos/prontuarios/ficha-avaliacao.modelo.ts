@@ -35,19 +35,33 @@ export abstract class FichaAvaliacaoModelo implements OnInit {
     await this.usuarioSrv.initialize();
     this.paciente = this.navExtra.get('paciente', new Paciente(), false);
     this.usuario = this.usuarioSrv.usuarioLogado;
+    console.log(this.usuario);
   }
 
   /** Realiza a busca das informações do prontuário */
-  ionViewWillEnter() {
-    this.ficha = this.prontuariosSrv.fichaAvaliacao(this.url);
-    this.podeEditar(this.ficha['usuario_id']);
-    this.form.setValue(this.ficha);
+  async ionViewDidEnter() {
+    //Evolução
+    this.ficha = this.navExtra.get('prontuario', {id:null});
+    console.log(this.ficha);
+
+    //Ficha de Avaliação
+    if (this.ficha.id == null) {
+      this.ficha = await this.prontuariosSrv.fichaAvaliacao(this.url);
+      this.podeEditar(null); //Qualquer um pode criar uma nova evolução
+    } else {
+      this.podeEditar(this.ficha['usuario_id']); 
+    }
+
+    if (this.ficha)
+      this.form.patchValue(this.ficha);
   }
 
   /** Avalia de o usuário pode editar o campo */
   protected podeEditar(donoID: number) {
+    console.log('Nivel acesso');
+    console.log('Nivel:', this.usuario.nivel_acesso);
     //É professor ou moderador ou é o dono da evolução
-    this.acessoEdicao = ([1,2].includes(this.usuario.nivel_acesso) || donoID == this.usuario.id)  
+    this.acessoEdicao = (donoID == null || [1,2].includes(this.usuario.nivel_acesso) || donoID == this.usuario.id)  
     // this.acessoEdicao = false;  
   }
 
@@ -59,13 +73,11 @@ export abstract class FichaAvaliacaoModelo implements OnInit {
     let dados = this.form.value;
     dados.paciente_id = this.paciente.id;
     let retorno = null;
-    if (!dados.id) { //cadastra
+    if (this.ficha.id == null) { //cadastra
       dados.usuario_id = this.usuario.id;
-      retorno = this.prontuariosSrv.cadastrarFicha(dados, this.url);
-    } else {
-      retorno = this.prontuariosSrv.atualizarFicha(dados, this.url);
-    }
-    
+      retorno = await this.prontuariosSrv.cadastrarFicha(dados, this.url);
+    } else 
+      retorno = await this.prontuariosSrv.atualizarFicha(dados, this.url);
     loading.dismiss();
 
     if (retorno.sucesso) {

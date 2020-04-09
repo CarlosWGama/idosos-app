@@ -96,7 +96,7 @@
 
       <!-- Aversão alimentar -->
       <ion-item>
-        <ion-label>Aversão alimentar</ion-label>
+        <ion-label  position="floating">Aversão alimentar</ion-label>
         <ion-input formControlName="aversao_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
@@ -106,12 +106,6 @@
         <ion-input formControlName="intolerencia_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
-      <!-- Alergia alimentar -->
-      <ion-item>
-        <ion-label position="floating">Alergia alimentar</ion-label>
-        <ion-input formControlName="alergia_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-    
       <!-- Alergia alimentar -->
       <ion-item>
         <ion-label position="floating">Alergia alimentar</ion-label>
@@ -690,7 +684,7 @@
       </ion-text>
     </ion-item>
 
-    <ion-button block color="primary" expand="full" type="submit" [disabled]="form.invalid">
+    <ion-button block color="primary" expand="full" type="submit" *ngIf="acessoEdicao" [disabled]="form.invalid">
       Salvar
     </ion-button>
   </form>

@@ -1,0 +1,33 @@
+<ion-content class="content-white">
+  <div id="header2" class="header-medio">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Evoluções</h1>
+    <h2>{{area.nome}}</h2>
+  </div> 
+
+  <ion-list>
+    <!-- EVOLUCOES -->
+    <ion-item-sliding #ionItemSliding *ngFor="let evolucao of evolucoes">
+      <ion-item (click)="abrirEvolucao(evolucao)">
+        <div class="evolucao">
+          <p class="numero">
+            <b>#{{evolucao.id}} </b>
+            <ion-badge color="success" mode="ios" *ngIf="evolucao.aprovado">Aprovado</ion-badge>
+            <ion-badge color="warning" mode="ios" *ngIf="!evolucao.aprovado">Aguardando aprovação</ion-badge>
+          </p>
+          <p class="data"><b>Data:</b> {{evolucao.data|dataBrasil}}</p>
+          <p class="criador"><b>Por:</b> {{evolucao.usuario.nome}}</p>
+        </div>
+      </ion-item>
+  
+      <ion-item-options side="end" *ngIf="usuario.nivel_acesso == 1">
+        <ion-item-option color="medium" *ngIf="evolucao.aprovado">Já aprovado</ion-item-option>
+        <ion-item-option color="success" (click)="aprovar(evolucao)" *ngIf="!evolucao.aprovado">Aprovar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  </ion-content>

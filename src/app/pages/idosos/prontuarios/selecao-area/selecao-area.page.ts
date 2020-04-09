@@ -27,6 +27,10 @@ export class SelecaoAreaPage implements OnInit {
   abrirFicha() {
     this.router.navigateByUrl(`/prontuarios/${this.area.url}/ficha`)
   }
+  
+  abrirEvolucoes() {
+    this.router.navigateByUrl(`/prontuarios/evolucoes`)
+  }
 
   naoImplementadoAinda() {
     this.toastCtrl.create({message:'Recurso não implementado ainda', duration:3000}).then(t => t.present())

@@ -12,7 +12,9 @@ export class ProntuariosService extends ApiService {
    * @param url -> Url base que será usada para o servidor
    */
   public async evolucoes(url: string): Promise<any[]> {
-    return new Promise(resolve => resolve([]));
+    return this.get(`/prontuarios/${url}`, true).then(resposta => {
+      return resposta.prontuarios;
+    }).catch(erro => []);
   }
 
   /**
@@ -20,7 +22,11 @@ export class ProntuariosService extends ApiService {
    * @param url -> Url base que será usada para o servidor
    */
   public async fichaAvaliacao(url: string): Promise<any> {
-    return new Promise(resolve => resolve({'usuario_id':1}));
+    return this.get(`/prontuarios/${url}/ficha`, true).then(resposta => {
+      delete resposta.prontuario.id;
+      console.log(resposta.prontuario);
+      return resposta.prontuario;
+    }).catch(erro => null);
   }
 
 
@@ -29,12 +35,14 @@ export class ProntuariosService extends ApiService {
    * @param dados -> São os dados que serão enviados
    * @param url -> Url base que será usada para o servidor
    */
-  public async cadastrarFicha(dados: object, url: string): Promise<{sucesso:boolean, error?:string}> {
-    return new Promise(resolve => resolve({sucesso: true}));
-    //return this.post('/pacientes', {paciente}, true).then(resposta => { return {sucesso: true} })
-    //.catch(erro => {
-    //  return {sucesso: false, error:Object.values(erro.error).join(',')}
-    //})
+  public async cadastrarFicha(dados: any, url: string): Promise<{sucesso:boolean, error?:string}> {
+    console.log(dados);
+    return this.post(`/prontuarios/${url}`, {dados}, true).then(resposta => { return {sucesso: true} })
+      .catch(erro => {
+        console.log(erro);
+        console.log(erro.error);
+      return {sucesso: false, error:Object.values(erro.error).join(',')}
+    })
   }
 
   /**
@@ -42,25 +50,22 @@ export class ProntuariosService extends ApiService {
    * @param dados -> São os dados que serão enviados
    * @param url -> Url base que será usada para o servidor
    */
-  public async atualizarFicha(dados: object, url: string): Promise<{sucesso:boolean, error?:string}> {
-    return new Promise(resolve => resolve({sucesso: true}));
-
-    //return this.put(`/pacientes/${paciente.id}`, {paciente}, true).then(resposta => { return {sucesso: true} })
-    //.catch(erro => {
-      // return {sucesso: false, error:Object.values(erro.error).join(',')}
-    //})
+  public async atualizarFicha(dados: any, url: string): Promise<{sucesso:boolean, error?:string}> {
+    return this.put(`/prontuarios/${url}/${dados.id}`, {dados}, true).then(resposta => { 
+      return {sucesso: true}; 
+    }).catch(erro => {
+        return {sucesso: false, error:Object.values(erro.error).join(',')}
+    })
   }
 
   /**
    * Aprova uma evolução
    * @param evolucaoID number
    */
-  public async aprovaEvolucao(evolucaoID: number): Promise<{sucesso:boolean, error?:string}> {
-    return new Promise(resolve => resolve({sucesso: true}));
-
-    //return this.put(`/pacientes/${paciente.id}`, {paciente}, true).then(resposta => { return {sucesso: true} })
-    //.catch(erro => {
-      // return {sucesso: false, error:Object.values(erro.error).join(',')}
-    //})
+  public async aprovaEvolucao(url:string, evolucaoID: number): Promise<{sucesso:boolean, error?:string}> {
+    return this.put(`/prontuarios/${url}/aprovacao/${evolucaoID}`, {}, true).then(resposta => { return {sucesso: true} })
+      .catch(erro => {
+      return {sucesso: false, error:Object.values(erro.error).join(',')}
+    })
   }
 }

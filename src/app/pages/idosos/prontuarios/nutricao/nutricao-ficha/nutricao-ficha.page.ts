@@ -10,13 +10,13 @@ import * as moment from 'moment';
 })
 export class NutricaoFichaPage extends FichaAvaliacaoModelo implements OnInit {
 
-  mediaMaoDireita = 0;
-  mediaMaoEsquerda = 0;
+  mediaMaoDireita = '0';
+  mediaMaoEsquerda = '0';
 
   async ngOnInit() {
     this.url = 'nutricao';
-    console.log(moment().format('YYYY-MM-DD'));
     this.form = this.formBuilder.group({
+      'id': null,
       'data': [moment().format('YYYY-MM-DD'), Validators.required],
       'saude_gastrointestinal': [[]],
       'habito_intestinal_dia':null,
