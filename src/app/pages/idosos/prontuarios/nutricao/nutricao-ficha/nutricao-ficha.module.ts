@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { NutricaoFichaPageRoutingModule } from './nutricao-ficha-routing.module';
 
 import { NutricaoFichaPage } from './nutricao-ficha.page';
+import { FichaAvaliacaoModelo } from '../../ficha-avaliacao.modelo';
 
 @NgModule({
   imports: [

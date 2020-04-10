@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { ProntuariosPageRoutingModule } from './prontuarios-routing.module';
 
 import { ProntuariosPage } from './prontuarios.page';
-import { FichaAvaliacaoModelo } from './ficha-avaliacao.modelo';
 
 @NgModule({
   imports: [

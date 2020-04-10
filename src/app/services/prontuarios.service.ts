@@ -23,10 +23,14 @@ export class ProntuariosService extends ApiService {
    */
   public async fichaAvaliacao(url: string): Promise<any> {
     return this.get(`/prontuarios/${url}/ficha`, true).then(resposta => {
-      delete resposta.prontuario.id;
-      console.log(resposta.prontuario);
+      if (!resposta.prontuario) resposta.prontuario = {id: null}
+      else delete resposta.prontuario.id
+  
       return resposta.prontuario;
-    }).catch(erro => null);
+    }).catch(erro => {
+      console.log(erro);
+      return {id: null}
+    });
   }
 
 

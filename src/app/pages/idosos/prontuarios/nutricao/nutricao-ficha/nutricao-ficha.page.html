@@ -343,7 +343,7 @@
         
         <!-- Circunferência Muscular do Braço -->
         <ion-item>
-          <ion-label>Circunferência Muscular do Braço <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label text-wrap>Circunferência Muscular do Braço <ion-text color="danger">*</ion-text></ion-label>
           <ion-input formControlName="circunferencia_muscular_braco" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
         </ion-item>
@@ -422,8 +422,7 @@
       <!-- Mão Direita 1ª Medida -->
       <ion-item>
         <ion-label>Mão Direita 1ª Medida <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input formControlName="fp_mao_direita1" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
-        <ion-label>cm</ion-label>
+        <ion-input formControlName="fp_mao_direita1" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
       <ion-item *ngIf="form.get('fp_mao_direita1').invalid && form.get('fp_mao_direita1').touched" lines="none">
         <ion-text color="danger" class="form-error">
@@ -434,8 +433,7 @@
       <!-- Mão Esquerda 1ª Medida -->
       <ion-item>
         <ion-label>Mão Esquerda 1ª Medida <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input formControlName="fp_mao_esquerda1" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
-        <ion-label>cm</ion-label>
+        <ion-input formControlName="fp_mao_esquerda1" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
       <ion-item *ngIf="form.get('fp_mao_esquerda1').invalid && form.get('fp_mao_esquerda1').touched" lines="none">
         <ion-text color="danger" class="form-error">
@@ -446,8 +444,7 @@
       <!-- Mão Direita 2ª Medida -->
       <ion-item>
         <ion-label>Mão Direita 2ª Medida <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input formControlName="fp_mao_direita2" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
-        <ion-label>cm</ion-label>
+        <ion-input formControlName="fp_mao_direita2" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
       <ion-item *ngIf="form.get('fp_mao_direita2').invalid && form.get('fp_mao_direita2').touched" lines="none">
         <ion-text color="danger" class="form-error">
@@ -458,8 +455,7 @@
       <!-- Mão Esquerda 2ª Medida -->
       <ion-item>
         <ion-label>Mão Esquerda 2ª Medida <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input formControlName="fp_mao_esquerda2" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
-        <ion-label>cm</ion-label>
+        <ion-input formControlName="fp_mao_esquerda2" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
       <ion-item *ngIf="form.get('fp_mao_esquerda2').invalid && form.get('fp_mao_esquerda2').touched" lines="none">
         <ion-text color="danger" class="form-error">
@@ -470,8 +466,7 @@
       <!-- Mão Direita 3ª Medida -->
       <ion-item>
         <ion-label>Mão Direita 3ª Medida <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input formControlName="fp_mao_direita3" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
-        <ion-label>cm</ion-label>
+        <ion-input formControlName="fp_mao_direita3" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
       <ion-item *ngIf="form.get('fp_mao_direita3').invalid && form.get('fp_mao_direita3').touched" lines="none">
         <ion-text color="danger" class="form-error">
@@ -482,8 +477,7 @@
       <!-- Mão Esquerda 3ª Medida -->
       <ion-item>
         <ion-label>Mão Esquerda 3ª Medida <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input formControlName="fp_mao_esquerda3" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao" (ionChange)="atualizarMediaForca()"></ion-input>
-        <ion-label>cm</ion-label>
+        <ion-input formControlName="fp_mao_esquerda3" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao" (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
       <ion-item *ngIf="form.get('fp_mao_esquerda3').invalid && form.get('fp_mao_esquerda3').touched" lines="none">
         <ion-text color="danger" class="form-error">
