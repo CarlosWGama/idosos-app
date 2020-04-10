@@ -1,0 +1,18 @@
+professor
+- cadastrar idoso
+- Editar dados do idoso (Dados gerais e clinicos)
+- Cadastrar moderador/aluno (Equipe)
+- Cadastrar Evolução da area
+- Editar Evolução da area
+- Aprovar Evolução da area
+- Cadastrar/Editar/Excluir medicamento e suplemento da area
+
+moderador
+- cadastrar idoso
+- Editar dados do idoso (Dados gerais e clinicos)
+- Cadastrar Evolução da area
+- Editar qualquer Evolução da area
+
+aluno
+- Cadastrar Evolução da area
+- Editar Evolução criada pelo próprio usuário

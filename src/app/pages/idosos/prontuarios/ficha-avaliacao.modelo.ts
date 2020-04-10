@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NavExtrasService } from 'src/app/services/nav-extras.service';
@@ -9,15 +9,11 @@ import { ProntuariosService } from 'src/app/services/prontuarios.service';
 import { Paciente } from 'src/app/models/paciente';
 import { Profissao } from 'src/app/models/profissao';
 
-@Component({
-  selector: 'ficha-avaliacao-modelo',
-  templateUrl: './prontuarios.page.html',
-  styleUrls: ['./prontuarios.page.scss'],
-})
+@Injectable()
 /**
  * Classe Generica com as funções basicas de gerenciar Ficha de Avaliação/Evolução
  */
-export abstract class FichaAvaliacaoModelo implements OnInit {
+export class FichaAvaliacaoModelo implements OnInit {
 
   form: FormGroup;
   usuario: Usuario;
