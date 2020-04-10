@@ -1,7 +1,7 @@
 <ion-content class="content-white">
   <div id="header2" class="header-medio">
     <ion-buttons slot="start" id="btn-voltar">
-      <ion-back-button defaultHref="/idosos/selecionar-idoso"></ion-back-button> VOLTAR
+      <ion-back-button defaultHref="/prontuarios"></ion-back-button> VOLTAR
     </ion-buttons>
 
     <h1>Prontuários</h1>
@@ -16,6 +16,10 @@
     <!-- DADOS CLINICOS-->
     <ion-item button (click)="navegar('/prontuarios/dados-clinicos')">
       <ion-label>Dados Clínicos Gerais</ion-label>
+    </ion-item>
+    <!-- DADOS CLINICOS-->
+    <ion-item button (click)="navegar('/prontuarios/medicamentos/visualizar')">
+      <ion-label>Medicamentos e Suplementos</ion-label>
     </ion-item>
     <!-- AREAS-->
     <ion-item button *ngFor="let area of areas" (click)="abrirArea(area)">

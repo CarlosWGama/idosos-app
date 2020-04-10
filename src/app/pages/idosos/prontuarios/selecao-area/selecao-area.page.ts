@@ -3,6 +3,8 @@ import { Profissao } from 'src/app/models/profissao';
 import { Router } from '@angular/router';
 import { NavExtrasService } from 'src/app/services/nav-extras.service';
 import { ToastController } from '@ionic/angular';
+import { Usuario } from 'src/app/models/usuario';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-selecao-area',
@@ -16,7 +18,7 @@ export class SelecaoAreaPage implements OnInit {
 
   constructor(private router:Router, private navExtra:NavExtrasService, private toastCtrl:ToastController) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.area = this.navExtra.get('area', new Profissao(1, 'Nutrição', 'nutricao'), false);
     //Libera medicamento
     const areasComMedicamento = [1]; 
@@ -32,8 +34,9 @@ export class SelecaoAreaPage implements OnInit {
     this.router.navigateByUrl(`/prontuarios/evolucoes`)
   }
 
-  naoImplementadoAinda() {
-    this.toastCtrl.create({message:'Recurso não implementado ainda', duration:3000}).then(t => t.present())
+  abrirMedicamentos() {
+    this.router.navigateByUrl('prontuarios/medicamentos/ativo');
   }
+
 
 }

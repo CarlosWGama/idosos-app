@@ -1,0 +1,42 @@
+<ion-content class="content-white">
+  <div id="header2" class="header-medio">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/prontuarios"></ion-back-button> VOLTAR
+    </ion-buttons>
+
+    <h1>Medicamentos {{(ativo? 'Ativos' : 'Inativos')}}</h1>
+    <h2>{{area.nome}}</h2>
+  </div>
+
+  <!-- BOTÂO   ADICIONAR NOVO MEDICAMENTO -->
+  <ion-fab vertical="top" horizontal="end" (click)="novo()" *ngIf="podeAdicionar">
+    <ion-fab-button color="light" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-button expand="block" fill="outline" routerLink="/prontuarios/medicamentos/{{(ativo? 'inativo' : 'ativo')}}">
+    Visualizar Medicamentos {{(ativo? 'Ativos' : 'Inativos')}}
+  </ion-button>
+
+  <ion-list>
+    <!-- MEDICAMENTOS -->
+    <ion-list>
+      <ion-item-sliding *ngFor="let medicamento of medicamentos">
+        <ion-item (click)="abrir(medicamento)">
+          <ion-label>
+            {{medicamento.descricao}}
+            <ion-badge color="success" mode="ios" *ngIf="medicamento.tipo == 1">Contínuo</ion-badge>
+            <ion-badge color="primary" mode="ios" *ngIf="medicamento.tipo == 2">Até {{medicamento.duracao}}</ion-badge>
+          </ion-label>
+        </ion-item>
+  
+        <ion-item-options side="end" *ngIf="podeAdicionar" >
+          <ion-item-option (click)="excluir(medicamento)" color="danger">Excluir</ion-item-option>
+          <ion-item-option (click)="desativar(medicamento)" *ngIf="medicamento.ativo" color="primary">Desativar</ion-item-option>
+          <ion-item-option (click)="ativar(medicamento)" *ngIf="!medicamento.ativo" color="success">Ativar</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-list>
+</ion-content>

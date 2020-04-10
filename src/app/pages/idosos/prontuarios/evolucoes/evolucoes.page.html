@@ -23,7 +23,7 @@
         </div>
       </ion-item>
   
-      <ion-item-options side="end" *ngIf="usuario.nivel_acesso == 1">
+      <ion-item-options side="end" *ngIf="podeAprovar">
         <ion-item-option color="medium" *ngIf="evolucao.aprovado">Já aprovado</ion-item-option>
         <ion-item-option color="success" (click)="aprovar(evolucao)" *ngIf="!evolucao.aprovado">Aprovar</ion-item-option>
       </ion-item-options>

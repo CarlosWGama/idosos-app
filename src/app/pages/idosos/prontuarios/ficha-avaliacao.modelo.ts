@@ -7,6 +7,7 @@ import { ToastController, LoadingController } from '@ionic/angular';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { ProntuariosService } from 'src/app/services/prontuarios.service';
 import { Paciente } from 'src/app/models/paciente';
+import { Profissao } from 'src/app/models/profissao';
 
 @Component({
   selector: 'ficha-avaliacao-modelo',
@@ -58,10 +59,9 @@ export abstract class FichaAvaliacaoModelo implements OnInit {
 
   /** Avalia de o usuário pode editar o campo */
   protected podeEditar(donoID: number) {
-    console.log('Nivel acesso');
-    console.log('Nivel:', this.usuario.nivel_acesso);
+    const area = this.navExtra.get('area', new Profissao(1), false);
     //É professor ou moderador ou é o dono da evolução
-    this.acessoEdicao = (donoID == null || [1,2].includes(this.usuario.nivel_acesso) || donoID == this.usuario.id)  
+    this.acessoEdicao = (this.usuario.profissao_id == area.id && (donoID == null || [1,2].includes(this.usuario.nivel_acesso) || donoID == this.usuario.id))  
     // this.acessoEdicao = false;  
   }
 

@@ -1,0 +1,67 @@
+<ion-content class="content-white">
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Medicamento</h1>
+  </div> 
+
+  <!-- DADOS -->
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+  
+    <!-- DESCRICAO -->
+    <ion-item>
+      <ion-label position="floating">Nome do medicamento:</ion-label>
+      <ion-input formControlName="descricao" type="text" [disabled]="!podeEditar"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="form.get('descricao').invalid && form.get('descricao').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Informação é obrigatório
+      </ion-text>
+    </ion-item>
+
+     <!-- INICIO DA MEDICAÇÃO -->
+     <ion-item>
+      <ion-label>Início da medicação:<ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime display-format="DD/MM/YYYY" max="2030-12-31" [disabled]="!podeEditar" formControlName="inicio" cancelText="Cancelar" doneText="Ok"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="form.get('inicio').invalid && form.get('inicio').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Informação obrigatória
+      </ion-text>
+    </ion-item>
+
+    <!-- TIPO -->
+    <ion-item>
+      <ion-label position="floating">Consistência das fezes</ion-label>
+      <ion-select required formControlName="tipo" placeholder="Toque e arrasta para ver todas opções" [disabled]="!podeEditar">
+        <ion-select-option [value]="1">Contínuo</ion-select-option>
+        <ion-select-option [value]="2">Com duração por dias</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- DURAÇÂO -->
+    <ion-item *ngIf="form.get('tipo').value == 2">
+      <ion-label position="floating">Duração em dias:</ion-label>
+      <ion-input formControlName="duracao_dias" required type="number" [disabled]="!podeEditar"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="form.get('tipo').value == 2 && form.get('duracao_dias').invalid && form.get('duracao_dias').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Informação obrigatória
+      </ion-text>
+    </ion-item>
+
+    <!-- OBSERVAÇÃO -->
+    <ion-item>
+      <ion-label position="floating">Observação<ion-text color="danger">*</ion-text></ion-label>
+      <ion-textarea placeholder="Digite sua conduta" formControlName="observacao" [disabled]="!podeEditar"></ion-textarea>
+    </ion-item>
+    
+    <!-- SALVAR -->
+    <ion-button expand="full" color="primary" type="submit" [disabled]="form.invalid" *ngIf="podeEditar">
+      Salvar
+    </ion-button>
+  </form>
+
+</ion-content>

@@ -19,6 +19,7 @@ export class EvolucoesPage implements OnInit {
   usuario: Usuario = new Usuario();
   @ViewChild('ionItemSliding', {static: false})
   ionItemSliding: IonItemSliding;
+  podeAprovar = false;
 
   constructor(private router:Router,
              private navExtra:NavExtrasService, 
@@ -29,9 +30,8 @@ export class EvolucoesPage implements OnInit {
 
   async ngOnInit() {
     this.area = this.navExtra.get('area', new Profissao(1, 'Nutrição', 'nutricao'), false);
-    
     this.usuario = this.usuarioSrv.usuarioLogado;
-    await this.usuarioSrv.initialize();
+    this.podeAprovar = (this.usuario.nivel_acesso == 1 && this.usuario.profissao_id == this.area.id);
   }
   
   async ionViewDidEnter() {

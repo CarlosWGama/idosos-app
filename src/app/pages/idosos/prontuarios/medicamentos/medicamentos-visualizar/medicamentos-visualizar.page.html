@@ -1,0 +1,22 @@
+<ion-content class="content-white">
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/prontuarios"></ion-back-button> VOLTAR
+    </ion-buttons>
+    <h1>Medicamentos e Suplementos</h1>
+  </div>
+
+  <ion-list>
+
+    <!-- MEDICAMENTOS -->
+    <ion-list>
+        <ion-item (click)="visualizar(medicamento)" *ngFor="let medicamento of medicamentos">
+          <ion-label>
+            {{medicamento.descricao}}
+            <ion-badge color="success" mode="ios" *ngIf="medicamento.tipo == 1">Contínuo</ion-badge>
+            <ion-badge color="primary" mode="ios" *ngIf="medicamento.tipo == 2">Até {{medicamento.duracao}}</ion-badge>
+          </ion-label>
+        </ion-item>
+    </ion-list>
+  </ion-list>
+</ion-content>
