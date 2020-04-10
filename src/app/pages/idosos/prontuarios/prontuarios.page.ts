@@ -15,7 +15,7 @@ export class ProntuariosPage implements OnInit {
   paciente: Paciente = null;
 
   areas: Profissao[] = [
-    new Profissao(1, 'Nutrição', 'nutricao')
+    new Profissao(2, 'Nutrição', 'nutricao')
   ]
 
   constructor(private navExtra:NavExtrasService, private router:Router, private usuarioSrv: UsuariosService) { }

@@ -20,8 +20,8 @@ export class SelecaoAreaPage implements OnInit {
 
   async ngOnInit() {
     this.area = this.navExtra.get('area', new Profissao(1, 'Nutrição', 'nutricao'), false);
-    //Libera medicamento
-    const areasComMedicamento = [1]; 
+    //Libera medicamento [Nutrição]
+    const areasComMedicamento = [2]; 
     this.temMedicamentos = areasComMedicamento.includes(this.area.id);
   }
 
