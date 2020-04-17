@@ -29,9 +29,9 @@ export class UsuariosService extends ApiService {
     return this.post('/login', {codigo, senha}).then(resposta => {
 
       const usuario = Object.assign(new Usuario, resposta.usuario);
+      this.setJWT(resposta.jwt);
       this.storage.set('usuario', usuario);
       this._usuarioLogado = usuario;
-      this.setJWT(resposta.jwt);
 
       return {sucesso: true};
     }).catch(erro => {
@@ -43,5 +43,6 @@ export class UsuariosService extends ApiService {
   public deslogar() {
     this._usuarioLogado = null;
     this.storage.remove('usuario')
+    this.removeJWT();
   }
 }

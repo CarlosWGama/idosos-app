@@ -66,7 +66,7 @@ export class IdosoIdentificacaoPage implements OnInit {
       cameraDirection:this.camera.Direction.BACK,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      quality: 100,
+      quality: 40,
       sourceType: this.camera.PictureSourceType.CAMERA,
     }).then((imageData) => {
       this.paciente.foto = this.foto = 'data:image/jpeg;base64,' + imageData;
