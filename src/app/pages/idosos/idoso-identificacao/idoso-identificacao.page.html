@@ -57,6 +57,7 @@
         <ion-select-option [value]="0">Analfabeto</ion-select-option>
         <ion-select-option text-wrap [value]="1">Estudou menos que 4 anos</ion-select-option>
         <ion-select-option text-wrap [value]="2">Estudou mais que 4 anos</ion-select-option>
+        <ion-select-option text-wrap [value]="99">Não sabe informar</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item *ngIf="form.get('escolaridade').invalid && form.get('escolaridade').touched" lines="none">
@@ -114,7 +115,7 @@
         <ion-select-option [value]="7">Doença</ion-select-option>
         <ion-select-option [value]="8">Filho, Neta ou Cônjulgue achou melhor opção</ion-select-option>
         <ion-select-option [value]="9">Ficou sem família</ion-select-option>
-        <ion-select-option [value]="10">Não soube responder</ion-select-option>
+        <ion-select-option [value]="99">Não soube responder</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item *ngIf="form.get('motivo_admissao').invalid && form.get('motivo_admissao').touched" lines="none">
@@ -130,6 +131,7 @@
         <ion-select-option [value]="0">Nunca/Raramente</ion-select-option>
         <ion-select-option [value]="1">Às vezes</ion-select-option>
         <ion-select-option [value]="2">Sempre</ion-select-option>
+        <ion-select-option [value]="99">Não soube responder</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item *ngIf="form.get('frequencia_familiar').invalid && form.get('frequencia_familiar').touched" lines="none">

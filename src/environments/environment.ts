@@ -7,7 +7,7 @@ export const environment = {
 };
 
 //URL de acesso a API
-export const API_URL = 'http://localhost:8000/api'
+export const API_URL = 'http://192.168.0.14/api'
 
 
 /*

@@ -28,7 +28,7 @@ export class DadosClinicosPage implements OnInit {
     this.usuario = this.usuarioSrv.usuarioLogado;
     this.paciente = this.navExtra.get('paciente', new Paciente(1), false);
     this.form = this.formBuilder.group({
-      condicoes_clinicas: [[1], Validators.required],
+      condicoes_clinicas: [[]],
       condicao_clinica_outras: null, 
       plano:[false], 
       cartao_sus: [false],
@@ -56,8 +56,6 @@ export class DadosClinicosPage implements OnInit {
   /** Salva os dados clinicos do paciente */
   async salvar() {
     this.dadosClinicos = Object.assign(this.dadosClinicos, this.form.value);
-    console.log('a');
-    console.log(this.dadosClinicos);
     const retorno = await this.pacientesSrv.atualizaDadosClinicos(this.dadosClinicos);
 
     if (retorno.sucesso) {

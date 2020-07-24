@@ -74,6 +74,7 @@ export abstract class FichaAvaliacaoModelo implements OnInit {
     let retorno = null;
     if (this.ficha.id == null) { //cadastra
       dados.usuario_id = this.usuario.id;
+      console.log(dados);
       retorno = await this.prontuariosSrv.cadastrarFicha(dados, this.url);
     } else 
       retorno = await this.prontuariosSrv.atualizarFicha(dados, this.url);

@@ -155,51 +155,34 @@
 
       <!-- Peso atual -->
       <ion-item>
-        <ion-label>Peso atual <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label>Peso atual </ion-label>
         <ion-input formControlName="peso_atual" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
         <ion-label>Kg</ion-label>
-      </ion-item>
-      <ion-item *ngIf="form.get('peso_atual').invalid && form.get('peso_atual').touched" lines="none">
-        <ion-text color="danger" class="form-error">
-          Informação é obrigatório
-        </ion-text>
       </ion-item>
 
       <!-- Peso usual -->
       <ion-item>
-        <ion-label>Peso usual <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label>Peso usual </ion-label>
         <ion-input formControlName="peso_usual" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
         <ion-label>Kg</ion-label>
       </ion-item>
-      <ion-item *ngIf="form.get('peso_usual').invalid && form.get('peso_usual').touched" lines="none">
-        <ion-text color="danger" class="form-error">
-          Informação é obrigatório
-        </ion-text>
-      </ion-item>
+
 
       <!-- Peso estimado -->
       <ion-item>
-        <ion-label>Peso estimado <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label>Peso estimado </ion-label>
         <ion-input formControlName="peso_estimado" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
         <ion-label>Kg</ion-label>
       </ion-item>
-      <ion-item *ngIf="form.get('peso_estimado').invalid && form.get('peso_estimado').touched" lines="none">
-        <ion-text color="danger" class="form-error">
-          Informação é obrigatório
-        </ion-text>
-      </ion-item>
+
 
       <!-- Perda Peso -->
       <ion-item>
-        <ion-label>Perda de Peso <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label>Perda de Peso </ion-label>
         <ion-input formControlName="perda_peso" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
         <ion-label>%</ion-label>
       </ion-item>
-      <ion-item *ngIf="form.get('perda_peso').invalid && form.get('perda_peso').touched" lines="none">
-        <ion-text color="danger" class="form-error">
-          Informação é obrigatório
-        </ion-text>
-      </ion-item>
+
 
       <!-- Membro amputado -->
       <ion-item>
@@ -216,153 +199,93 @@
 
        <!-- Segmento Corporal amputado -->
        <ion-item *ngIf="form.get('membro_amputado').value.length > 0">
-        <ion-label text-wrap>Segmento Corporal amputado <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label text-wrap>Segmento Corporal amputado </ion-label>
         <ion-input formControlName="segmentacao_amputado" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
         <ion-label>%</ion-label>
       </ion-item>
 
         <!-- Altura -->
         <ion-item>
-          <ion-label>Altura <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label>Altura </ion-label>
           <ion-input formControlName="altura" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>m</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('altura').invalid && form.get('altura').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
 
         <!-- Altura do Joelho -->
         <ion-item>
-          <ion-label text-wrap>Altura do Joelho <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label text-wrap>Altura do Joelho </ion-label>
           <ion-input formControlName="altura_joelho" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('altura_joelho').invalid && form.get('altura_joelho').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
 
         <!-- Semi-envergadura -->
         <ion-item>
-          <ion-label>Semi-envergadura <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label>Semi-envergadura </ion-label>
           <ion-input formControlName="semi_envergadura" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('semi_envergadura').invalid && form.get('semi_envergadura').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
 
         <!-- Altura estimada -->
         <ion-item>
-          <ion-label>Altura estimada <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label>Altura estimada </ion-label>
           <ion-input formControlName="altura_estimada" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('altura_estimada').invalid && form.get('altura_estimada').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
 
         <!-- IMC -->
         <ion-item>
-          <ion-label>IMC <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label>IMC </ion-label>
           <ion-input formControlName="imc" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>kg/m²</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('imc').invalid && form.get('imc').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
 
         <!-- Circunferência da Panturrilha -->
         <ion-item>
-          <ion-label text-wrap>Circunferência da Panturrilha <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label text-wrap>Circunferência da Panturrilha </ion-label>
           <ion-input formControlName="circunferencia_panturrilha" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('circunferencia_panturrilha').invalid && form.get('circunferencia_panturrilha').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
     
         <!-- Circunferência do braço -->
         <ion-item>
-          <ion-label text-wrap>Circunferência do braço <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label text-wrap>Circunferência do braço </ion-label>
           <ion-input formControlName="circunferencia_braco" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('circunferencia_braco').invalid && form.get('circunferencia_braco').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
 
         <!-- Circunferência do pulso -->
         <ion-item>
-          <ion-label text-wrap>Circunferência do pulso <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label text-wrap>Circunferência do pulso </ion-label>
           <ion-input formControlName="circunferencia_pulso" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('circunferencia_pulso').invalid && form.get('circunferencia_pulso').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
 
         <!-- Dobra cultânea triciptal (DCT) -->
         <ion-item>
-          <ion-label text-wrap>Dobra cultânea triciptal (DCT) <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label text-wrap>Dobra cultânea triciptal (DCT) </ion-label>
           <ion-input formControlName="dct" type="number" placeholder="Digite o valor em mm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>mm</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('dct').invalid && form.get('dct').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
 
         <!-- Dobra cultânea subescapular (DCSE) -->
         <ion-item>
-          <ion-label text-wrap>Dobra cultânea subescapular (DCSE) <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label text-wrap>Dobra cultânea subescapular (DCSE) </ion-label>
           <ion-input formControlName="dcse" type="number" placeholder="Digite o valor em mm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('dcse').invalid && form.get('dcse').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
         
         <!-- Circunferência Muscular do Braço -->
         <ion-item>
-          <ion-label text-wrap>Circunferência Muscular do Braço <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label text-wrap>Circunferência Muscular do Braço </ion-label>
           <ion-input formControlName="circunferencia_muscular_braco" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('circunferencia_muscular_braco').invalid && form.get('circunferencia_muscular_braco').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
 
         <!-- Circunferência da cintura -->
         <ion-item>
-          <ion-label>Circunferência da cintura <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label>Circunferência da cintura </ion-label>
           <ion-input formControlName="circunferencia_cintura" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
-        </ion-item>
-        <ion-item *ngIf="form.get('circunferencia_cintura').invalid && form.get('circunferencia_cintura').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
 
         <!-- CINRCUNFERÊNCIA DA CINTURA -->
@@ -388,13 +311,8 @@
 
         <!-- Localização do edema -->
         <ion-item *ngIf="form.get('edema').value">
-          <ion-label>Localização do edema <ion-text color="danger">*</ion-text></ion-label>
+          <ion-label>Localização do edema </ion-label>
           <ion-input formControlName="edema_localizacao" required type="text" placeholder="Informe o local" [disabled]="!acessoEdicao"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="form.get('edema_localizacao').invalid && form.get('edema_localizacao').touched" lines="none">
-          <ion-text color="danger" class="form-error">
-            Informação é obrigatório
-          </ion-text>
         </ion-item>
 
         <!-- Sinal de cacifo -->
@@ -421,68 +339,38 @@
     
       <!-- Mão Direita 1ª Medida -->
       <ion-item>
-        <ion-label>Mão Direita 1ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label>Mão Direita 1ª Medida </ion-label>
         <ion-input formControlName="fp_mao_direita1" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="form.get('fp_mao_direita1').invalid && form.get('fp_mao_direita1').touched" lines="none">
-        <ion-text color="danger" class="form-error">
-          Informação é obrigatório
-        </ion-text>
       </ion-item>
 
       <!-- Mão Esquerda 1ª Medida -->
       <ion-item>
-        <ion-label>Mão Esquerda 1ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label>Mão Esquerda 1ª Medida </ion-label>
         <ion-input formControlName="fp_mao_esquerda1" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="form.get('fp_mao_esquerda1').invalid && form.get('fp_mao_esquerda1').touched" lines="none">
-        <ion-text color="danger" class="form-error">
-          Informação é obrigatório
-        </ion-text>
       </ion-item>
 
       <!-- Mão Direita 2ª Medida -->
       <ion-item>
-        <ion-label>Mão Direita 2ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label>Mão Direita 2ª Medida </ion-label>
         <ion-input formControlName="fp_mao_direita2" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="form.get('fp_mao_direita2').invalid && form.get('fp_mao_direita2').touched" lines="none">
-        <ion-text color="danger" class="form-error">
-          Informação é obrigatório
-        </ion-text>
       </ion-item>
 
       <!-- Mão Esquerda 2ª Medida -->
       <ion-item>
-        <ion-label>Mão Esquerda 2ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label>Mão Esquerda 2ª Medida </ion-label>
         <ion-input formControlName="fp_mao_esquerda2" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="form.get('fp_mao_esquerda2').invalid && form.get('fp_mao_esquerda2').touched" lines="none">
-        <ion-text color="danger" class="form-error">
-          Informação é obrigatório
-        </ion-text>
       </ion-item>
 
       <!-- Mão Direita 3ª Medida -->
       <ion-item>
-        <ion-label>Mão Direita 3ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label>Mão Direita 3ª Medida </ion-label>
         <ion-input formControlName="fp_mao_direita3" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="form.get('fp_mao_direita3').invalid && form.get('fp_mao_direita3').touched" lines="none">
-        <ion-text color="danger" class="form-error">
-          Informação é obrigatório
-        </ion-text>
       </ion-item>
 
       <!-- Mão Esquerda 3ª Medida -->
       <ion-item>
-        <ion-label>Mão Esquerda 3ª Medida <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label>Mão Esquerda 3ª Medida </ion-label>
         <ion-input formControlName="fp_mao_esquerda3" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao" (ionChange)="atualizarMediaForca()"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="form.get('fp_mao_esquerda3').invalid && form.get('fp_mao_esquerda3').touched" lines="none">
-        <ion-text color="danger" class="form-error">
-          Informação é obrigatório
-        </ion-text>
       </ion-item>
     
       <!-- MEDIA-->
@@ -646,36 +534,21 @@
   
     <!-- DIAGNOSTICO -->
     <ion-item>
-      <ion-label position="floating">Diagnóstico nutricional<ion-text color="danger">*</ion-text></ion-label>
+      <ion-label position="floating">Diagnóstico nutricional</ion-label>
       <ion-textarea placeholder="Digite seu diagnótisco" formControlName="diagnostico"></ion-textarea>
-    </ion-item>
-    <ion-item *ngIf="form.get('diagnostico').invalid && form.get('diagnostico').touched" lines="none">
-      <ion-text color="danger" class="form-error">
-        Informação é obrigatório
-      </ion-text>
     </ion-item>
 
     <!-- OBJETIVOS -->
     <ion-item>
-      <ion-label  position="floating">Objetivos<ion-text color="danger">*</ion-text></ion-label>
-      <ion-textarea placeholder="Digite seu objetivo" formControlName="objetivos"></ion-textarea>
-     
+      <ion-label  position="floating">Objetivos</ion-label>
+      <ion-textarea placeholder="Digite seu objetivo" formControlName="objetivos"></ion-textarea>     
     </ion-item>
-    <ion-item *ngIf="form.get('objetivos').invalid && form.get('objetivos').touched" lines="none">
-      <ion-text color="danger" class="form-error">
-        Informação é obrigatório
-      </ion-text>
-    </ion-item>
+
 
     <!-- CONDUTA -->
     <ion-item>
-      <ion-label position="floating">Conduta Nutricional<ion-text color="danger">*</ion-text></ion-label>
+      <ion-label position="floating">Conduta Nutricional</ion-label>
       <ion-textarea placeholder="Digite sua conduta" formControlName="conduta"></ion-textarea>
-    </ion-item>
-    <ion-item *ngIf="form.get('conduta').invalid && form.get('conduta').touched" lines="none">
-      <ion-text color="danger" class="form-error">
-        Informação é obrigatório
-      </ion-text>
     </ion-item>
 
     <ion-button block color="primary" expand="full" type="submit" *ngIf="acessoEdicao" [disabled]="form.invalid">

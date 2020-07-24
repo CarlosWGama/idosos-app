@@ -11,7 +11,7 @@
   <form [formGroup]="form" (ngSubmit)="salvar()">
     <!-- CONDIÇÕES CLINICAS -->
     <ion-item>
-      <ion-label position="floating">Condição Clínica (Morbidades) <ion-text color="danger">*</ion-text></ion-label>
+      <ion-label position="floating">Condição Clínica (Morbidades)</ion-label>
       <ion-select multiple="true" placeholder="Selecione a condição clínica" formControlName="condicoes_clinicas">
         <ion-select-option [value]="1">Sem doença</ion-select-option>
         <ion-select-option [value]="2">Hipertensão</ion-select-option>

@@ -29,7 +29,7 @@ export class EvolucoesPage implements OnInit {
              private alertController: AlertController) { }
 
   async ngOnInit() {
-    this.area = this.navExtra.get('area', new Profissao(1, 'Nutrição', 'nutricao'), false);
+    this.area = this.navExtra.get('area', new Profissao(2, 'Nutrição', 'nutricao'), false);
     this.usuario = this.usuarioSrv.usuarioLogado;
     this.podeAprovar = (this.usuario.nivel_acesso == 1 && this.usuario.profissao_id == this.area.id);
   }
