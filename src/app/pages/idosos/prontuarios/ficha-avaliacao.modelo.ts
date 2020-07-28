@@ -38,30 +38,20 @@ export abstract class FichaAvaliacaoModelo implements OnInit {
 
   /** Realiza a busca das informações do prontuário */
   async ionViewDidEnter() {
-    //Evolução
-    this.ficha = this.navExtra.get('prontuario', {id:null});
-   
     //Ficha de Avaliação
-    if (this.ficha.id == null) {
-      this.ficha = await this.prontuariosSrv.fichaAvaliacao(this.url);
-      
-      this.podeEditar(null); //Qualquer um pode criar uma nova evolução
-    } else {
-      this.podeEditar(this.ficha['usuario_id']); 
-    }
-    
+    this.ficha = await this.prontuariosSrv.fichaAvaliacao(this.url, this.paciente.id);
+    this.podeEditar(); //Verifica quem pode editar
+
     if (this.ficha)
       this.form.patchValue(this.ficha);
   }
 
   /** Avalia de o usuário pode editar o campo */
-  protected podeEditar(donoID: number) {
+  protected podeEditar() {
     const area = this.navExtra.get('area', new Profissao(1), false);
 
-    //É professor ou moderador ou é o dono da evolução
-    this.acessoEdicao = (this.usuario.profissao_id == area.id && (donoID == null || [1,2].includes(this.usuario.nivel_acesso) || donoID == this.usuario.id))  
-    
-    // this.acessoEdicao = false;  
+    //É professor ou moderador da area
+    this.acessoEdicao = (this.usuario.profissao_id == area.id && [1,2].includes(this.usuario.nivel_acesso))
   }
 
   /** Salva a Ficha de Avaliação/Evolução */
@@ -71,13 +61,9 @@ export abstract class FichaAvaliacaoModelo implements OnInit {
 
     let dados = Object.assign(this.ficha, this.form.value);
     dados.paciente_id = this.paciente.id;
-    let retorno = null;
-    if (this.ficha.id == null) { //cadastra
-      dados.usuario_id = this.usuario.id;
-      console.log(dados);
-      retorno = await this.prontuariosSrv.cadastrarFicha(dados, this.url);
-    } else 
-      retorno = await this.prontuariosSrv.atualizarFicha(dados, this.url);
+    console.log(dados);
+    
+    const retorno = await this.prontuariosSrv.salvarFicha(dados, this.url);
     loading.dismiss();
 
     if (retorno.sucesso) {

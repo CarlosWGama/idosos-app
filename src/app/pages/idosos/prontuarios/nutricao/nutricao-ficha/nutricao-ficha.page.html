@@ -4,8 +4,7 @@
       <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
     </ion-buttons>
   
-    <h1 *ngIf="!ficha.id">Ficha Avaliação</h1>
-    <h1 *ngIf="ficha.id">Prontuário #{{ficha.id}}</h1>
+    <h1>Ficha Avaliação</h1>
   </div>
 
   <form [formGroup]="form" (ngSubmit)="salvar()">
