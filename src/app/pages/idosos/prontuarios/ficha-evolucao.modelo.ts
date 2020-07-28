@@ -9,17 +9,16 @@ import { ProntuariosService } from 'src/app/services/prontuarios.service';
 import { Paciente } from 'src/app/models/paciente';
 import { Profissao } from 'src/app/models/profissao';
 
-
 /**
- * Classe Generica com as funções basicas de gerenciar Ficha de Avaliação
+ * Classe Generica com as funções basicas de gerenciar Ficha de Evolução
  */
 @Injectable()
-export abstract class FichaAvaliacaoModelo implements OnInit {
+export abstract class FichaEvolucaoModelo implements OnInit {
 
   form: FormGroup;
   usuario: Usuario;
   paciente:Paciente;
-  ficha: any = {id:null};
+  evolucao: any = {id:null};
   acessoEdicao: boolean = true;
   protected id: number = null;
   
@@ -33,25 +32,27 @@ export abstract class FichaAvaliacaoModelo implements OnInit {
   async ngOnInit() {
     await this.usuarioSrv.initialize();
     this.paciente = this.navExtra.get('paciente', new Paciente(), false);
+    this.evolucao = this.navExtra.get('evolucao', {id: null});
     this.usuario = this.usuarioSrv.usuarioLogado;
   }
 
   /** Realiza a busca das informações do prontuário */
   async ionViewDidEnter() {
     //Ficha de Avaliação
-    this.ficha = await this.prontuariosSrv.fichaAvaliacao(this.url, this.paciente.id);
-    this.podeEditar(); //Verifica quem pode editar
-
-    if (this.ficha)
-      this.form.patchValue(this.ficha);
+    if (this.evolucao.id == null)
+      this.podeEditar(null); //Verifica quem pode editar
+    else
+      this.podeEditar(this.evolucao.usuario_id); //Verifica quem pode editar
+    
+    this.form.patchValue(this.evolucao);
   }
 
   /** Avalia de o usuário pode editar o campo */
-  protected podeEditar() {
-    const area = this.navExtra.get('area', new Profissao(1), false);
+  protected podeEditar(donoID: number) {
+    const area = this.navExtra.get('area', new Profissao(2), false);
 
     //É professor ou moderador da area
-    this.acessoEdicao = (this.usuario.profissao_id == area.id && [1,2].includes(this.usuario.nivel_acesso))
+    this.acessoEdicao = (this.usuario.profissao_id == area.id && (donoID == null || [1,2].includes(this.usuario.nivel_acesso) || donoID == this.usuario.id))
   }
 
   /** Salva a Ficha de Avaliação/Evolução */
@@ -59,10 +60,16 @@ export abstract class FichaAvaliacaoModelo implements OnInit {
     const loading = await this.loadingCtrl.create({message:'Salvando', backdropDismiss: false});
     loading.present();
 
-    let dados = Object.assign(this.ficha, this.form.value);
+    let dados = Object.assign(this.evolucao, this.form.value);
     dados.paciente_id = this.paciente.id;
+    dados.usuario_id = this.usuario.id;
+    console.log(dados);
     
-    const retorno = await this.prontuariosSrv.salvarFicha(dados, this.url);
+    let retorno;
+    if (this.evolucao.id == null)
+      retorno = await this.prontuariosSrv.cadastrarEvolucao(dados, this.url);
+    else
+      retorno = await this.prontuariosSrv.atualizarEvolucao(dados, this.url);
     loading.dismiss();
 
     if (retorno.sucesso) {

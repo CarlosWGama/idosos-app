@@ -19,7 +19,7 @@ export class SelecaoAreaPage implements OnInit {
   constructor(private router:Router, private navExtra:NavExtrasService, private toastCtrl:ToastController) { }
 
   async ngOnInit() {
-    this.area = this.navExtra.get('area', new Profissao(1, 'Nutrição', 'nutricao'), false);
+    this.area = this.navExtra.get('area', new Profissao(2, 'Nutrição', 'nutricao'), false);
     //Libera medicamento [Nutrição]
     const areasComMedicamento = [2]; 
     this.temMedicamentos = areasComMedicamento.includes(this.area.id);
