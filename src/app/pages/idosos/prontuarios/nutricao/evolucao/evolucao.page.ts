@@ -11,7 +11,6 @@ import { Validators } from '@angular/forms';
 export class EvolucaoPage extends FichaEvolucaoModelo implements OnInit {
 
   async ngOnInit() {
-    this.url = 'nutricao';
     this.form = this.formBuilder.group({
       'id': null,
       'data': [moment().format('YYYY-MM-DD'), Validators.required],

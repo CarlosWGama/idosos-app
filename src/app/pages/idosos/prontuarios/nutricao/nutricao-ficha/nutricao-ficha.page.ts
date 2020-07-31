@@ -14,7 +14,6 @@ export class NutricaoFichaPage extends FichaAvaliacaoModelo implements OnInit {
   mediaMaoEsquerda = '0';
 
   async ngOnInit() {
-    this.url = 'nutricao';
     this.form = this.formBuilder.group({
       'id': null,
       'data': [moment().format('YYYY-MM-DD'), Validators.required],

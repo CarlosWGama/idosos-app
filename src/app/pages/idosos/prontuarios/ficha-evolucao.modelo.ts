@@ -21,10 +21,7 @@ export abstract class FichaEvolucaoModelo implements OnInit {
   evolucao: any = {id:null};
   acessoEdicao: boolean = true;
   protected id: number = null;
-  
-  /** Define qual é a URL usada no servidor */
-  protected url: string;
-  
+    
   constructor(protected formBuilder: FormBuilder, protected location: Location, protected toastCtrl: ToastController, protected loadingCtrl:LoadingController,
       protected navExtra: NavExtrasService, protected usuarioSrv: UsuariosService, protected prontuariosSrv: ProntuariosService,
       protected cd: ChangeDetectorRef) { }
@@ -57,19 +54,20 @@ export abstract class FichaEvolucaoModelo implements OnInit {
 
   /** Salva a Ficha de Avaliação/Evolução */
   async salvar() {
+    const area = this.navExtra.get('area', new Profissao(1), false);
+
     const loading = await this.loadingCtrl.create({message:'Salvando', backdropDismiss: false});
     loading.present();
-
+    
     let dados = Object.assign(this.evolucao, this.form.value);
     dados.paciente_id = this.paciente.id;
     dados.usuario_id = this.usuario.id;
-    console.log(dados);
     
     let retorno;
     if (this.evolucao.id == null)
-      retorno = await this.prontuariosSrv.cadastrarEvolucao(dados, this.url);
+      retorno = await this.prontuariosSrv.cadastrarEvolucao(dados, area.url);
     else
-      retorno = await this.prontuariosSrv.atualizarEvolucao(dados, this.url);
+      retorno = await this.prontuariosSrv.atualizarEvolucao(dados, area.url);
     loading.dismiss();
 
     if (retorno.sucesso) {

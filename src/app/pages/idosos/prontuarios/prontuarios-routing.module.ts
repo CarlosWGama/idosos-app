@@ -17,6 +17,9 @@ const routes: Routes = [
   // Nutrição
   { path: 'nutricao/ficha', loadChildren: () => import('./nutricao/nutricao-ficha/nutricao-ficha.module').then( m => m.NutricaoFichaPageModule)},
   { path: 'nutricao/evolucao', loadChildren: () => import('./nutricao/evolucao/evolucao.module').then( m => m.EvolucaoPageModule) },
+  //Educação Física
+  { path: 'educacao-fisica/evolucao', loadChildren: () => import('./educacao-fisica/evolucao/evolucao.module').then( m => m.EvolucaoPageModule)},
+  { path: 'educacao-fisica/ficha', loadChildren: () => import('./educacao-fisica/ficha/ficha.module').then( m => m.FichaPageModule)},
 ];
 
 @NgModule({

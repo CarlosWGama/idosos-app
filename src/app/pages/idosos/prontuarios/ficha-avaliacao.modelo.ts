@@ -23,9 +23,6 @@ export abstract class FichaAvaliacaoModelo implements OnInit {
   acessoEdicao: boolean = true;
   protected id: number = null;
   
-  /** Define qual é a URL usada no servidor */
-  protected url: string;
-  
   constructor(protected formBuilder: FormBuilder, protected location: Location, protected toastCtrl: ToastController, protected loadingCtrl:LoadingController,
       protected navExtra: NavExtrasService, protected usuarioSrv: UsuariosService, protected prontuariosSrv: ProntuariosService,
       protected cd: ChangeDetectorRef) { }
@@ -39,7 +36,8 @@ export abstract class FichaAvaliacaoModelo implements OnInit {
   /** Realiza a busca das informações do prontuário */
   async ionViewDidEnter() {
     //Ficha de Avaliação
-    this.ficha = await this.prontuariosSrv.fichaAvaliacao(this.url, this.paciente.id);
+    const area = this.navExtra.get('area', new Profissao(2), false);
+    this.ficha = await this.prontuariosSrv.fichaAvaliacao(area.url, this.paciente.id);
     this.podeEditar(); //Verifica quem pode editar
 
     if (this.ficha)
@@ -56,13 +54,18 @@ export abstract class FichaAvaliacaoModelo implements OnInit {
 
   /** Salva a Ficha de Avaliação/Evolução */
   async salvar() {
+    const area = this.navExtra.get('area', new Profissao(1), false);
     const loading = await this.loadingCtrl.create({message:'Salvando', backdropDismiss: false});
     loading.present();
 
     let dados = Object.assign(this.ficha, this.form.value);
     dados.paciente_id = this.paciente.id;
-    
-    const retorno = await this.prontuariosSrv.salvarFicha(dados, this.url);
+    console.log(dados);
+    console.log(this.form.value);
+    console.log(this.ficha);
+    console.log(dados);
+
+    const retorno = await this.prontuariosSrv.salvarFicha(dados, area.url);
     loading.dismiss();
 
     if (retorno.sucesso) {
