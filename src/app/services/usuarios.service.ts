@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario';
 import { ApiService } from './api.service';
+import { Profissao } from '../models/profissao';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,14 @@ export class UsuariosService extends ApiService {
     }).catch(erro => {
       return {sucesso: false, error: 'Login ou senha incorreta'}
     })
+  }
+
+  /** Retorna as areas que o aplicativo tem acesso */
+  getAreas(): Profissao[] {
+    return [
+      new Profissao(2, 'Nutrição', 'nutricao'),
+      new Profissao(5, 'Educação Física', 'educacao-fisica')
+    ]
   }
 
   /** Desloga o usuário */

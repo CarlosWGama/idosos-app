@@ -14,17 +14,17 @@ export class ProntuariosPage implements OnInit {
 
   paciente: Paciente = null;
 
-  areas: Profissao[] = [
-    new Profissao(2, 'Nutrição', 'nutricao'),
-    new Profissao(5, 'Educação Física', 'educacao-fisica')
-  ]
+  areas: Profissao[];
+  podeNotificar: boolean;
 
   constructor(private navExtra:NavExtrasService, private router:Router, private usuarioSrv: UsuariosService) { }
 
   async ngOnInit() {
+    this.areas = this.usuarioSrv.getAreas();
     //Usa esse default para teste
     this.paciente = this.navExtra.get('paciente', new Paciente(1, 'Carlos', '1950-01-01', 1, '...', 1, false, 1, 1, '2019-01-01', 1), false);
     await this.usuarioSrv.initialize();
+    this.podeNotificar = [1,2].includes(this.usuarioSrv.usuarioLogado.nivel_acesso);
   }
 
   navegar(url: string) {

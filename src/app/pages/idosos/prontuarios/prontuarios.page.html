@@ -25,5 +25,9 @@
     <ion-item button *ngFor="let area of areas" (click)="abrirArea(area)">
       <ion-label>{{area.nome}}</ion-label>
     </ion-item>
+    <!-- DADOS CLINICOS-->
+    <ion-item button (click)="navegar('/prontuarios/notificar')" *ngIf="podeNotificar">
+      <ion-label>Notificar grupo</ion-label>
+    </ion-item>
   </ion-list>
 </ion-content>

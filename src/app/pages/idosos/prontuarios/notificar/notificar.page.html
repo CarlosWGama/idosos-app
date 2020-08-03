@@ -1,0 +1,32 @@
+<ion-content class="content-white">
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Notificar</h1>
+  </div> 
+
+  <!-- DADOS -->
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+
+    <ion-item>
+      <ion-label position="floating">Área que deseja notificar</ion-label>
+      <ion-select placeholder="Selecione a área" formControlName="area_id">
+        <ion-select-option [value]="area.id" *ngFor="let area of areas">{{area.nome}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- OBSERVAÇÃO -->
+    <ion-item>
+      <ion-label position="floating">Descrição<ion-text color="danger">*</ion-text></ion-label>
+      <ion-textarea placeholder="Digite sua conduta" formControlName="descricao"></ion-textarea>
+    </ion-item>
+    
+    <!-- SALVAR -->
+    <ion-button expand="full" color="primary" type="submit" [disabled]="form.invalid">
+      Salvar
+    </ion-button>
+  </form>
+
+</ion-content>

@@ -8,31 +8,50 @@ import { Usuario } from '../models/usuario';
 })
 export class NotificacaoService extends ApiService {
 
+
+  /**
+   * Envia uma nova notificação para o servidor
+   * @param dados -> Dados da notificação
+   */
+  public async notificar(dados): Promise<{sucesso:boolean, error?: string}> {
+    return this.post('/notificacoes', {dados}, true).then(resposta => { return {sucesso: true} })
+    .catch(erro => {
+      return {sucesso: false, error:Object.values(erro.error).join(',')}
+    })
+  }
+
   /** Recupera as mensagens que o Profissional ainda não leu */
   public async getTotalNaoLidas(): Promise<number> {
-    return new Promise(resolve => resolve(2))
+    return this.get('/notificacoes/nao-lidas', true)
+      .then(resposta => resposta.total)
+      .catch(erro => 0)
   }
 
   /** Recupera as notificacoes */
   public async getNotificacoes(): Promise<Notificacao[]> {
-    return new Promise(resolve => {
-      resolve([
-        new Notificacao(0, 'Alteração no Paciente João', 'O paciente sofreu um problema x', new Usuario(0, 'João'), true, '2020-03-08'),
-        new Notificacao(0, 'Alteração no Paciente João', 'O paciente melhorou do sintoma y', new Usuario(0, 'João'), false, '2020-03-08'),
-        new Notificacao(0, 'Alteração no Paciente João', '', new Usuario(0, 'João'), false, '2020-02-25'),
-        new Notificacao(0, 'Alteração no Paciente João', 'Alteração na alimentação', new Usuario(0, 'João'), false, '2020-02-08'),
-        new Notificacao(0, 'Alteração no Paciente João', '', new Usuario(0, 'João'), true, '2020-03-10'),
-      ])
-    })
+    return this.get('/notificacoes', true)
+      .then(resposta => {
+        const notificacoes: Notificacao[] = [];
+
+        resposta.notificacoes.forEach(not => {
+          const paciente = not.notificacao.paciente;
+          const autor = not.notificacao.autor;
+          const notID = not.notificacao_id;
+          const titulo = `Notificação - ${paciente.nome}`;
+          notificacoes.push(new Notificacao(notID, titulo, not.notificacao.descricao, autor, not.lido, not.notificacao.data_cadastro))
+        })
+        return notificacoes;
+      })
+      .catch(erro => [])
   }
 
   /** Lê uma notificação */
   public ler(notificacaoID: number) {
-
+    return this.put(`/notificacoes/${notificacaoID}`, null, true);
   }
 
   /** Lê uma notificação */
   public excluir(notificacaoID: number) {
-    
+    return this.delete(`/notificacoes/${notificacaoID}`, true);
   }
 }

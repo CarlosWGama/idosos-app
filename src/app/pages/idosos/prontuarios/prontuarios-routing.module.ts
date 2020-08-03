@@ -20,6 +20,10 @@ const routes: Routes = [
   //Educação Física
   { path: 'educacao-fisica/evolucao', loadChildren: () => import('./educacao-fisica/evolucao/evolucao.module').then( m => m.EvolucaoPageModule)},
   { path: 'educacao-fisica/ficha', loadChildren: () => import('./educacao-fisica/ficha/ficha.module').then( m => m.FichaPageModule)},
+  {
+    path: 'notificar',
+    loadChildren: () => import('./notificar/notificar.module').then( m => m.NotificarPageModule)
+  },
 ];
 
 @NgModule({
