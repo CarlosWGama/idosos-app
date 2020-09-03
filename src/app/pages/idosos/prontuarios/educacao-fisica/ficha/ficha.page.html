@@ -30,67 +30,67 @@
       <!-- Glicemia Capilar -->
       <ion-item>
         <ion-label text-wrap>Glicemia capilar (mg/dL3)</ion-label>
-        <ion-input formControlName="glicemia_capilar" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="glicemia_capilar" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- Pressão Arterial -->
       <ion-item>
         <ion-label text-wrap>Pressão arterial sistólica/diastólica (mmHg)</ion-label>
-        <ion-input formControlName="pressao_arterial" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input mask="000/000" class="ion-text-right" formControlName="pressao_arterial" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- Frequência Cardíaca -->
       <ion-item>
         <ion-label text-wrap>Frequência Cardíaca (bpm)</ion-label>
-        <ion-input formControlName="frequencia_cardiaca" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="frequencia_cardiaca" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- Saturação -->
       <ion-item>
         <ion-label text-wrap>Saturação de O2</ion-label>
-        <ion-input formControlName="saturacao" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="saturacao" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- Temperatura -->
       <ion-item>
         <ion-label text-wrap>Temperatura (°C)</ion-label>
-        <ion-input formControlName="temperatura" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="temperatura" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- PAS tornozelo direito (mmHg) -->
       <ion-item>
         <ion-label text-wrap>PAS tornozelo direito (mmHg)</ion-label>
-        <ion-input formControlName="pas_tornozelo_direito" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  mask="000/000" class="ion-text-right" formControlName="pas_tornozelo_direito" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- PAS tornozelo esquerdo  (mmHg) -->
       <ion-item>
         <ion-label text-wrap>PAS tornozelo esquerdo  (mmHg)</ion-label>
-        <ion-input formControlName="pas_tornozelo_esquerdo" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  mask="000/000" class="ion-text-right" formControlName="pas_tornozelo_esquerdo" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- PAS braquial direito (mmHg) -->
       <ion-item>
         <ion-label text-wrap>PAS braquial direito (mmHg)</ion-label>
-        <ion-input formControlName="pas_braquial_direito" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input mask="000/000" class="ion-text-right" formControlName="pas_braquial_direito" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- PAS braquial esquerdo (mmHg) -->
       <ion-item>
         <ion-label text-wrap>PAS braquial esquerdo (mmHg)</ion-label>
-        <ion-input formControlName="pas_braquial_esquerdo" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input mask="000/000" class="ion-text-right" formControlName="pas_braquial_esquerdo" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- Índice Tornozelo Braquial Direito (mmHg) -->
       <ion-item>
         <ion-label text-wrap>Índice Tornozelo Braquial Direito (mmHg)</ion-label>
-        <ion-input formControlName="indice_tornozelo_braquial_direito" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input mask="000/000" class="ion-text-right" formControlName="indice_tornozelo_braquial_direito" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- Índice Tornozelo Braquial Esquerdo (mmHg) -->
       <ion-item>
         <ion-label text-wrap>Índice Tornozelo Braquial Esquerdo (mmHg)</ion-label>
-        <ion-input formControlName="indice_tornozelo_braquial_esquerdo" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input mask="000/000" class="ion-text-right" formControlName="indice_tornozelo_braquial_esquerdo" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
     </ion-item-group>
 
@@ -103,37 +103,37 @@
       <!-- Sentar e levantar -->
       <ion-item>
         <ion-label text-wrap>Sentar e Levantar da Cadeira</ion-label>
-        <ion-input formControlName="sentar_cadeira" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="sentar_cadeira" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- Flexão de Cotovelo -->
       <ion-item>
         <ion-label text-wrap>Flexão de Cotovelo</ion-label>
-        <ion-input formControlName="flexao_cotovelo" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="flexao_cotovelo" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- Sentar e alcançar os pés -->
       <ion-item>
         <ion-label text-wrap>Sentar e alcançar os pés</ion-label>
-        <ion-input formControlName="sentar_pes" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="sentar_pes" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- Timed Up -->
       <ion-item>
         <ion-label text-wrap>Timed Up and Go teste (segundos)</ion-label>
-        <ion-input formControlName="timed_up_go" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="timed_up_go" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- Alcançar as costas mão direita e esquerda (cm) -->
       <ion-item>
         <ion-label text-wrap>Alcançar as costas mão direita e esquerda (cm)</ion-label>
-        <ion-input formControlName="costas_maos" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="costas_maos" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- Caminhada de 6minutos (metros) -->
       <ion-item>
         <ion-label text-wrap>Caminhada de 6minutos (metros)</ion-label>
-        <ion-input formControlName="caminhada" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="caminhada" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
     </ion-item-group>
 
@@ -146,19 +146,19 @@
       <!-- Massa corporal (kg) -->
       <ion-item>
         <ion-label text-wrap>Massa corporal (kg)</ion-label>
-        <ion-input formControlName="massa_corporal" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="massa_corporal" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- Estatura(cm) -->
       <ion-item>
         <ion-label text-wrap>Estatura(cm)</ion-label>
-        <ion-input formControlName="estatura" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="estatura" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- IMC (kg/m2) -->
       <ion-item>
         <ion-label text-wrap>IMC (kg/m2)</ion-label>
-        <ion-input formControlName="imc" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="imc" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
     
     </ion-item-group>
@@ -172,19 +172,19 @@
       <!-- Tentativa 1 (kg) -->
       <ion-item>
         <ion-label text-wrap>Tentativa 1 (kg)</ion-label>
-        <ion-input formControlName="preensao_manual1" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="preensao_manual1" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- Tentativa 2 (kg) -->
       <ion-item>
         <ion-label text-wrap>Tentativa 2 (kg)</ion-label>
-        <ion-input formControlName="preensao_manual2" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="preensao_manual2" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
       
       <!-- Tentativa 3 (kg) -->
       <ion-item>
         <ion-label text-wrap>Tentativa 3 (kg)</ion-label>
-        <ion-input formControlName="preensao_manual3" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="preensao_manual3" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
     
     </ion-item-group>

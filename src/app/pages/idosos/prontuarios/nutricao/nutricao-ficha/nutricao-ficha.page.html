@@ -46,13 +46,13 @@
       <!-- Hábito intestinal Dia -->
       <ion-item>
         <ion-label>Hábito intestinal - Dia</ion-label>
-        <ion-input formControlName="habito_intestinal_dia" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="habito_intestinal_dia" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- Hábito intestinal Semana -->
       <ion-item>
         <ion-label>Hábito intestinal - Semana</ion-label>
-        <ion-input formControlName="habito_intestinal_semana" type="number" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="habito_intestinal_semana" type="number" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- Consistência das fezes -->
@@ -96,19 +96,19 @@
       <!-- Aversão alimentar -->
       <ion-item>
         <ion-label  position="floating">Aversão alimentar</ion-label>
-        <ion-input formControlName="aversao_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="aversao_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- Intolerância alimentar -->
       <ion-item>
         <ion-label position="floating">Intolerância alimentar</ion-label>
-        <ion-input formControlName="intolerencia_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="intolerencia_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- Alergia alimentar -->
       <ion-item>
         <ion-label position="floating">Alergia alimentar</ion-label>
-        <ion-input formControlName="alergia_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="alergia_alimentar" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
       <!-- Tem sede -->
@@ -155,14 +155,14 @@
       <!-- Peso atual -->
       <ion-item>
         <ion-label>Peso atual </ion-label>
-        <ion-input formControlName="peso_atual" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="peso_atual" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
         <ion-label>Kg</ion-label>
       </ion-item>
 
       <!-- Peso usual -->
       <ion-item>
         <ion-label>Peso usual </ion-label>
-        <ion-input formControlName="peso_usual" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="peso_usual" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
         <ion-label>Kg</ion-label>
       </ion-item>
 
@@ -170,7 +170,7 @@
       <!-- Peso estimado -->
       <ion-item>
         <ion-label>Peso estimado </ion-label>
-        <ion-input formControlName="peso_estimado" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="peso_estimado" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
         <ion-label>Kg</ion-label>
       </ion-item>
 
@@ -178,7 +178,7 @@
       <!-- Perda Peso -->
       <ion-item>
         <ion-label>Perda de Peso </ion-label>
-        <ion-input formControlName="perda_peso" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="perda_peso" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
         <ion-label>%</ion-label>
       </ion-item>
 
@@ -199,91 +199,91 @@
        <!-- Segmento Corporal amputado -->
        <ion-item *ngIf="form.get('membro_amputado').value.length > 0">
         <ion-label text-wrap>Segmento Corporal amputado </ion-label>
-        <ion-input formControlName="segmentacao_amputado" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="segmentacao_amputado" type="number" placeholder="Digite seu peso" [disabled]="!acessoEdicao"></ion-input>
         <ion-label>%</ion-label>
       </ion-item>
 
         <!-- Altura -->
         <ion-item>
           <ion-label>Altura </ion-label>
-          <ion-input formControlName="altura" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="altura" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>m</ion-label>
         </ion-item>
 
         <!-- Altura do Joelho -->
         <ion-item>
           <ion-label text-wrap>Altura do Joelho </ion-label>
-          <ion-input formControlName="altura_joelho" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="altura_joelho" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
         </ion-item>
 
         <!-- Semi-envergadura -->
         <ion-item>
           <ion-label>Semi-envergadura </ion-label>
-          <ion-input formControlName="semi_envergadura" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="semi_envergadura" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
         </ion-item>
 
         <!-- Altura estimada -->
         <ion-item>
           <ion-label>Altura estimada </ion-label>
-          <ion-input formControlName="altura_estimada" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="altura_estimada" type="number" placeholder="Digite altura" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
         </ion-item>
 
         <!-- IMC -->
         <ion-item>
           <ion-label>IMC </ion-label>
-          <ion-input formControlName="imc" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="imc" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>kg/m²</ion-label>
         </ion-item>
 
         <!-- Circunferência da Panturrilha -->
         <ion-item>
           <ion-label text-wrap>Circunferência da Panturrilha </ion-label>
-          <ion-input formControlName="circunferencia_panturrilha" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="circunferencia_panturrilha" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
         </ion-item>
     
         <!-- Circunferência do braço -->
         <ion-item>
           <ion-label text-wrap>Circunferência do braço </ion-label>
-          <ion-input formControlName="circunferencia_braco" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="circunferencia_braco" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
         </ion-item>
 
         <!-- Circunferência do pulso -->
         <ion-item>
           <ion-label text-wrap>Circunferência do pulso </ion-label>
-          <ion-input formControlName="circunferencia_pulso" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="circunferencia_pulso" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
         </ion-item>
 
         <!-- Dobra cultânea triciptal (DCT) -->
         <ion-item>
           <ion-label text-wrap>Dobra cultânea triciptal (DCT) </ion-label>
-          <ion-input formControlName="dct" type="number" placeholder="Digite o valor em mm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="dct" type="number" placeholder="Digite o valor em mm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>mm</ion-label>
         </ion-item>
 
         <!-- Dobra cultânea subescapular (DCSE) -->
         <ion-item>
           <ion-label text-wrap>Dobra cultânea subescapular (DCSE) </ion-label>
-          <ion-input formControlName="dcse" type="number" placeholder="Digite o valor em mm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="dcse" type="number" placeholder="Digite o valor em mm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
         </ion-item>
         
         <!-- Circunferência Muscular do Braço -->
         <ion-item>
           <ion-label text-wrap>Circunferência Muscular do Braço </ion-label>
-          <ion-input formControlName="circunferencia_muscular_braco" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="circunferencia_muscular_braco" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
         </ion-item>
 
         <!-- Circunferência da cintura -->
         <ion-item>
           <ion-label>Circunferência da cintura </ion-label>
-          <ion-input formControlName="circunferencia_cintura" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="circunferencia_cintura" type="number" placeholder="Digite o valor em cm" [disabled]="!acessoEdicao"></ion-input>
           <ion-label>cm</ion-label>
         </ion-item>
 
@@ -311,7 +311,7 @@
         <!-- Localização do edema -->
         <ion-item *ngIf="form.get('edema').value">
           <ion-label>Localização do edema </ion-label>
-          <ion-input formControlName="edema_localizacao" required type="text" placeholder="Informe o local" [disabled]="!acessoEdicao"></ion-input>
+          <ion-input  class="ion-text-right" formControlName="edema_localizacao" required type="text" placeholder="Informe o local" [disabled]="!acessoEdicao"></ion-input>
         </ion-item>
 
         <!-- Sinal de cacifo -->
@@ -339,37 +339,37 @@
       <!-- Mão Direita 1ª Medida -->
       <ion-item>
         <ion-label>Mão Direita 1ª Medida </ion-label>
-        <ion-input formControlName="fp_mao_direita1" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="fp_mao_direita1" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
 
       <!-- Mão Esquerda 1ª Medida -->
       <ion-item>
         <ion-label>Mão Esquerda 1ª Medida </ion-label>
-        <ion-input formControlName="fp_mao_esquerda1" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="fp_mao_esquerda1" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
 
       <!-- Mão Direita 2ª Medida -->
       <ion-item>
         <ion-label>Mão Direita 2ª Medida </ion-label>
-        <ion-input formControlName="fp_mao_direita2" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="fp_mao_direita2" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
 
       <!-- Mão Esquerda 2ª Medida -->
       <ion-item>
         <ion-label>Mão Esquerda 2ª Medida </ion-label>
-        <ion-input formControlName="fp_mao_esquerda2" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="fp_mao_esquerda2" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
 
       <!-- Mão Direita 3ª Medida -->
       <ion-item>
         <ion-label>Mão Direita 3ª Medida </ion-label>
-        <ion-input formControlName="fp_mao_direita3" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="fp_mao_direita3" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao"  (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
 
       <!-- Mão Esquerda 3ª Medida -->
       <ion-item>
         <ion-label>Mão Esquerda 3ª Medida </ion-label>
-        <ion-input formControlName="fp_mao_esquerda3" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao" (ionChange)="atualizarMediaForca()"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="fp_mao_esquerda3" type="number" placeholder="Digite o valor" [disabled]="!acessoEdicao" (ionChange)="atualizarMediaForca()"></ion-input>
       </ion-item>
     
       <!-- MEDIA-->

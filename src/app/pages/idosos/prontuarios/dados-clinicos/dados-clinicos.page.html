@@ -26,7 +26,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Outras condições clínicas</ion-label>
-      <ion-input formControlName="condicao_clinica_outras" type="text"></ion-input>
+      <ion-input  class="ion-text-right" formControlName="condicao_clinica_outras" type="text"></ion-input>
     </ion-item>
 
     <!-- PLANO SAÚDE -->
@@ -55,13 +55,13 @@
       <!-- FUMANTE IDADE -->
       <ion-item *ngIf="form.get('fumante').value">
         <ion-label position="floating"><b>Fumante - </b>Caso sim, desde que idade? <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input formControlName="fumante_idade" type="number"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="fumante_idade" type="number"></ion-input>
       </ion-item>
 
       <!-- MEDIA CIGARROS -->
       <ion-item *ngIf="form.get('fumante').value">
         <ion-label position="floating"><b>Fumante - </b>Média de Cigarros? <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input formControlName="fumante_media_cigarros" type="number"></ion-input>
+        <ion-input  class="ion-text-right" formControlName="fumante_media_cigarros" type="number"></ion-input>
       </ion-item>
 
        <!-- ETILISTA -->
