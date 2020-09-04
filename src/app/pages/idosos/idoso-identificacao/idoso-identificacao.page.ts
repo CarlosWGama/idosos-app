@@ -32,7 +32,7 @@ export class IdosoIdentificacaoPage implements OnInit {
     this.usuario = this.usuarioSrv.usuarioLogado;
     this.form = this.formBuilder.group({
       'nome': null, 'data_nascimento': null, 'masculino': 1, 'escolaridade': null, 'tem_filhos': false,
-      'estado_civil': null, 'data_admissao': null, 'motivo_admissao': null, 'frequencia_familiar': null
+      'estado_civil': null, 'etnia': null, 'data_admissao': null, 'motivo_admissao': null, 'frequencia_familiar': null
     }) 
   }
 

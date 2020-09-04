@@ -88,6 +88,22 @@
       </ion-text>
     </ion-item>
 
+    <!-- ETINIA -->
+    <ion-item>
+      <ion-label  position="floating">Etnia <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select formControlName="etnia" placeholder="Selecione">
+        <ion-select-option [value]="1">Branca</ion-select-option>
+        <ion-select-option [value]="2">Parda</ion-select-option>
+        <ion-select-option [value]="3">Amarela</ion-select-option>
+        <ion-select-option [value]="4">Negra</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="form.get('etnia').invalid && form.get('etnia').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Etnia é obrigatório
+      </ion-text>
+    </ion-item>
+
     <!-- DATA DE ADMISSAO -->
     <ion-item>
       <ion-label position="floating">Data de Admissão <ion-text color="danger">*</ion-text></ion-label>

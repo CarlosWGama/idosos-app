@@ -17,6 +17,12 @@
         <ion-select-option [value]="2">Hipertensão</ion-select-option>
         <ion-select-option [value]="3">DCV</ion-select-option>
         <ion-select-option [value]="4">Câncer</ion-select-option>
+        <ion-select-option [value]="5">IAM</ion-select-option>
+        <ion-select-option [value]="6">AVC</ion-select-option>
+        <ion-select-option [value]="7">Pé diabético</ion-select-option>
+        <ion-select-option [value]="8">Doença Renal</ion-select-option>
+        <ion-select-option [value]="9">Diabetes Tipo 1</ion-select-option>
+        <ion-select-option [value]="10">Diabetes Tipo 2</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item *ngIf="form.get('condicoes_clinicas').invalid && form.get('condicoes_clinicas').touched" lines="none">
@@ -195,6 +201,45 @@
           <ion-select-option [value]="1">Necessita de ajuda não humana</ion-select-option>
           <ion-select-option [value]="2">Dependência completa</ion-select-option>
         </ion-select>
+      </ion-item>
+
+      <!-- CIRURGIA -->
+      <ion-item>
+        <ion-label>Realizou alguma cirurgia?</ion-label>
+        <ion-toggle slot="end" formControlName="realizou_cirurgia"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="form.get('realizou_cirurgia').value" no-line>
+        <ion-label position="floating">Qual cirurgia?</ion-label>
+        <ion-input required formControlName="cirurgia" type="text"></ion-input>
+      </ion-item>
+      
+      <!-- OSTEOARTICULAR -->
+      <ion-item>
+        <ion-label>Limitação ósteoarticular? </ion-label>
+        <ion-toggle slot="end" formControlName="tem_limitacao_osteoarticular"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="form.get('tem_limitacao_osteoarticular').value" no-line>
+        <ion-label position="floating">Qual limitação? </ion-label>
+        <ion-input required formControlName="limitacao_osteoarticular" type="text"></ion-input>
+      </ion-item>
+      
+      <!-- MUSCULOARTICULAR -->
+      <ion-item>
+        <ion-label>Limitação músculoarticular?  </ion-label>
+        <ion-toggle slot="end" formControlName="tem_limitacao_musculoarticular"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="form.get('tem_limitacao_musculoarticular').value" no-line>
+        <ion-label position="floating">Qual limitação? </ion-label>
+        <ion-input required formControlName="limitacao_musculoarticular" type="text"></ion-input>
+      </ion-item>
+
+      <!-- Exercio Mais Gosta -->
+      <ion-item>
+        <ion-label  position="floating">Qual(is) exercício físico mais gosta de fazer?</ion-label>
+        <ion-textarea placeholder="Exercícios Físicos" formControlName="exercicios_fisicos"></ion-textarea>     
       </ion-item>
 
     </ion-item-group>

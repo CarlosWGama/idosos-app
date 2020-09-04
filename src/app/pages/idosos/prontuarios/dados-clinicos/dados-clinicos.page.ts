@@ -44,7 +44,11 @@ export class DadosClinicosPage implements OnInit {
       dispositivo_andar: [0],
       atividade_recreativa: [false],
       cf_banhar: [0], cf_vestir: [0], cf_uso_banheiro: [0],
-      cf_transferir: [0], cf_continencia: [0], cf_alimentar: [0]
+      cf_transferir: [0], cf_continencia: [0], cf_alimentar: [0],
+      exercicios_fisicos: [null],
+      realizou_cirurgia: [false], cirurgia: [null],
+      tem_limitacao_osteoarticular: [false], limitacao_osteoarticular: [null],
+      tem_limitacao_musculoarticular: [false], limitacao_musculoarticular: [null]
     })
   }
 
