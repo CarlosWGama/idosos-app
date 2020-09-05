@@ -14,38 +14,10 @@ export class EvolucaoPage extends FichaEvolucaoModelo implements OnInit {
     this.form = this.formBuilder.group({
       'id': null,
       'data': [moment().format('YYYY-MM-DD'), Validators.required],
-      
-      //Evolução
-      //Desempenho Funcional
-      'sentar_cadeira': [null],
-      'flexao_cotovelo': [null],
-      'sentar_pes': [null],
-      'timed_up_go': [null],
-      'costas_maos': [null],
-      'caminhada': [null],
-      
-      //Antropometria
-      'massa_corporal': [null],
-      'imc': [null],
-      'estatura': [null],
-      
-      //Força e Pressão Manual
-      'preensao_manual1': [null],
-      'preensao_manual2': [null],
-      'preensao_manual3': [null],
-      
-      //Hemodinâmica
-      'pas': [null],
-      'pad': [null],
-      'fc': [null],
-      'conduta': [null]
+      'descricao': [null, Validators.required]
     })
-
-  
-            
 
     await super.ngOnInit(); 
   }
-
 
 }

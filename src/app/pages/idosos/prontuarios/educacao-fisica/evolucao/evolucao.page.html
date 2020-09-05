@@ -11,7 +11,7 @@
     
     <!-- DATA DO PRONTUARIO -->
     <ion-item>
-      <ion-label text-wrap>Data da avaliação:<ion-text color="danger">*</ion-text></ion-label>
+      <ion-label>Data da avaliação:<ion-text color="danger">*</ion-text></ion-label>
       <ion-datetime display-format="DD/MM/YYYY" formControlName="data" cancelText="Cancelar" doneText="Ok"[disabled]="!acessoEdicao"></ion-datetime>
     </ion-item>
     <ion-item *ngIf="form.get('data').invalid && form.get('data').touched" lines="none">
@@ -19,133 +19,18 @@
         Data da avaliação é obrigatório
       </ion-text>
     </ion-item>
-
-    <!-- ====================== DESEMPENHO FUNCIONAL ============================ -->
-    <ion-item-group>
-      <ion-item-divider>
-        <ion-label class='titulo-secao'>Desempenho funcional</ion-label>
-      </ion-item-divider>
-
-      <!-- Sentar e levantar -->
-      <ion-item>
-        <ion-label text-wrap>Sentar e Levantar da Cadeira</ion-label>
-        <ion-input  class="ion-text-right" formControlName="sentar_cadeira" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-
-      <!-- Flexão de Cotovelo -->
-      <ion-item>
-        <ion-label text-wrap>Flexão de Cotovelo</ion-label>
-        <ion-input  class="ion-text-right" formControlName="flexao_cotovelo" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-      
-      <!-- Sentar e alcançar os pés -->
-      <ion-item>
-        <ion-label text-wrap>Sentar e alcançar os pés</ion-label>
-        <ion-input  class="ion-text-right" formControlName="sentar_pes" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-
-      <!-- Timed Up -->
-      <ion-item>
-        <ion-label text-wrap>Timed Up and Go teste (segundos)</ion-label>
-        <ion-input  class="ion-text-right" formControlName="timed_up_go" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-      
-      <!-- Alcançar as costas mão direita e esquerda (cm) -->
-      <ion-item>
-        <ion-label text-wrap>Alcançar as costas mão direita e esquerda (cm)</ion-label>
-        <ion-input  class="ion-text-right" formControlName="costas_maos" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-      
-      <!-- Caminhada de 6minutos (metros) -->
-      <ion-item>
-        <ion-label text-wrap>Caminhada de 6minutos (metros)</ion-label>
-        <ion-input  class="ion-text-right" formControlName="caminhada" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-    </ion-item-group>
-
-    <!-- ====================== ANTROPOMETRIA ============================ -->
-    <ion-item-group>
-      <ion-item-divider>
-        <ion-label class='titulo-secao'>Antropometria</ion-label>
-      </ion-item-divider>
-
-      <!-- Massa corporal (kg) -->
-      <ion-item>
-        <ion-label text-wrap>Massa corporal (kg)</ion-label>
-        <ion-input  class="ion-text-right" formControlName="massa_corporal" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-      
-      <!-- Estatura(cm) -->
-      <ion-item>
-        <ion-label text-wrap>Estatura(cm)</ion-label>
-        <ion-input  class="ion-text-right" formControlName="estatura" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-      
-      <!-- IMC (kg/m2) -->
-      <ion-item>
-        <ion-label text-wrap>IMC (kg/m2)</ion-label>
-        <ion-input  class="ion-text-right" formControlName="imc" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
     
-    </ion-item-group>
+    <!-- DESCRIÇÃO -->
+    <ion-item>
+      <ion-label  position="floating">Descrição: <ion-text color="danger">*</ion-text></ion-label>
+      <ion-textarea placeholder="Digite seu objetivo" formControlName="descricao"></ion-textarea>     
+    </ion-item>
+    <ion-item *ngIf="form.get('descricao').invalid && form.get('descricao').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Descrição é obrigatório
+      </ion-text>
+    </ion-item>
 
-    <!-- ====================== FORÇA DE PREENSÃO MANUAL ============================ -->
-    <ion-item-group>
-      <ion-item-divider>
-        <ion-label class='titulo-secao'>Força de Preensão Manual</ion-label>
-      </ion-item-divider>
-
-      <!-- Tentativa 1 (kg) -->
-      <ion-item>
-        <ion-label text-wrap>Tentativa 1 (kg)</ion-label>
-        <ion-input  class="ion-text-right" formControlName="preensao_manual1" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-      
-      <!-- Tentativa 2 (kg) -->
-      <ion-item>
-        <ion-label text-wrap>Tentativa 2 (kg)</ion-label>
-        <ion-input  class="ion-text-right" formControlName="preensao_manual2" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-      
-      <!-- Tentativa 3 (kg) -->
-      <ion-item>
-        <ion-label text-wrap>Tentativa 3 (kg)</ion-label>
-        <ion-input  class="ion-text-right" formControlName="preensao_manual3" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-    
-    </ion-item-group>
-
-    <!-- ====================== HEMODINÂMICA ============================ -->
-    <ion-item-group>
-      <ion-item-divider>
-        <ion-label class='titulo-secao'>Hemodinâmica</ion-label>
-      </ion-item-divider>
-
-      <!-- PAS -->
-      <ion-item>
-        <ion-label text-wrap>PAS</ion-label>
-        <ion-input  class="ion-text-right" formControlName="pas" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-      
-      <!-- PAD -->
-      <ion-item>
-        <ion-label text-wrap>PAD</ion-label>
-        <ion-input  class="ion-text-right" formControlName="pad" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-      
-      <!-- FC -->
-      <ion-item>
-        <ion-label text-wrap>FC</ion-label>
-        <ion-input  class="ion-text-right" formControlName="fc" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item>
-      
-      <!-- Conduta -->
-      <ion-item>
-        <ion-label  position="floating">Conduta: <ion-text color="danger">*</ion-text></ion-label>
-        <ion-textarea placeholder="Digite a conduta" formControlName="conduta"></ion-textarea>     
-      </ion-item>
-      
-    </ion-item-group>
 
     <ion-button block color="primary" expand="full" type="submit" *ngIf="acessoEdicao" [disabled]="form.invalid">
       Salvar

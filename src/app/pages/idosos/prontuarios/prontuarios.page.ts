@@ -35,7 +35,7 @@ export class ProntuariosPage implements OnInit {
   abrirArea(area: Profissao) {
     this.navExtra.set('paciente', this.paciente);
     this.navExtra.set('area', area);
-    this.router.navigateByUrl('/prontuarios/selecao-area')
+    this.router.navigateByUrl(`/prontuarios/${area.url}/opcoes`)
   }
 
 }

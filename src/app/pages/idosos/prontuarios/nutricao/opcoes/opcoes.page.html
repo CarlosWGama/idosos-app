@@ -4,20 +4,20 @@
       <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
     </ion-buttons>
   
-    <h1>{{area.nome}}</h1>
+    <h1>Nutrição</h1>
   </div> 
 
   <ion-list>
     <!-- FICHA AVALIAÇÃO -->
-    <ion-item button (click)="abrirFicha()">
+    <ion-item button  routerLink="/prontuarios/nutricao/ficha">
       <ion-label>Ficha de Avaliação</ion-label>
     </ion-item>
     <!-- EVOLUÇÕES-->
-    <ion-item button (click)="abrirEvolucoes()">
+    <ion-item button routerLink="/prontuarios/evolucoes">
       <ion-label>Evoluções</ion-label>
     </ion-item>
     <!-- MEDICAMENTO E SUPLEMENTOS-->
-    <ion-item button *ngIf="temMedicamentos" (click)="abrirMedicamentos()">
+    <ion-item button routerLink="/prontuarios/medicamentos/ativo">
       <ion-label>Medicamentos/Suplementos</ion-label>
     </ion-item>
   </ion-list>

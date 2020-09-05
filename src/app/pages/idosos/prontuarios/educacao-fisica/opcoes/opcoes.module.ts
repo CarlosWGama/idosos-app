@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SelecaoAreaPageRoutingModule } from './selecao-area-routing.module';
+import { OpcoesPageRoutingModule } from './opcoes-routing.module';
 
-import { SelecaoAreaPage } from './selecao-area.page';
+import { OpcoesPage } from './opcoes.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SelecaoAreaPageRoutingModule
+    OpcoesPageRoutingModule
   ],
-  declarations: [SelecaoAreaPage]
+  declarations: [OpcoesPage]
 })
-export class SelecaoAreaPageModule {}
+export class OpcoesPageModule {}
