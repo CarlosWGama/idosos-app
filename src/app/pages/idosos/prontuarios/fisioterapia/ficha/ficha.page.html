@@ -1,0 +1,79 @@
+<ion-content class="content-white">
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Ficha Avaliação</h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    
+    
+    <!-- DATA DO PRONTUARIO -->
+    <ion-item>
+      <ion-label>Data da avaliação:<ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime display-format="DD/MM/YYYY" formControlName="data" cancelText="Cancelar" doneText="Ok"[disabled]="!acessoEdicao"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="form.get('data').invalid && form.get('data').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Data da avaliação é obrigatório
+      </ion-text>
+    </ion-item>
+    
+    <!-- ====================== DADOS CLÍNICOS E ALIMENTAR ============================ -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>Dados Clínicos e Alimentas</ion-label>
+      </ion-item-divider>
+    
+      <!-- Saúde Gastrointestinal -->
+      <!-- <ion-item>
+        <ion-label position="floating">Saúde Gastrointestinal</ion-label>
+        <ion-select formControlName="saude_gastrointestinal" multiple="true" placeholder="Selecione e arrasta as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Azia</ion-select-option>
+          <ion-select-option [value]="2">Refluxo</ion-select-option>
+          <ion-select-option [value]="3">Distensão Abdominal</ion-select-option>
+          <ion-select-option [value]="4">Náuseas e Vômitos</ion-select-option>
+          <ion-select-option [value]="5">Constipação</ion-select-option>
+          <ion-select-option [value]="6">Diarréia</ion-select-option>
+          <ion-select-option [value]="7">Flatulência</ion-select-option>
+          <ion-select-option [value]="8">Mastigação inadequada</ion-select-option>
+          <ion-select-option [value]="9">Disfagia</ion-select-option>
+        </ion-select>
+      </ion-item> -->
+
+      <!-- Hábito intestinal Dia -->
+      <!-- <ion-item>
+        <ion-label>Hábito intestinal - Dia</ion-label>
+        <ion-input  class="ion-text-right" formControlName="habito_intestinal_dia" type="number" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item> -->
+
+   
+    </ion-item-group>
+    
+
+    <!-- DIAGNOSTICO -->
+    <ion-item>
+      <ion-label position="floating">Diagnóstico nutricional</ion-label>
+      <ion-textarea placeholder="Digite seu diagnótisco" formControlName="diagnostico_fisioterapeutico"></ion-textarea>
+    </ion-item>
+
+    <!-- OBJETIVOS -->
+    <ion-item>
+      <ion-label  position="floating">Objetivos</ion-label>
+      <ion-textarea placeholder="Digite seu objetivo" formControlName="objetivos"></ion-textarea>     
+    </ion-item>
+
+
+    <!-- CONDUTA -->
+    <ion-item>
+      <ion-label position="floating">Conduta Nutricional</ion-label>
+      <ion-textarea placeholder="Digite sua conduta" formControlName="conduta"></ion-textarea>
+    </ion-item>
+
+    <ion-button block color="primary" expand="full" type="submit" *ngIf="acessoEdicao" [disabled]="form.invalid">
+      Salvar
+    </ion-button>
+  </form>
+</ion-content>

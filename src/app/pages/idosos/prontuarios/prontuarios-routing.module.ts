@@ -19,6 +19,11 @@ const routes: Routes = [
   { path: 'nutricao/evolucao', loadChildren: () => import('./nutricao/evolucao/evolucao.module').then( m => m.EvolucaoPageModule) },
   { path: 'nutricao/opcoes', loadChildren: () => import('./nutricao/opcoes/opcoes.module').then( m => m.OpcoesPageModule) },
 
+  //Fisioterapia
+  { path: 'fisioterapia/evolucao', loadChildren: () => import('./fisioterapia/evolucao/evolucao.module').then( m => m.EvolucaoPageModule)},
+  { path: 'fisioterapia/opcoes', loadChildren: () => import('./fisioterapia/opcoes/opcoes.module').then( m => m.OpcoesPageModule) },
+  { path: 'fisioterapia/ficha', loadChildren: () => import('./fisioterapia/ficha/ficha.module').then( m => m.FichaPageModule) },
+
   //Educação Física
   { path: 'educacao-fisica/evolucao', loadChildren: () => import('./educacao-fisica/evolucao/evolucao.module').then( m => m.EvolucaoPageModule)},
   { path: 'educacao-fisica/ficha', loadChildren: () => import('./educacao-fisica/ficha/ficha.module').then( m => m.FichaPageModule)},
