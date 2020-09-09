@@ -211,7 +211,7 @@
 
       <ion-item *ngIf="form.get('realizou_cirurgia').value" no-line>
         <ion-label position="floating">Qual cirurgia?</ion-label>
-        <ion-input required formControlName="cirurgia" type="text"></ion-input>
+        <ion-input formControlName="cirurgia" type="text"></ion-input>
       </ion-item>
       
       <!-- OSTEOARTICULAR -->
@@ -222,7 +222,7 @@
 
       <ion-item *ngIf="form.get('tem_limitacao_osteoarticular').value" no-line>
         <ion-label position="floating">Qual limitação? </ion-label>
-        <ion-input required formControlName="limitacao_osteoarticular" type="text"></ion-input>
+        <ion-input formControlName="limitacao_osteoarticular" type="text"></ion-input>
       </ion-item>
       
       <!-- MUSCULOARTICULAR -->
@@ -233,7 +233,7 @@
 
       <ion-item *ngIf="form.get('tem_limitacao_musculoarticular').value" no-line>
         <ion-label position="floating">Qual limitação? </ion-label>
-        <ion-input required formControlName="limitacao_musculoarticular" type="text"></ion-input>
+        <ion-input formControlName="limitacao_musculoarticular" type="text"></ion-input>
       </ion-item>
 
       <!-- Exercio Mais Gosta -->

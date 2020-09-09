@@ -41,6 +41,13 @@ export class FichaPage extends FichaAvaliacaoModelo implements OnInit {
       'massa_corporal': [null],
       'imc': [null],
       'estatura': [null],
+      'perimetro_quadril': [null],
+      'circuferencia_antebraco': [null],
+      'circuferencia_panturrilha': [null],
+      'altura_joelho': [null],
+      'dobra_coxa': [null],
+      'mma': [null],
+      'imma': [null],
       
       //Força e Pressão Manual
       'preensao_manual1': [null],
