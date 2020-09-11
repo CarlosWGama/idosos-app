@@ -20,56 +20,469 @@
         Data da avaliação é obrigatório
       </ion-text>
     </ion-item>
-    
-    <!-- ====================== DADOS CLÍNICOS E ALIMENTAR ============================ -->
-    <ion-item-group>
-      <ion-item-divider>
-        <ion-label class='titulo-secao'>Dados Clínicos e Alimentas</ion-label>
-      </ion-item-divider>
-    
-      <!-- Saúde Gastrointestinal -->
-      <!-- <ion-item>
-        <ion-label position="floating">Saúde Gastrointestinal</ion-label>
-        <ion-select formControlName="saude_gastrointestinal" multiple="true" placeholder="Selecione e arrasta as opções" [disabled]="!acessoEdicao" >
-          <ion-select-option [value]="1">Azia</ion-select-option>
-          <ion-select-option [value]="2">Refluxo</ion-select-option>
-          <ion-select-option [value]="3">Distensão Abdominal</ion-select-option>
-          <ion-select-option [value]="4">Náuseas e Vômitos</ion-select-option>
-          <ion-select-option [value]="5">Constipação</ion-select-option>
-          <ion-select-option [value]="6">Diarréia</ion-select-option>
-          <ion-select-option [value]="7">Flatulência</ion-select-option>
-          <ion-select-option [value]="8">Mastigação inadequada</ion-select-option>
-          <ion-select-option [value]="9">Disfagia</ion-select-option>
-        </ion-select>
-      </ion-item> -->
-
-      <!-- Hábito intestinal Dia -->
-      <!-- <ion-item>
-        <ion-label>Hábito intestinal - Dia</ion-label>
-        <ion-input  class="ion-text-right" formControlName="habito_intestinal_dia" type="number" [disabled]="!acessoEdicao"></ion-input>
-      </ion-item> -->
-
-   
-    </ion-item-group>
-    
 
     <!-- DIAGNOSTICO -->
     <ion-item>
-      <ion-label position="floating">Diagnóstico nutricional</ion-label>
-      <ion-textarea placeholder="Digite seu diagnótisco" formControlName="diagnostico_fisioterapeutico"></ion-textarea>
+      <ion-label position="floating">Diagnóstico clínico</ion-label>
+      <ion-textarea placeholder="Digite seu diagnótisco" formControlName="diagnostico_clinico" [disabled]="!acessoEdicao"></ion-textarea>
+    </ion-item>
+
+    <!-- QUEIXAS PRINCIPAIS -->
+    <ion-item>
+      <ion-label position="floating">Queixas Principais</ion-label>
+      <ion-textarea placeholder="Digite a queixa do paciente" formControlName="queixas_principais" [disabled]="!acessoEdicao"></ion-textarea>
+    </ion-item>
+
+    <!-- ================== MINI-MENTAL TEST ============================= -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>Mini-Mental Test</ion-label>
+      </ion-item-divider>
+
+      <!-- CLOCK TASK -->
+      <ion-item>
+        <ion-label>Clock Task</ion-label>
+        <ion-input  class="ion-text-right" formControlName="clock_task" type="number" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+    
+      <!-- BARTHEL -->
+      <ion-item>
+        <ion-label>Barthel</ion-label>
+        <ion-input  class="ion-text-right" formControlName="barthel" type="number" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+    
+      <!-- PPT -->
+      <ion-item>
+        <ion-label>PPT</ion-label>
+        <ion-input  class="ion-text-right" formControlName="ppt" type="number" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+   
+    </ion-item-group>
+
+    <!-- ================== SINAIS VITAIS ============================= -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>Sinais Vitais</ion-label>
+      </ion-item-divider>
+
+      <!-- FC -->
+      <ion-item>
+        <ion-label>FC</ion-label>
+        <ion-input  class="ion-text-right" formControlName="fc" type="number" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+    
+      <!-- FR -->
+      <ion-item>
+        <ion-label>FR</ion-label>
+        <ion-input  class="ion-text-right" formControlName="fr" type="number" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+    
+      <!-- T -->
+      <ion-item>
+        <ion-label>T</ion-label>
+        <ion-input  class="ion-text-right" formControlName="t" type="number" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- PA -->
+      <ion-item>
+        <ion-label>PA</ion-label>
+        <ion-input  class="ion-text-right" mask="000/000" formControlName="pa" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+   
+    </ion-item-group>
+    
+    <!-- ====================== NIVEL DE CONSCIÊNCIA e ESTADO EMOCIONAL ============================ -->
+   
+    <!-- Nível de Consciência -->
+    <ion-item>
+      <ion-label position="floating">Nível de Consciência</ion-label>
+      <ion-select formControlName="nivel_consciencia" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+        <ion-select-option [value]="1">Lúcido-orientado </ion-select-option>
+        <ion-select-option [value]="2">Lúcido com momentos de desorientação </ion-select-option>
+        <ion-select-option [value]="3">Desorientado </ion-select-option>
+        <ion-select-option [value]="4">Inconsciente </ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <!-- ESTADO EMOCIONAL -->
+    <ion-item>
+      <ion-label position="floating">Estado Emocional</ion-label>
+      <ion-select formControlName="estado_mental" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+        <ion-select-option [value]="1">Calmo</ion-select-option>
+        <ion-select-option [value]="2">Agitado</ion-select-option>
+        <ion-select-option [value]="3">Depressivo</ion-select-option>
+        <ion-select-option [value]="4">Ansioso</ion-select-option>
+        <ion-select-option [value]="5">Agressivo</ion-select-option>
+      </ion-select>
+    </ion-item> 
+
+    <!-- ================== SISTEMA RESPIRATÓRIO ============================= -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>Sistema Respiratório</ion-label>
+      </ion-item-divider>
+
+      <!-- Sistema Respiratório -->
+      <ion-item>
+        <ion-label position="floating">Sistema Respiratório</ion-label>
+        <ion-select formControlName="sistema_respiratorio" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Ventilação espontânea</ion-select-option>
+          <ion-select-option [value]="2">Ventilação espontânea com suporte de O2 </ion-select-option>
+        </ion-select>
+      </ion-item> 
+
+      <!-- Ventilação espontânea com suporte de O2 -->
+      <ion-item *ngIf="form.get('sistema_respiratorio').value == 2">
+        <ion-label>Ventilação espontânea com suporte de O2 (Valor)</ion-label>
+        <ion-input  class="ion-text-right" formControlName="ventilado_suporte_o2" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- RITMO -->
+      <ion-item>
+        <ion-label position="floating">Ritmo</ion-label>
+        <ion-select formControlName="ritmo" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Regular</ion-select-option>
+          <ion-select-option [value]="2">Taquipnéia</ion-select-option>
+          <ion-select-option [value]="3">Bradipnéia</ion-select-option>
+          <ion-select-option [value]="4">Dispnéia</ion-select-option>
+        </ion-select>
+      </ion-item> 
+
+      <!-- Padrão Muscular Ventilatório -->
+      <ion-item>
+        <ion-label position="floating">Padrão Muscular Ventilatório</ion-label>
+        <ion-select formControlName="padrao_muscular_ventilatório" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Diafragmático</ion-select-option>
+          <ion-select-option [value]="2">Costo-diafragmático</ion-select-option>
+          <ion-select-option [value]="3">Intercostal</ion-select-option>
+          <ion-select-option [value]="4">Acessório</ion-select-option>
+          <ion-select-option [value]="5">Paradoxal</ion-select-option>
+        </ion-select>
+      </ion-item> 
+     
+      <!-- Expansibilidade Torácica  -->
+      <ion-item>
+        <ion-label position="floating">Expansibilidade Torácica </ion-label>
+        <ion-select formControlName="expansibilidade_toracica" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Normal</ion-select-option>
+          <ion-select-option [value]="2">Diminuída</ion-select-option>
+          <ion-select-option [value]="3">Assimétrica</ion-select-option>
+        </ion-select>
+      </ion-item> 
+
+      <!-- Expansibilidade Torácica Assimétrica -->
+      <ion-item *ngIf="form.get('expansibilidade_toracica').value == 3">
+        <ion-label>Expansibilidade Torácica Assimétrica (Valor)</ion-label>
+        <ion-input  class="ion-text-right" formControlName="ventilado_suporte_o2" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+     
+      <!-- Ausculta  -->
+      <ion-item>
+        <ion-label position="floating">Ausculta </ion-label>
+        <ion-select formControlName="ausculta" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">mvbd s/ra </ion-select-option>
+          <ion-select-option [value]="2">mv diminuído</ion-select-option>
+          <ion-select-option [value]="3">mv abolido</ion-select-option>
+        </ion-select>
+      </ion-item> 
+
+      <!-- mv diminuído -->
+      <ion-item *ngIf="form.get('expansibilidade_toracica').value == 2">
+        <ion-label>mv diminuído (Valor)</ion-label>
+        <ion-input  class="ion-text-right" formControlName="ausculta_mv_diminuido" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- mv abolido -->
+      <ion-item *ngIf="form.get('expansibilidade_toracica').value == 3">
+        <ion-label>mv abolido (Valor)</ion-label>
+        <ion-input  class="ion-text-right" formControlName="ausculta_mv_abolido" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Ruídos Adventícios  -->
+      <ion-item>
+        <ion-label position="floating">Ruídos Adventícios </ion-label>
+        <ion-select formControlName="ruidos_adventicios" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">crepitações</ion-select-option>
+          <ion-select-option [value]="2">roncos</ion-select-option>
+          <ion-select-option [value]="3">sibilos</ion-select-option>
+        </ion-select>
+      </ion-item> 
+
+      <!-- Tosse  -->
+      <ion-item>
+        <ion-label position="floating">Tosse</ion-label>
+        <ion-select formControlName="tosse" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Ausente </ion-select-option>
+          <ion-select-option [value]="2">Seca </ion-select-option>
+          <ion-select-option [value]="3">Úmida </ion-select-option>
+          <ion-select-option [value]="4">Produtiva  </ion-select-option>
+        </ion-select>
+      </ion-item> 
+
+      <!-- mv abolido -->
+      <ion-item>
+        <ion-label>Aspecto da secreção:</ion-label>
+        <ion-input  class="ion-text-right" formControlName="aspecto_secrecao" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+    
+    </ion-item-group>
+
+    <!-- ================== SISTEMA OSTEOMIOARTICULAR ============================= -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>Sistema Osteomioarticular</ion-label>
+      </ion-item-divider>
+
+      <!-- Sistema Osteomioarticular  -->
+      <ion-item>
+        <ion-label position="floating">Sistema Osteomioarticular</ion-label>
+        <ion-select formControlName="sistema_osteomioarticular" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Mov. Voluntário</ion-select-option>
+          <ion-select-option [value]="2">Mov. Involuntário</ion-select-option>
+          <ion-select-option [value]="3">Plegia</ion-select-option>
+          <ion-select-option [value]="4">Paresia</ion-select-option>
+        </ion-select>
+      </ion-item> 
+      
+      <!-- Sistema Osteomioarticular  -->
+      <ion-item>
+        <ion-label position="floating">Força Muscular</ion-label>
+        <ion-select formControlName="forca_muscular" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Normal</ion-select-option>
+          <ion-select-option [value]="2">Diminuída</ion-select-option>
+        </ion-select>
+      </ion-item> 
+
+      <!-- Tônus  -->
+      <ion-item>
+        <ion-label position="floating">Tônus</ion-label>
+        <ion-select formControlName="tonus" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">normal</ion-select-option>
+          <ion-select-option [value]="2">hipotônico</ion-select-option>
+          <ion-select-option [value]="3">hipertônico</ion-select-option>
+          <ion-select-option [value]="4">clônus</ion-select-option>
+        </ion-select>
+      </ion-item> 
+   
+    </ion-item-group>
+
+    <!-- ================== AMPLITUDE ARTICULAR ============================= -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>Amplitude Articular</ion-label>
+      </ion-item-divider>
+
+      <!-- NORMAL -->
+      <ion-item>
+        <ion-label>Normal</ion-label>
+        <ion-toggle slot="end" formControlName="amplitude_articular_normal" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <!-- DIMINUIDA -->
+      <ion-item>
+        <ion-label>Diminuída</ion-label>
+        <ion-toggle slot="end" formControlName="amplitude_articular_diminuida" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="form.get('amplitude_articular_diminuida').value" lines="none"> 
+        <ion-label>Valor: </ion-label>
+        <ion-input  class="ion-text-right" formControlName="amplitude_articular_diminuida_obs" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- LUXAÇÃO -->
+      <ion-item>
+        <ion-label>Luxação</ion-label>
+        <ion-toggle slot="end" formControlName="amplitude_articular_luxacao" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="form.get('amplitude_articular_luxacao').value" lines="none">
+        <ion-label>Valor:</ion-label>
+        <ion-input  class="ion-text-right" formControlName="amplitude_articular_luxacao_obs" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+      
+      <!-- RIGIDEZ -->
+      <ion-item>
+        <ion-label>Rigidez</ion-label>
+        <ion-toggle slot="end" formControlName="amplitude_articular_rigidez"  [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="form.get('amplitude_articular_rigidez').value" lines="none">
+        <ion-label>Valor:</ion-label>
+        <ion-input  class="ion-text-right" formControlName="amplitude_articular_rigidez_obs" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+      
+      <!-- FRATURA -->
+      <ion-item>
+        <ion-label>Fratura</ion-label>
+        <ion-toggle slot="end" formControlName="amplitude_articular_fratura"  [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="form.get('amplitude_articular_fratura').value" lines="none">
+        <ion-label>Valor:</ion-label>
+        <ion-input  class="ion-text-right" formControlName="amplitude_articular_fratura_obs" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Desvios Posturais -->
+      <ion-item>
+        <ion-label>Desvio Posturais</ion-label>
+        <ion-toggle slot="end" formControlName="amplitude_articular_desvio"  [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="form.get('amplitude_articular_desvio').value" lines="none">
+        <ion-label>Valor:</ion-label>
+        <ion-input  class="ion-text-right" formControlName="amplitude_articular_desvio_obs" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+     
+    </ion-item-group>
+
+    <!-- ================== DEAMBULAÇÃO ============================= -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>Deambulação</ion-label>
+      </ion-item-divider>
+
+      <!-- Deambulação  -->
+      <ion-item>
+        <ion-label position="floating">Deambulação</ion-label>
+        <ion-select formControlName="deambulacao" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Livre</ion-select-option>
+          <ion-select-option [value]="2">Bengala</ion-select-option>
+          <ion-select-option [value]="3">Andador</ion-select-option>
+          <ion-select-option [value]="4">Cadeira de Rodas</ion-select-option>
+          <ion-select-option [value]="5">Leito</ion-select-option>
+        </ion-select>
+      </ion-item> 
+
+      <!-- Marcha -->
+      <ion-item>
+        <ion-label>Marcha:</ion-label>
+        <ion-input class="ion-text-right" formControlName="marcha" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+      
+      <!-- Equilibrio/Coordenação  -->
+      <ion-item>
+        <ion-label position="floating">Equilibrio/Coordenação</ion-label>
+        <ion-select formControlName="equilibrio" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Normal</ion-select-option>
+          <ion-select-option [value]="2">Anormal</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Equilibrio Anomalia -->
+      <ion-item *ngIf="form.get('equilibrio').value == 2">
+        <ion-label>Equilibrio Anomalia (Observação):</ion-label>
+        <ion-input class="ion-text-right" formControlName="equilibrio_anormal" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Pele -->
+      <ion-item>
+        <ion-label>Pele:</ion-label>
+        <ion-input class="ion-text-right" formControlName="pele" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Edema Local -->
+      <ion-item>
+        <ion-label>Edema - Local:</ion-label>
+        <ion-input class="ion-text-right" formControlName="edema_local" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+      
+      <!-- Edema Tipo -->
+      <ion-item>
+        <ion-label>Edema - Tipo:</ion-label>
+        <ion-input class="ion-text-right" formControlName="edema_tipo" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Edema Grau -->
+      <ion-item>
+        <ion-label>Edema - Grau:</ion-label>
+        <ion-input class="ion-text-right" formControlName="edema_grau" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Sequelas -->
+      <ion-item>
+        <ion-label>Sequelas:</ion-label>
+        <ion-input class="ion-text-right" formControlName="sequelas" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Aparelho Digestório  -->
+      <ion-item>
+        <ion-label position="floating">Aparelho Digestório</ion-label>
+        <ion-select formControlName="aparelho_digestorio" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Continência</ion-select-option>
+          <ion-select-option [value]="2">Incontinência fecal</ion-select-option>
+          <ion-select-option [value]="3">Obstipação</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Aparelho Digestório Observação -->
+      <ion-item>
+        <ion-label class="ion-text-wrap" position="floating">Aparelho Digestório (Observação):</ion-label>
+        <ion-input class="ion-text-right" formControlName="aparelho_digestorio_observacao" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Abdomen  -->
+      <ion-item>
+        <ion-label position="floating">Abdomen</ion-label>
+        <ion-select formControlName="abdomen" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Normal</ion-select-option>
+          <ion-select-option [value]="2">Rígido</ion-select-option>
+          <ion-select-option [value]="3">Flácido</ion-select-option>
+          <ion-select-option [value]="4">Distendido</ion-select-option>
+          <ion-select-option [value]="5">Doloroso</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Abdomen (Observação) -->
+      <ion-item>
+        <ion-label>Abdomen (Observação):</ion-label>
+        <ion-input class="ion-text-right" formControlName="abdomen_observacao" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+     
+      <!-- Aparelho Genitourinario  -->
+      <ion-item>
+        <ion-label position="floating">Aparelho Genitourinario</ion-label>
+        <ion-select formControlName="aparelho_genitourinario" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="1">Continência</ion-select-option>
+          <ion-select-option [value]="2">Incontinência fecal</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Aparelho Genitourinario Observação -->
+      <ion-item lines="none">
+        <ion-label class="ion-text-wrap" position="floating">Aparelho Genitourinario (Observação):</ion-label>
+        <ion-input class="ion-text-right" formControlName="aparelho_genitourinario_observacao" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+       <!-- Aparelho Genitourinario -->
+       <ion-item>
+        <ion-label text-wrap>Função Sexual</ion-label>
+        <ion-toggle slot="end" formControlName="aparelho_genitourinario_funcao_sexual"  [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="form.get('aparelho_genitourinario_funcao_sexual').value" lines="none">
+        <ion-label position="floating">Função Sexual (Observação):</ion-label>
+        <ion-input  class="ion-text-right" formControlName="aparelho_genitourinario_funcao_sexual_observacao" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+    </ion-item-group>
+
+    <!-- DIAGNOSTICO -->
+    <ion-item>
+      <ion-label position="floating">Diagnóstico Fisioterapêutico</ion-label>
+      <ion-textarea placeholder="Digite seu diagnótisco" formControlName="diagnostico_fisioterapeutico" [disabled]="!acessoEdicao"></ion-textarea>
     </ion-item>
 
     <!-- OBJETIVOS -->
     <ion-item>
       <ion-label  position="floating">Objetivos</ion-label>
-      <ion-textarea placeholder="Digite seu objetivo" formControlName="objetivos"></ion-textarea>     
+      <ion-textarea placeholder="Digite seu objetivo" formControlName="objetivos" [disabled]="!acessoEdicao"></ion-textarea>     
     </ion-item>
 
 
     <!-- CONDUTA -->
     <ion-item>
       <ion-label position="floating">Conduta Nutricional</ion-label>
-      <ion-textarea placeholder="Digite sua conduta" formControlName="conduta"></ion-textarea>
+      <ion-textarea placeholder="Digite sua conduta" formControlName="conduta" [disabled]="!acessoEdicao"></ion-textarea>
     </ion-item>
 
     <ion-button block color="primary" expand="full" type="submit" *ngIf="acessoEdicao" [disabled]="form.invalid">
