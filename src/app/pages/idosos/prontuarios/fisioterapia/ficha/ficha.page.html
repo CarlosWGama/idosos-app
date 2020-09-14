@@ -133,7 +133,7 @@
 
       <!-- Ventilação espontânea com suporte de O2 -->
       <ion-item *ngIf="form.get('sistema_respiratorio').value == 2">
-        <ion-label>Ventilação espontânea com suporte de O2 (Valor)</ion-label>
+        <ion-label position="floating">Ventilação espontânea com suporte de O2 (Valor)</ion-label>
         <ion-input  class="ion-text-right" formControlName="ventilado_suporte_o2" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
@@ -370,7 +370,7 @@
 
       <!-- Equilibrio Anomalia -->
       <ion-item *ngIf="form.get('equilibrio').value == 2">
-        <ion-label>Equilibrio Anomalia (Observação):</ion-label>
+        <ion-label position="floating">Equilibrio Anomalia (Observação):</ion-label>
         <ion-input class="ion-text-right" formControlName="equilibrio_anormal" type="text" [disabled]="!acessoEdicao"></ion-input>
       </ion-item>
 
