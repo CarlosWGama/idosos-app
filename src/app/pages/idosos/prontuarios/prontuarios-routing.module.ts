@@ -24,6 +24,11 @@ const routes: Routes = [
   { path: 'fisioterapia/opcoes', loadChildren: () => import('./fisioterapia/opcoes/opcoes.module').then( m => m.OpcoesPageModule) },
   { path: 'fisioterapia/ficha', loadChildren: () => import('./fisioterapia/ficha/ficha.module').then( m => m.FichaPageModule) },
 
+  //Odontologia
+  { path: 'odontologia/opcoes', loadChildren: () => import('./odontologia/opcoes/opcoes.module').then( m => m.OpcoesPageModule) },
+  { path: 'odontologia/ficha', loadChildren: () => import('./odontologia/ficha/ficha.module').then( m => m.FichaPageModule) },
+  { path: 'odontologia/evolucao', loadChildren: () => import('./odontologia/evolucao/evolucao.module').then( m => m.EvolucaoPageModule) },
+  
   //Educação Física
   { path: 'educacao-fisica/evolucao', loadChildren: () => import('./educacao-fisica/evolucao/evolucao.module').then( m => m.EvolucaoPageModule)},
   { path: 'educacao-fisica/ficha', loadChildren: () => import('./educacao-fisica/ficha/ficha.module').then( m => m.FichaPageModule)},
