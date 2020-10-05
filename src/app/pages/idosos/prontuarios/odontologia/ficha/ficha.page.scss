@@ -1,0 +1,18 @@
+.separar-dentes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    ion-item {
+        width: 50%;
+    }
+}
+
+#detalhes-condicoes {
+    font-size: 20px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}

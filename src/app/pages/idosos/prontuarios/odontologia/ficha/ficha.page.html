@@ -1,9 +1,953 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>ficha</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="content-white">
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Ficha Avaliação</h1>
+  </div>
 
-<ion-content>
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    
+    
+    <!-- DATA DO PRONTUARIO -->
+    <ion-item>
+      <ion-label>Data da avaliação:<ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime display-format="DD/MM/YYYY" formControlName="data" cancelText="Cancelar" doneText="Ok"[disabled]="!acessoEdicao"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="form.get('data').invalid && form.get('data').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Data da avaliação é obrigatório
+      </ion-text>
+    </ion-item>
 
+    <!-- ================ 1.	ODONTOGRAMA ========================= -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>1. ODONTOGRAMA</ion-label>
+      </ion-item-divider>
+
+      <div class="separar-dentes">
+        <!-- 18 -->
+        <ion-item>
+          <ion-label position="floating">18</ion-label>
+          <ion-select formControlName="odontograma_18" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 28 -->
+        <ion-item>
+          <ion-label position="floating">28</ion-label>
+          <ion-select formControlName="odontograma_28" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 17 -->
+        <ion-item>
+          <ion-label position="floating">17</ion-label>
+          <ion-select formControlName="odontograma_17" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 27 -->
+        <ion-item>
+          <ion-label position="floating">27</ion-label>
+          <ion-select formControlName="odontograma_27" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 16 -->
+        <ion-item>
+          <ion-label position="floating">16</ion-label>
+          <ion-select formControlName="odontograma_16" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 26 -->
+        <ion-item>
+          <ion-label position="floating">26</ion-label>
+          <ion-select formControlName="odontograma_26" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 15 -->
+        <ion-item>
+          <ion-label position="floating">15</ion-label>
+          <ion-select formControlName="odontograma_15" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 25 -->
+        <ion-item>
+          <ion-label position="floating">25</ion-label>
+          <ion-select formControlName="odontograma_25" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 14 -->
+        <ion-item>
+          <ion-label position="floating">14</ion-label>
+          <ion-select formControlName="odontograma_14" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 24 -->
+        <ion-item>
+          <ion-label position="floating">24</ion-label>
+          <ion-select formControlName="odontograma_24" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 13 -->
+        <ion-item>
+          <ion-label position="floating">13</ion-label>
+          <ion-select formControlName="odontograma_13" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 23 -->
+        <ion-item>
+          <ion-label position="floating">23</ion-label>
+          <ion-select formControlName="odontograma_23" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 12 -->
+        <ion-item>
+          <ion-label position="floating">12</ion-label>
+          <ion-select formControlName="odontograma_12" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 22 -->
+        <ion-item>
+          <ion-label position="floating">22</ion-label>
+          <ion-select formControlName="odontograma_22" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 11 -->
+        <ion-item>
+          <ion-label position="floating">11</ion-label>
+          <ion-select formControlName="odontograma_11" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 21 -->
+        <ion-item>
+          <ion-label position="floating">21</ion-label>
+          <ion-select formControlName="odontograma_21" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 41 -->
+        <ion-item>
+          <ion-label position="floating">41</ion-label>
+          <ion-select formControlName="odontograma_41" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 31 -->
+        <ion-item>
+          <ion-label position="floating">31</ion-label>
+          <ion-select formControlName="odontograma_31" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 42 -->
+        <ion-item>
+          <ion-label position="floating">42</ion-label>
+          <ion-select formControlName="odontograma_42" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 32 -->
+        <ion-item>
+          <ion-label position="floating">32</ion-label>
+          <ion-select formControlName="odontograma_32" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 43 -->
+        <ion-item>
+          <ion-label position="floating">43</ion-label>
+          <ion-select formControlName="odontograma_43" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 33 -->
+        <ion-item>
+          <ion-label position="floating">33</ion-label>
+          <ion-select formControlName="odontograma_33" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 44 -->
+        <ion-item>
+          <ion-label position="floating">44</ion-label>
+          <ion-select formControlName="odontograma_44" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 34 -->
+        <ion-item>
+          <ion-label position="floating">34</ion-label>
+          <ion-select formControlName="odontograma_34" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 45 -->
+        <ion-item>
+          <ion-label position="floating">45</ion-label>
+          <ion-select formControlName="odontograma_45" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 35 -->
+        <ion-item>
+          <ion-label position="floating">35</ion-label>
+          <ion-select formControlName="odontograma_35" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 46 -->
+        <ion-item>
+          <ion-label position="floating">46</ion-label>
+          <ion-select formControlName="odontograma_46" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 36 -->
+        <ion-item>
+          <ion-label position="floating">36</ion-label>
+          <ion-select formControlName="odontograma_36" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 47 -->
+        <ion-item>
+          <ion-label position="floating">47</ion-label>
+          <ion-select formControlName="odontograma_47" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 37 -->
+        <ion-item>
+          <ion-label position="floating">37</ion-label>
+          <ion-select formControlName="odontograma_37" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 48 -->
+        <ion-item>
+          <ion-label position="floating">48</ion-label>
+          <ion-select formControlName="odontograma_48" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- 38 -->
+        <ion-item>
+          <ion-label position="floating">38</ion-label>
+          <ion-select formControlName="odontograma_38" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+            <ion-select-option [value]="0">---</ion-select-option>
+            <ion-select-option [value]="1">Cariado</ion-select-option>
+            <ion-select-option [value]="2">Mancha Branca ativa 	</ion-select-option>
+            <ion-select-option [value]="3">Mancha Branca Inativa 	</ion-select-option>
+            <ion-select-option [value]="4">Restaurado</ion-select-option>
+            <ion-select-option [value]="5">Extraído 	</ion-select-option>
+            <ion-select-option [value]="6">Hígido 	</ion-select-option>
+            <ion-select-option [value]="7">Ausente 	</ion-select-option>
+            <ion-select-option [value]="8">Extração Indicada 	</ion-select-option>
+            <ion-select-option [value]="9">Tratamento Pendente 	</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>      
+
+      <h1 id="detalhes-condicoes">DETALHAMENTO DESCRITIVO DAS CONDIÇÕES DENTAIS </h1>
+
+      <div class="separar-dentes">
+        <!-- 18 -->
+        <ion-item>
+          <ion-label position="floating">18</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_18"></ion-input>
+        </ion-item>
+        <!-- 28 -->
+        <ion-item>
+          <ion-label position="floating">28</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_28"></ion-input>
+        </ion-item>
+        <!-- 17 -->
+        <ion-item>
+          <ion-label position="floating">17</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_17"></ion-input>
+        </ion-item>
+        <!-- 27 -->
+        <ion-item>
+          <ion-label position="floating">27</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_27"></ion-input>
+        </ion-item>
+        <!-- 16 -->
+        <ion-item>
+          <ion-label position="floating">16</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_16"></ion-input>
+        </ion-item>
+        <!-- 26 -->
+        <ion-item>
+          <ion-label position="floating">26</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_26"></ion-input>
+        </ion-item>
+        <!-- 15 -->
+        <ion-item>
+          <ion-label position="floating">15</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_15"></ion-input>
+        </ion-item>
+        <!-- 25 -->
+        <ion-item>
+          <ion-label position="floating">25</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_25"></ion-input>
+        </ion-item>
+        <!-- 14 -->
+        <ion-item>
+          <ion-label position="floating">14</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_14"></ion-input>
+        </ion-item>
+        <!-- 24 -->
+        <ion-item>
+          <ion-label position="floating">24</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_24"></ion-input>
+        </ion-item>
+        <!-- 13 -->
+        <ion-item>
+          <ion-label position="floating">13</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_13"></ion-input>
+        </ion-item>
+        <!-- 23 -->
+        <ion-item>
+          <ion-label position="floating">23</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_23"></ion-input>
+        </ion-item>
+        <!-- 12 -->
+        <ion-item>
+          <ion-label position="floating">12</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_12"></ion-input>
+        </ion-item>
+        <!-- 22 -->
+        <ion-item>
+          <ion-label position="floating">22</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_22"></ion-input>
+        </ion-item>
+        <!-- 11 -->
+        <ion-item>
+          <ion-label position="floating">11</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_11"></ion-input>
+        </ion-item>
+        <!-- 21 -->
+        <ion-item>
+          <ion-label position="floating">21</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_21"></ion-input>
+        </ion-item>
+        <!-- 41 -->
+         <ion-item>
+          <ion-label position="floating">41</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_41"></ion-input>
+        </ion-item>
+        <!-- 31 -->
+        <ion-item>
+          <ion-label position="floating">31</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_31"></ion-input>
+        </ion-item>
+        <!-- 42 -->
+         <ion-item>
+          <ion-label position="floating">42</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_42"></ion-input>
+        </ion-item>
+        <!-- 32 -->
+        <ion-item>
+          <ion-label position="floating">32</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_32"></ion-input>
+        </ion-item>
+        <!-- 43 -->
+        <ion-item>
+          <ion-label position="floating">43</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_43"></ion-input>
+        </ion-item>
+        <!-- 33 -->
+        <ion-item>
+          <ion-label position="floating">33</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_33"></ion-input>
+        </ion-item>
+        <!-- 44 -->
+        <ion-item>
+          <ion-label position="floating">44</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_44"></ion-input>
+        </ion-item>
+        <!-- 34 -->
+        <ion-item>
+          <ion-label position="floating">34</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_34"></ion-input>
+        </ion-item>
+        <!-- 45 -->
+         <ion-item>
+          <ion-label position="floating">45</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_45"></ion-input>
+        </ion-item>
+        <!-- 35 -->
+        <ion-item>
+          <ion-label position="floating">35</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_35"></ion-input>
+        </ion-item>
+        <!-- 46 -->
+         <ion-item>
+          <ion-label position="floating">46</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_46"></ion-input>
+        </ion-item>
+        <!-- 36 -->
+        <ion-item>
+          <ion-label position="floating">36</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_36"></ion-input>
+        </ion-item>
+        <!-- 47 -->
+         <ion-item>
+          <ion-label position="floating">47</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_47"></ion-input>
+        </ion-item>
+        <!-- 37 -->
+        <ion-item>
+          <ion-label position="floating">37</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_37"></ion-input>
+        </ion-item>
+        <!-- 48 -->
+         <ion-item>
+          <ion-label position="floating">48</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_48"></ion-input>
+        </ion-item>
+        <!-- 38 -->
+        <ion-item>
+          <ion-label position="floating">38</ion-label>
+          <ion-input [disabled]="!acessoEdicao" formControlName="condicoes_dentais_38"></ion-input>
+        </ion-item>
+      </div>
+
+    </ion-item-group>
+
+    <!-- ============ 2.	AVALIAÇÃO DA CONDIÇÕES PERIODONTAIS/ DADOS DE SONDAGEM =============== -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>2. AVALIAÇÃO DA CONDIÇÕES PERIODONTAIS<br/> DADOS DE SONDAGEM</ion-label>
+      </ion-item-divider>
+
+      <div class="separar-dentes">
+        <!-- 18 -->
+        <ion-item>
+          <ion-label position="floating">18</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_18"></ion-input>
+        </ion-item>
+        <!-- 28 -->
+        <ion-item>
+          <ion-label position="floating">28</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_28"></ion-input>
+        </ion-item>
+        <!-- 17 -->
+        <ion-item>
+          <ion-label position="floating">17</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_17"></ion-input>
+        </ion-item>
+        <!-- 27 -->
+        <ion-item>
+          <ion-label position="floating">27</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_27"></ion-input>
+        </ion-item>
+        <!-- 16 -->
+        <ion-item>
+          <ion-label position="floating">16</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_16"></ion-input>
+        </ion-item>
+        <!-- 26 -->
+        <ion-item>
+          <ion-label position="floating">26</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_26"></ion-input>
+        </ion-item>
+        <!-- 15 -->
+        <ion-item>
+          <ion-label position="floating">15</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_15"></ion-input>
+        </ion-item>
+        <!-- 25 -->
+        <ion-item>
+          <ion-label position="floating">25</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_25"></ion-input>
+        </ion-item>
+        <!-- 14 -->
+        <ion-item>
+          <ion-label position="floating">14</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_14"></ion-input>
+        </ion-item>
+        <!-- 24 -->
+        <ion-item>
+          <ion-label position="floating">24</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_24"></ion-input>
+        </ion-item>
+        <!-- 13 -->
+        <ion-item>
+          <ion-label position="floating">13</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_13"></ion-input>
+        </ion-item>
+        <!-- 23 -->
+        <ion-item>
+          <ion-label position="floating">23</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_23"></ion-input>
+        </ion-item>
+        <!-- 12 -->
+        <ion-item>
+          <ion-label position="floating">12</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_12"></ion-input>
+        </ion-item>
+        <!-- 22 -->
+        <ion-item>
+          <ion-label position="floating">22</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_22"></ion-input>
+        </ion-item>
+        <!-- 11 -->
+        <ion-item>
+          <ion-label position="floating">11</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_11"></ion-input>
+        </ion-item>
+        <!-- 21 -->
+        <ion-item>
+          <ion-label position="floating">21</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_21"></ion-input>
+        </ion-item>
+        <!-- 41 -->
+         <ion-item>
+          <ion-label position="floating">41</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_41"></ion-input>
+        </ion-item>
+        <!-- 31 -->
+        <ion-item>
+          <ion-label position="floating">31</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_31"></ion-input>
+        </ion-item>
+        <!-- 42 -->
+         <ion-item>
+          <ion-label position="floating">42</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_42"></ion-input>
+        </ion-item>
+        <!-- 32 -->
+        <ion-item>
+          <ion-label position="floating">32</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_32"></ion-input>
+        </ion-item>
+        <!-- 43 -->
+        <ion-item>
+          <ion-label position="floating">43</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_43"></ion-input>
+        </ion-item>
+        <!-- 33 -->
+        <ion-item>
+          <ion-label position="floating">33</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_33"></ion-input>
+        </ion-item>
+        <!-- 44 -->
+        <ion-item>
+          <ion-label position="floating">44</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_44"></ion-input>
+        </ion-item>
+        <!-- 34 -->
+        <ion-item>
+          <ion-label position="floating">34</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_34"></ion-input>
+        </ion-item>
+        <!-- 45 -->
+         <ion-item>
+          <ion-label position="floating">45</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_45"></ion-input>
+        </ion-item>
+        <!-- 35 -->
+        <ion-item>
+          <ion-label position="floating">35</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_35"></ion-input>
+        </ion-item>
+        <!-- 46 -->
+         <ion-item>
+          <ion-label position="floating">46</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_46"></ion-input>
+        </ion-item>
+        <!-- 36 -->
+        <ion-item>
+          <ion-label position="floating">36</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_36"></ion-input>
+        </ion-item>
+        <!-- 47 -->
+         <ion-item>
+          <ion-label position="floating">47</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_47"></ion-input>
+        </ion-item>
+        <!-- 37 -->
+        <ion-item>
+          <ion-label position="floating">37</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_37"></ion-input>
+        </ion-item>
+        <!-- 48 -->
+         <ion-item>
+          <ion-label position="floating">48</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_48"></ion-input>
+        </ion-item>
+        <!-- 38 -->
+        <ion-item>
+          <ion-label position="floating">38</ion-label>
+          <ion-input [disabled]="!acessoEdicao" type="number" formControlName="avaliacao_periodontal_38"></ion-input>
+        </ion-item>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Condições de Higiene Oral e Observações Clínico Periodontais: </ion-label>
+        <ion-textarea placeholder="Digite sua conduta" formControlName="condicao_higiene_obs_periodontal" [disabled]="!acessoEdicao"></ion-textarea>
+      </ion-item>
+
+    </ion-item-group>
+   
+
+    <!-- =================== 3. TIPO DE PRÓTESE ============================ -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>3. TIPO DE PRÓTESE:</ion-label>
+      </ion-item-divider>
+
+      <!-- BUSCA ATIVA DE LESÕES -->
+      <ion-item>
+        <ion-label position="floating">Uso de prótese SUPERIOR </ion-label>
+        <ion-select formControlName="protese_superior" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="0">Não usa prótese dentaria	</ion-select-option>
+          <ion-select-option [value]="1">Usa uma prótese fixa	</ion-select-option>
+          <ion-select-option [value]="2">Usa mais do que uma ponte fixa	</ion-select-option>
+          <ion-select-option [value]="3">Usa prótese parcial removível 	</ion-select-option>
+          <ion-select-option [value]="4">Usa uma ou mais pontes fixas e uma ou mais ppr 	</ion-select-option>
+          <ion-select-option [value]="5">Usa prótese dentaria total 	</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- BUSCA ATIVA DE LESÕES -->
+      <ion-item>
+        <ion-label position="floating">Uso de prótese INFERIOR </ion-label>
+        <ion-select formControlName="protese_inferior" placeholder="Selecione e arrasta ver as opções" [disabled]="!acessoEdicao" >
+          <ion-select-option [value]="0">Não usa prótese dentaria	</ion-select-option>
+          <ion-select-option [value]="1">Usa uma prótese fixa	</ion-select-option>
+          <ion-select-option [value]="2">Usa mais do que uma ponte fixa	</ion-select-option>
+          <ion-select-option [value]="3">Usa prótese parcial removível 	</ion-select-option>
+          <ion-select-option [value]="4">Usa uma ou mais pontes fixas e uma ou mais ppr 	</ion-select-option>
+          <ion-select-option [value]="5">Usa prótese dentaria total 	</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-item-group>
+
+    <!-- ================== 4. PATOLOGIA BUCAL ===================== -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>4. PATOLOGIA BUCAL:</ion-label>
+      </ion-item-divider>
+
+      <!-- BUSCA ATIVA DE LESÕES -->
+      <ion-item>
+        <ion-label position="floating">Busca Ativa de Lesões</ion-label>
+        <ion-textarea placeholder="Digite seu diagnótisco" formControlName="busca_ativa_lesoes" [disabled]="!acessoEdicao"></ion-textarea>
+      </ion-item>
+
+      <!-- DESCRIÇÃO DA LESÃO -->
+      <ion-item>
+        <ion-label  position="floating">Descrição da Lesão</ion-label>
+        <ion-textarea placeholder="Digite seu objetivo" formControlName="descricao_lesao" [disabled]="!acessoEdicao"></ion-textarea>     
+      </ion-item>
+
+    </ion-item-group>
+
+    <!-- =================== 5. OBSERVAÇÃO ======================= -->
+    <ion-item>
+      <ion-label position="floating">5. OBSERVAÇÕES CLÍNICAS. </ion-label>
+      <ion-textarea placeholder="Digite sua conduta" formControlName="observacoes" [disabled]="!acessoEdicao"></ion-textarea>
+    </ion-item>
+
+    <ion-button block color="primary" expand="full" type="submit" *ngIf="acessoEdicao" [disabled]="form.invalid">
+      Salvar
+    </ion-button>
+  </form>
 </ion-content>
