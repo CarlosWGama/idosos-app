@@ -880,7 +880,7 @@
 
       <ion-item>
         <ion-label position="floating">Condições de Higiene Oral e Observações Clínico Periodontais: </ion-label>
-        <ion-textarea placeholder="Digite sua conduta" formControlName="condicao_higiene_obs_periodontal" [disabled]="!acessoEdicao"></ion-textarea>
+        <ion-textarea placeholder="Digite sobre as condições e observações periodontais" formControlName="condicao_higiene_obs_periodontal" [disabled]="!acessoEdicao"></ion-textarea>
       </ion-item>
 
     </ion-item-group>
@@ -929,13 +929,13 @@
       <!-- BUSCA ATIVA DE LESÕES -->
       <ion-item>
         <ion-label position="floating">Busca Ativa de Lesões</ion-label>
-        <ion-textarea placeholder="Digite seu diagnótisco" formControlName="busca_ativa_lesoes" [disabled]="!acessoEdicao"></ion-textarea>
+        <ion-textarea placeholder="Digite sobre busca ativa de lesões" formControlName="busca_ativa_lesoes" [disabled]="!acessoEdicao"></ion-textarea>
       </ion-item>
 
       <!-- DESCRIÇÃO DA LESÃO -->
       <ion-item>
         <ion-label  position="floating">Descrição da Lesão</ion-label>
-        <ion-textarea placeholder="Digite seu objetivo" formControlName="descricao_lesao" [disabled]="!acessoEdicao"></ion-textarea>     
+        <ion-textarea placeholder="Digite descrição da lesão" formControlName="descricao_lesao" [disabled]="!acessoEdicao"></ion-textarea>     
       </ion-item>
 
     </ion-item-group>
@@ -943,7 +943,7 @@
     <!-- =================== 5. OBSERVAÇÃO ======================= -->
     <ion-item>
       <ion-label position="floating">5. OBSERVAÇÕES CLÍNICAS. </ion-label>
-      <ion-textarea placeholder="Digite sua conduta" formControlName="observacoes" [disabled]="!acessoEdicao"></ion-textarea>
+      <ion-textarea placeholder="Digite suas observações clínicas" formControlName="observacoes" [disabled]="!acessoEdicao"></ion-textarea>
     </ion-item>
 
     <ion-button block color="primary" expand="full" type="submit" *ngIf="acessoEdicao" [disabled]="form.invalid">
