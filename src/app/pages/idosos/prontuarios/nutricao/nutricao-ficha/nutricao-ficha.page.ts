@@ -85,7 +85,7 @@ export class NutricaoFichaPage extends FichaAvaliacaoModelo implements OnInit {
       'pele_lesoes':[false],
       'pele_turgor':[false],
       'pele_prurido':[false],
-      'diagnostico_fisioterapeutico': [null],
+      'diagnostico': [null],
       'objetivos': [null],
       'conduta': [null]
     })
