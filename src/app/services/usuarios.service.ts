@@ -46,7 +46,8 @@ export class UsuariosService extends ApiService {
       new Profissao(2, 'Nutrição', 'nutricao'),
       new Profissao(3, 'Odontologia', 'odontologia'),
       new Profissao(4, 'Fisioterapia', 'fisioterapia'),
-      new Profissao(5, 'Educação Física', 'educacao-fisica')
+      new Profissao(5, 'Educação Física', 'educacao-fisica'),
+      new Profissao(6, 'Enfermagem', 'enfermagem'),
     ]
   }
 

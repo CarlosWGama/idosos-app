@@ -1,0 +1,193 @@
+<ion-content class="content-white">
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Ficha Avaliação</h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    
+    
+    <!-- DATA DO PRONTUARIO -->
+    <ion-item>
+      <ion-label text-wrap>Data da avaliação:<ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime display-format="DD/MM/YYYY" formControlName="data" cancelText="Cancelar" doneText="Ok"[disabled]="!acessoEdicao"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="form.get('data').invalid && form.get('data').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Data da avaliação é obrigatório
+      </ion-text>
+    </ion-item>
+    
+    <!-- ====================== GERAL ============================ -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>Geral</ion-label>
+      </ion-item-divider>
+
+      <!-- Estatura -->
+      <ion-item>
+        <ion-label text-wrap>Estatura (cm)</ion-label>
+        <ion-input  class="ion-text-right" formControlName="estatura" type="number" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- Perimetro Braiqual -->
+      <ion-item>
+        <ion-label text-wrap>Perimetro Braquial (cm)</ion-label>
+        <ion-input  class="ion-text-right" formControlName="perimetro_braquial" type="number" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- DEMÊNCIA -->
+      <ion-item>
+        <ion-label>Demência</ion-label>
+        <ion-toggle slot="end" formControlName="demencia" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+   
+      <!-- DEMÊNCIA - QUAL -->
+      <ion-item *ngIf="form.get('demencia').value">
+        <ion-label position="floating"><b>Demência - </b>Qual</ion-label>
+        <ion-input  class="ion-text-right" formControlName="demencia_qual" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+    </ion-item-group>
+
+    <!-- ====================== DESEMPENHO FUNCIONAL ============================ -->
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label class='titulo-secao'>Avaliação Multidimensional Rápida da Pessoa Idosa (alterado)</ion-label>
+      </ion-item-divider>
+
+      <!-- NUTRIÇÃO -->
+      <ion-item>
+        <ion-label>Nutrição (Alterado?)</ion-label>
+        <ion-toggle slot="end" formControlName="nutricao" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+    
+      <!-- NUTRIÇÃO - QUAL -->
+      <ion-item *ngIf="form.get('nutricao').value">
+        <ion-label position="floating"><b>Alteração - </b>Qual</ion-label>
+        <ion-input  class="ion-text-right" formControlName="nutricao_qual" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- VISÃO -->
+      <ion-item>
+        <ion-label>Visão (Alterado?)</ion-label>
+        <ion-toggle slot="end" formControlName="visao" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+    
+      <!-- VISÃO - QUAL -->
+      <ion-item *ngIf="form.get('visao').value">
+        <ion-label position="floating"><b>Alteração - </b>Qual</ion-label>
+        <ion-input  class="ion-text-right" formControlName="visao_qual" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+      
+      <!-- AUDIÇÃO -->
+      <ion-item>
+        <ion-label>Audição (Alterado?)</ion-label>
+        <ion-toggle slot="end" formControlName="audicao" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+    
+      <!-- AUDIÇÃO - QUAL -->
+      <ion-item *ngIf="form.get('audicao').value">
+        <ion-label position="floating"><b>Alteração - </b>Qual</ion-label>
+        <ion-input  class="ion-text-right" formControlName="audicao_qual" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+      
+      <!-- INCONTINÊNCIA -->
+      <ion-item>
+        <ion-label>Incontinência (Alterado?)</ion-label>
+        <ion-toggle slot="end" formControlName="incontinencia" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+    
+      <!-- INCONTINÊNCIA - QUAL -->
+      <ion-item *ngIf="form.get('incontinencia').value">
+        <ion-label position="floating"><b>Alteração - </b>Qual</ion-label>
+        <ion-input  class="ion-text-right" formControlName="incontinencia_qual" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- DEPRESSÃO -->
+      <ion-item>
+        <ion-label>Humor/Depressão (Alterado?)</ion-label>
+        <ion-toggle slot="end" formControlName="depressao" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+    
+      <!-- DEPRESSÃO - QUAL -->
+      <ion-item *ngIf="form.get('depressao').value">
+        <ion-label position="floating"><b>Alteração - </b>Qual</ion-label>
+        <ion-input  class="ion-text-right" formControlName="depressao_qual" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+      
+      <!-- DEPRESSÃO - DESDE QUANDO -->
+      <ion-item *ngIf="form.get('depressao').value">
+        <ion-label position="floating"><b>Alteração - </b>Desde quando</ion-label>
+        <ion-datetime display-format="DD/MM/YYYY" formControlName="depressao_data" cancelText="Cancelar" doneText="Ok" [disabled]="!acessoEdicao"></ion-datetime>
+      </ion-item>
+     
+      <!-- COGNIÇÃO -->
+      <ion-item>
+        <ion-label>Humor/Depressão (Alterado?)</ion-label>
+        <ion-toggle slot="end" formControlName="cognicao" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+    
+      <!-- COGNIÇÃO - QUAL -->
+      <ion-item *ngIf="form.get('cognicao').value">
+        <ion-label position="floating"><b>Alteração - </b>Qual</ion-label>
+        <ion-input  class="ion-text-right" formControlName="cognicao_qual" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+
+      <!-- MMSS -->
+      <ion-item>
+        <ion-label>MMSS (Alterado?)</ion-label>
+        <ion-toggle slot="end" formControlName="mmss" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+    
+      <!-- MMSS - QUAL -->
+      <ion-item *ngIf="form.get('mmss').value">
+        <ion-label position="floating"><b>Alteração - </b>Qual</ion-label>
+        <ion-input  class="ion-text-right" formControlName="mmss_qual" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+      
+      <!-- MMSS - DESDE QUANDO -->
+      <ion-item *ngIf="form.get('mmss').value">
+        <ion-label position="floating"><b>Alteração - </b>Desde quando</ion-label>
+        <ion-datetime display-format="DD/MM/YYYY" formControlName="mmss_data" cancelText="Cancelar" doneText="Ok"[disabled]="!acessoEdicao"></ion-datetime>
+      </ion-item>
+      
+      <!-- MMII -->
+      <ion-item>
+        <ion-label>MMII (Alterado?)</ion-label>
+        <ion-toggle slot="end" formControlName="mmii" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+    
+      <!-- MMII - QUAL -->
+      <ion-item *ngIf="form.get('mmii').value">
+        <ion-label position="floating"><b>Alteração - </b>Qual</ion-label>
+        <ion-input  class="ion-text-right" formControlName="mmii_qual" type="text" [disabled]="!acessoEdicao"></ion-input>
+      </ion-item>
+      
+      <!-- MMII - DESDE QUANDO -->
+      <ion-item *ngIf="form.get('mmii').value">
+        <ion-label position="floating"><b>Alteração - </b>Desde quando</ion-label>
+        <ion-datetime display-format="DD/MM/YYYY" formControlName="mmii_data" cancelText="Cancelar" doneText="Ok"[disabled]="!acessoEdicao"></ion-datetime>
+      </ion-item>
+
+      <!-- QUEDA -->
+      <ion-item>
+        <ion-label>Queda</ion-label>
+        <ion-toggle slot="end" formControlName="queda" [disabled]="!acessoEdicao"></ion-toggle>
+      </ion-item>
+      
+      <!-- QUEDA - DESDE QUANDO -->
+      <ion-item *ngIf="form.get('queda').value">
+        <ion-label position="floating"><b>Alteração - </b>Desde quando</ion-label>
+        <ion-datetime display-format="DD/MM/YYYY" formControlName="queda_data" cancelText="Cancelar" doneText="Ok"[disabled]="!acessoEdicao"></ion-datetime>
+      </ion-item>
+    
+    </ion-item-group>
+
+    <ion-button block color="primary" expand="full" type="submit" *ngIf="acessoEdicao" [disabled]="form.invalid">
+      Salvar
+    </ion-button>
+  </form>
+</ion-content>

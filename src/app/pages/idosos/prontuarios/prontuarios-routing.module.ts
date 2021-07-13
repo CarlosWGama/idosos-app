@@ -35,7 +35,13 @@ const routes: Routes = [
   { path: 'educacao-fisica/acompanhamento-lista', loadChildren: () => import('./educacao-fisica/acompanhamento-lista/acompanhamento-lista.module').then( m => m.AcompanhamentoListaPageModule)},
   { path: 'educacao-fisica/acompanhamento', loadChildren: () => import('./educacao-fisica/acompanhamento/acompanhamento.module').then( m => m.AcompanhamentoPageModule)},
   { path: 'educacao-fisica/opcoes', loadChildren: () => import('./educacao-fisica/opcoes/opcoes.module').then( m => m.OpcoesPageModule)},
-  
+
+   //Enfermagem
+   { path: 'enfermagem/evolucao', loadChildren: () => import('./enfermagem/evolucao/evolucao.module').then( m => m.EvolucaoPageModule)},
+   { path: 'enfermagem/ficha', loadChildren: () => import('./enfermagem/ficha/ficha.module').then( m => m.FichaPageModule)},
+   { path: 'enfermagem/consulta-clinica-lista', loadChildren: () => import('./enfermagem/consulta-clinica-lista/consulta-clinica-lista.module').then( m => m.ConsultaClinicaListaPageModule)},
+   { path: 'enfermagem/consulta-clinica', loadChildren: () => import('./enfermagem/consulta-clinica/consulta-clinica.module').then( m => m.ConsultaClinicaPageModule)},
+   { path: 'enfermagem/opcoes', loadChildren: () => import('./enfermagem/opcoes/opcoes.module').then( m => m.OpcoesPageModule)},  
 ];
 
 @NgModule({
