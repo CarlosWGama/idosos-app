@@ -29,6 +29,7 @@ export class MedicamentosVisualizarPage implements OnInit {
     let msg = `
       <b>Medicamento:</b> ${medicamento.descricao} <br/>
       <b>Tipo:</b> ${(medicamento.tipo == 1 ? 'Continuo' : 'Com duração')} <br/>
+      <b>Posologia:</b> ${(medicamento.posologia)} <br/>
       <b>Observação:</b> ${(medicamento.observacao)} 
     `;
     if (medicamento.tipo == 2)

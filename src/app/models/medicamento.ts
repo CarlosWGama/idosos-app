@@ -13,9 +13,10 @@ export class Medicamento {
      * @param tipo | 1 - Continuo | 2 - Por dias
      * @param duracao_dias | Duração em Dias
      * @param observacao | Informação
+     * @param posologia | Horarios
      */
     constructor(public id?:number, public descricao?:string, public paciente_id?: number, public area_id?: number, public tipo:number = 1, public ativo:boolean = true,
-            public duracao_dias?: number, public inicio?:string, public observacao?:string) {}
+            public duracao_dias?: number, public inicio?:string, public observacao?:string, public posologia?:string) {}
 
 
     get duracao() {

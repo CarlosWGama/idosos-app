@@ -54,6 +54,12 @@
 
     <!-- OBSERVAÇÃO -->
     <ion-item>
+      <ion-label position="floating">Posologia<ion-text color="danger">*</ion-text></ion-label>
+      <ion-textarea placeholder="Digite sua conduta" formControlName="posologia" [disabled]="!podeEditar"></ion-textarea>
+    </ion-item>
+
+    <!-- OBSERVAÇÃO -->
+    <ion-item>
       <ion-label position="floating">Observação<ion-text color="danger">*</ion-text></ion-label>
       <ion-textarea placeholder="Digite sua conduta" formControlName="observacao" [disabled]="!podeEditar"></ion-textarea>
     </ion-item>

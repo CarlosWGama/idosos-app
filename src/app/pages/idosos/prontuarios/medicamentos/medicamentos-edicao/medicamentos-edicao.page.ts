@@ -32,6 +32,7 @@ export class MedicamentosEdicaoPage implements OnInit {
       'tipo': [1, Validators.required],
       'duracao_dias': [0],
       'observacao': [''],
+      'posologia': [''],
     })
   }
 
