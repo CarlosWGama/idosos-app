@@ -46,6 +46,12 @@
       <ion-label>Tem cartão do SUS</ion-label>
       <ion-toggle slot="end" formControlName="cartao_sus"></ion-toggle>
     </ion-item>
+   
+    <!-- CARTÃO SUS - NÚMERO -->
+    <ion-item *ngIf="form.get('cartao_sus').value">
+      <ion-label position="floating"><b>Cartão do SUS - </b>Número</ion-label>
+      <ion-input  class="ion-text-right" formControlName="cartao_sus_numero" type="number"></ion-input>
+    </ion-item>
 
     <ion-item-group>
       <ion-item-divider>
@@ -144,6 +150,15 @@
         <ion-label class="titulo-secao">Capacidade Funcional</ion-label>
       </ion-item-divider>
       
+      <!-- BANHAR -->
+      <ion-item>
+        <ion-label position="floating">Acamado<ion-text color="danger">*</ion-text></ion-label>
+        <ion-select placeholder="Selecione a opção" formControlName="cf_acamado" required>
+          <ion-select-option [value]="0">Não</ion-select-option>
+          <ion-select-option [value]="1">Sim</ion-select-option>
+        </ion-select>
+      </ion-item>
+
       <!-- BANHAR -->
       <ion-item>
         <ion-label position="floating">Banhar-se<ion-text color="danger">*</ion-text></ion-label>
