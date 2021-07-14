@@ -36,12 +36,17 @@ const routes: Routes = [
   { path: 'educacao-fisica/acompanhamento', loadChildren: () => import('./educacao-fisica/acompanhamento/acompanhamento.module').then( m => m.AcompanhamentoPageModule)},
   { path: 'educacao-fisica/opcoes', loadChildren: () => import('./educacao-fisica/opcoes/opcoes.module').then( m => m.OpcoesPageModule)},
 
-   //Enfermagem
-   { path: 'enfermagem/evolucao', loadChildren: () => import('./enfermagem/evolucao/evolucao.module').then( m => m.EvolucaoPageModule)},
-   { path: 'enfermagem/ficha', loadChildren: () => import('./enfermagem/ficha/ficha.module').then( m => m.FichaPageModule)},
-   { path: 'enfermagem/consulta-clinica-lista', loadChildren: () => import('./enfermagem/consulta-clinica-lista/consulta-clinica-lista.module').then( m => m.ConsultaClinicaListaPageModule)},
-   { path: 'enfermagem/consulta-clinica', loadChildren: () => import('./enfermagem/consulta-clinica/consulta-clinica.module').then( m => m.ConsultaClinicaPageModule)},
-   { path: 'enfermagem/opcoes', loadChildren: () => import('./enfermagem/opcoes/opcoes.module').then( m => m.OpcoesPageModule)},  
+  //Enfermagem
+  { path: 'enfermagem/evolucao', loadChildren: () => import('./enfermagem/evolucao/evolucao.module').then( m => m.EvolucaoPageModule)},
+  { path: 'enfermagem/ficha', loadChildren: () => import('./enfermagem/ficha/ficha.module').then( m => m.FichaPageModule)},
+  { path: 'enfermagem/consulta-clinica-lista', loadChildren: () => import('./enfermagem/consulta-clinica-lista/consulta-clinica-lista.module').then( m => m.ConsultaClinicaListaPageModule)},
+  { path: 'enfermagem/consulta-clinica', loadChildren: () => import('./enfermagem/consulta-clinica/consulta-clinica.module').then( m => m.ConsultaClinicaPageModule)},
+  { path: 'enfermagem/opcoes', loadChildren: () => import('./enfermagem/opcoes/opcoes.module').then( m => m.OpcoesPageModule)},   
+  
+  //Exames Laboratoriais
+  { path: 'exames-laboratoriais/visualizar', loadChildren: () => import('./exames-laboratoriais/visualizar/visualizar.module').then( m => m.VisualizarPageModule)},
+  { path: 'exames-laboratoriais/listar', loadChildren: () => import('./exames-laboratoriais/listar/listar.module').then( m => m.ListarPageModule)},
+
 ];
 
 @NgModule({

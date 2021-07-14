@@ -1,0 +1,137 @@
+<ion-content class="content-white">
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Evolução</h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    
+    <!-- DATA DO PRONTUARIO -->
+    <ion-item>
+      <ion-label>Data da avaliação:<ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime display-format="DD/MM/YYYY" formControlName="data" cancelText="Cancelar" doneText="Ok"[disabled]="!acessoEdicao"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="form.get('data').invalid && form.get('data').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Data da consulta laboratórial é obrigatório
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>Glicemia de Jejum</ion-label>
+      <ion-input  class="ion-text-right" formControlName="glicemia_jejum" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>HGT</ion-label>
+      <ion-input  class="ion-text-right" formControlName="hgt" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>Hemoglobina glicosilada</ion-label>
+      <ion-input  class="ion-text-right" formControlName="hemoglobina_glicosilada" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>Colesterol tota</ion-label>
+      <ion-input  class="ion-text-right" formControlName="colesterol_total" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>HDL</ion-label>
+      <ion-input  class="ion-text-right" formControlName="hdl" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+   
+    <ion-item>
+      <ion-label text-wrap>LDL</ion-label>
+      <ion-input  class="ion-text-right" formControlName="ldl" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>Triglicerídeos</ion-label>
+      <ion-input  class="ion-text-right" formControlName="triglicerideos" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>Creatinina Sérica</ion-label>
+      <ion-input  class="ion-text-right" formControlName="creatinina_serica" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>Potássio sérico</ion-label>
+      <ion-input  class="ion-text-right" formControlName="potassio_serico" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>EQU - Infecção Urinária</ion-label>
+      <ion-input  class="ion-text-right" formControlName="equ_infecccao_urinaria" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>EQU - Proteinúria</ion-label>
+      <ion-input  class="ion-text-right" formControlName="equ_proteinuria" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>EQU - Corpos cetônicos</ion-label>
+      <ion-input  class="ion-text-right" formControlName="equ_corpos_cetonicos" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>EQU - Sedimento</ion-label>
+      <ion-input  class="ion-text-right" formControlName="equ_sedimento" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>Microalbuminúria</ion-label>
+      <ion-input  class="ion-text-right" formControlName="microalbuminuria" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>Proteinúria de 24h</ion-label>
+      <ion-input  class="ion-text-right" formControlName="proteinuria" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>TSH</ion-label>
+      <ion-input  class="ion-text-right" formControlName="tsh" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>ECG</ion-label>
+      <ion-input  class="ion-text-right" formControlName="ecg" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>Hematócrito</ion-label>
+      <ion-input  class="ion-text-right" formControlName="hematocrito" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>Hemoglobina</ion-label>
+      <ion-input  class="ion-text-right" formControlName="hemoglobina" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>VCM</ion-label>
+      <ion-input  class="ion-text-right" formControlName="vcm" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>CHCM</ion-label>
+      <ion-input  class="ion-text-right" formControlName="chcm" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label text-wrap>Plaquetas</ion-label>
+      <ion-input  class="ion-text-right" formControlName="plaquetas" type="number" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-button block color="primary" expand="full" type="submit" *ngIf="acessoEdicao" [disabled]="form.invalid">
+      Salvar
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-content class="content-white">
+  <div id="header2" class="header-medio">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Exames Laboratoriais</h1>
+  </div> 
+
+  <!-- BOTÂO   ADICIONAR NOVO MEDICAMENTO -->
+  <ion-fab vertical="top" horizontal="end" (click)="novo()" *ngIf="podeAdicionar">
+    <ion-fab-button color="light" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+
+  <ion-list>
+    <!-- exames -->
+    <ion-item-sliding #ionItemSliding *ngFor="let exame of exames">
+      <ion-item (click)="abrir(exame)">
+        <div class="exame">
+          <p class="numero">
+            <b>#{{exame.id}} </b> {{exame.data|dataBrasil}}
+          </p>
+          <p class="criador"><b>Criado Por:</b> {{exame.criador.nome}}</p>
+          <p *ngIf="exame.modificado_por != null" class="criador"><b>Modificado Por:</b> {{exame.modificado_por.nome}}</p>
+        </div>
+      </ion-item>
+  
+      <ion-item-options side="end" *ngIf="podeAprovar">
+        <ion-item-option color="danger" (click)="remover(exame)">Remover</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

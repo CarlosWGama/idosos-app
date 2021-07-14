@@ -17,15 +17,19 @@
     <ion-item button (click)="navegar('/prontuarios/dados-clinicos')">
       <ion-label>Dados Clínicos Gerais</ion-label>
     </ion-item>
-    <!-- DADOS CLINICOS-->
+    <!-- MEDICAMENTOS-->
     <ion-item button (click)="navegar('/prontuarios/medicamentos/visualizar')">
       <ion-label>Medicamentos e Suplementos</ion-label>
+    </ion-item>
+    <!-- EXAME S LABORATORIAIS-->
+    <ion-item button (click)="navegar('/prontuarios/exames-laboratoriais/listar')">
+      <ion-label>Exames Laboratóriais</ion-label>
     </ion-item>
     <!-- AREAS-->
     <ion-item button *ngFor="let area of areas" (click)="abrirArea(area)">
       <ion-label>{{area.nome}}</ion-label>
     </ion-item>
-    <!-- DADOS CLINICOS-->
+    <!-- NOTIFICIAR-->
     <ion-item button (click)="navegar('/prontuarios/notificar')" *ngIf="podeNotificar">
       <ion-label>Notificar grupo</ion-label>
     </ion-item>
