@@ -4,10 +4,10 @@
       <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
     </ion-buttons>
   
-    <h1>Teste de Acompanhamento</h1>
+    <h1>Consulta Clínica</h1>
   </div> 
 
-  <!-- BOTÂO   ADICIONAR NOVO ACOMPANHAMENTO -->
+  <!-- BOTÂO ADICIONAR CONSULTA -->
   <ion-fab vertical="top" horizontal="end" (click)="nova()" *ngIf="podeAdicionar">
     <ion-fab-button color="light" >
       <ion-icon name="add"></ion-icon>
@@ -16,28 +16,28 @@
   
 
   <ion-list>
-    <!-- ACOMPANHAMENTOS -->
-    <ion-item-sliding #ionItemSliding *ngFor="let acompanhamento of acompanhamentos">
-      <ion-item (click)="abrirAcompanhamento(acompanhamento)">
-        <div class="acompanhamento">
+    <!-- CONSULTAS -->
+    <ion-item-sliding #ionItemSliding *ngFor="let consulta of consultas">
+      <ion-item (click)="abrirConsulta(consulta)">
+        <div class="consulta">
           <p class="numero">
-            <b>#{{acompanhamento.id}} </b>
-            <ion-badge color="success" mode="ios" *ngIf="acompanhamento.aprovado">Aprovado</ion-badge>
-            <ion-badge color="warning" mode="ios" *ngIf="!acompanhamento.aprovado">Aguardando aprovação</ion-badge>
+            <b>#{{consulta.id}} </b>
+            <ion-badge color="success" mode="ios" *ngIf="consulta.aprovado">Aprovada</ion-badge>
+            <ion-badge color="warning" mode="ios" *ngIf="!consulta.aprovado">Aguardando aprovação</ion-badge>
           </p>
-          <p class="data"><b>Data:</b> {{acompanhamento.data|dataBrasil}}</p>
-          <p class="criador"><b>Por:</b> {{acompanhamento.usuario.nome}}</p>
+          <p class="data"><b>Data:</b> {{consulta.data|dataBrasil}}</p>
+          <p class="criador"><b>Por:</b> {{consulta.usuario.nome}}</p>
         </div>
       </ion-item>
   
       <ion-item-options side="end" *ngIf="podeAprovar">
-        <ion-item-option color="medium" *ngIf="acompanhamento.aprovado">Já aprovado</ion-item-option>
-        <ion-item-option color="success" (click)="aprovar(acompanhamento)" *ngIf="!acompanhamento.aprovado">Aprovar</ion-item-option>
+        <ion-item-option color="medium" *ngIf="consulta.aprovado">Já aprovada</ion-item-option>
+        <ion-item-option color="success" (click)="aprovar(consulta)" *ngIf="!consulta.aprovado">Aprovar</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
 
-  <ion-button (click)="buscarMais()" expand="block" shape="round" *ngIf="maisAcompanhamentos">
+  <ion-button (click)="buscarMais()" expand="block" shape="round" *ngIf="maisConsultas">
     Exibir mais evoluções
   </ion-button>
 

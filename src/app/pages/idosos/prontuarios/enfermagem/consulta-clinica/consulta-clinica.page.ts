@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import { Paciente } from '../../../../../models/paciente';
 import { Profissao } from '../../../../../models/profissao';
 import { Usuario } from '../../../../../models/usuario';
-import { EducacaoFisicaExtraService } from '../../../../../services/educacao-fisica-extra.service';
+import { EnfermagemExtraService } from '../../../../../services/enfermagem-extra.service';
 import { NavExtrasService } from '../../../../../services/nav-extras.service';
 import { UsuariosService } from '../../../../../services/usuarios.service';
 
@@ -20,65 +20,53 @@ export class ConsultaClinicaPage implements OnInit {
   form: FormGroup;
   usuario: Usuario;
   paciente:Paciente;
-  acompanhamento: any = {id:null};
+  consulta: any = {id:null};
   acessoEdicao: boolean = true;
   protected id: number = null;
     
   constructor(protected formBuilder: FormBuilder, protected location: Location, protected toastCtrl: ToastController, protected loadingCtrl:LoadingController,
-      protected navExtra: NavExtrasService, protected usuarioSrv: UsuariosService, protected educacaoFisicaSrv: EducacaoFisicaExtraService) { }
+      protected navExtra: NavExtrasService, protected usuarioSrv: UsuariosService, protected enfermagemSrv: EnfermagemExtraService) { }
 
   async ngOnInit() {
     this.form = this.formBuilder.group({
       'id': null,
       'data': [moment().format('YYYY-MM-DD'), Validators.required],
       
-      //Teste de Acompanhamento
-      //Desempenho Funcional
-      'sentar_cadeira': [null],
-      'flexao_cotovelo': [null],
-      'sentar_pes': [null],
-      'timed_up_go': [null],
-      'costas_maos': [null],
-      'caminhada': [null],
-      
-      //Antropometria
-      'massa_corporal': [null],
+      //Consulta Clinica
+      'pressao_arterial': [null],
+      'peso': [null],
       'imc': [null],
-      'estatura': [null],
-      'perimetro_quadril': [null],
-      'circuferencia_antebraco': [null],
-      'circuferencia_panturrilha': [null],
-      'altura_joelho': [null],
-      'dobra_coxa': [null],
-      'mma': [null],
-      'imma': [null],
       
-      //Força e Pressão Manual
-      'preensao_manual1': [null],
-      'preensao_manual2': [null],
-      'preensao_manual3': [null],
+      'framingham': [null],
+      'lesoes_orgao_alvo': [null],
+
+      'alteracao_pes': [false],
+      'alteracao_pes_qual': [null],
       
-      //Hemodinâmica
-      'pas': [null],
-      'pad': [null],
-      'fc': [null],
-      'conduta': [null]
+      'alteracao_fisico': [false],
+      'alteracao_fisico_qual': [null],
+    
+      'fragilidade': [false],
+      'fragilidade_qual': [null],
+      
+      'orientacao_nutricional': [false],
+      'orientacao_atividade_fisica': [false],
     })
 
     this.paciente = this.navExtra.get('paciente', new Paciente(), false);
-    this.acompanhamento = this.navExtra.get('acompanhamento', {id: null});
+    this.consulta = this.navExtra.get('consulta', {id: null});
     this.usuario = this.usuarioSrv.usuarioLogado;
   }
 
   /** Realiza a busca das informações do prontuário */
   async ionViewDidEnter() {
     //Ficha de Avaliação
-    if (this.acompanhamento.id == null)
+    if (this.consulta.id == null)
       this.podeEditar(null); //Verifica quem pode editar
     else
-      this.podeEditar(this.acompanhamento.usuario_id); //Verifica quem pode editar
+      this.podeEditar(this.consulta.usuario_id); //Verifica quem pode editar
     
-    this.form.patchValue(this.acompanhamento);
+    this.form.patchValue(this.consulta);
   }
 
   /** Avalia de o usuário pode editar o campo */
@@ -94,15 +82,15 @@ export class ConsultaClinicaPage implements OnInit {
     const loading = await this.loadingCtrl.create({message:'Salvando', backdropDismiss: false});
     loading.present();
     
-    let dados = Object.assign(this.acompanhamento, this.form.value);
+    let dados = Object.assign(this.consulta, this.form.value);
     dados.paciente_id = this.paciente.id;
     dados.usuario_id = this.usuario.id;
     
     let retorno;
-    if (this.acompanhamento.id == null)
-      retorno = await this.educacaoFisicaSrv.cadastrarAcompanhamento(dados);
+    if (this.consulta.id == null)
+      retorno = await this.enfermagemSrv.cadastrarConsulta(dados);
     else
-      retorno = await this.educacaoFisicaSrv.atualizarAcompanhamento(dados);
+      retorno = await this.enfermagemSrv.cadastrarConsulta(dados);
     loading.dismiss();
 
     if (retorno.sucesso) {

@@ -4,7 +4,7 @@ import { AlertController, IonItemSliding, LoadingController, ToastController } f
 import { Paciente } from '../../../../../models/paciente';
 import { Profissao } from '../../../../../models/profissao';
 import { Usuario } from '../../../../../models/usuario';
-import { EducacaoFisicaExtraService } from '../../../../../services/educacao-fisica-extra.service';
+import { EnfermagemExtraService } from '../../../../../services/enfermagem-extra.service';
 import { NavExtrasService } from '../../../../../services/nav-extras.service';
 import { UsuariosService } from '../../../../../services/usuarios.service';
 
@@ -18,19 +18,19 @@ export class ConsultaClinicaListaPage implements OnInit {
   area: Profissao;
   paciente: Paciente;
   podeAdicionar: boolean;
-  acompanhamentos: any[] = [];
+  consultas: any[] = [];
   usuario: Usuario = new Usuario();
   @ViewChild('ionItemSliding', {static: false})
   ionItemSliding: IonItemSliding;
   podeAprovar = false;
-  maisAcompanhamentos = true;
+  maisConsultas = true;
 
   inicio = 0;
   limite = 10;
 
   constructor(private router:Router,
              private navExtra:NavExtrasService, 
-             private educacaoFisicaSrv:EducacaoFisicaExtraService,
+             private enfermagemSrv:EnfermagemExtraService,
              private usuarioSrv: UsuariosService, 
              private toastController: ToastController,
              private loadingController: LoadingController,
@@ -46,49 +46,49 @@ export class ConsultaClinicaListaPage implements OnInit {
   
   async ionViewDidEnter() {
     this.buscarMais();
-    console.log(this.acompanhamentos);
+    console.log(this.consultas);
   }
 
-  /** Busca mais evoluções */
+  /** Busca mais consultas */
   async buscarMais() {
     const loading = await this.loadingController.create({message: 'Buscando', backdropDismiss: false});
     loading.present();
-    const novas = await this.educacaoFisicaSrv.acompanhamentos(this.paciente.id, this.inicio, this.limite)
+    const novas = await this.enfermagemSrv.consultas(this.paciente.id, this.inicio, this.limite)
     loading.dismiss();
     
-    //Pode ter mais evoluções
-    this.maisAcompanhamentos = novas.length == this.limite;
+    //Pode ter mais consultas
+    this.maisConsultas = novas.length == this.limite;
 
-    //Encontrou mais evoluções
+    //Encontrou mais consultas
     if (novas.length > 0) {
       this.inicio += this.limite;
-      this.acompanhamentos = this.acompanhamentos.concat(novas);
+      this.consultas = this.consultas.concat(novas);
     } else {
-      const toast = await this.toastController.create({message: 'Não há mais testes de acompanhamentos', duration: 2000});
+      const toast = await this.toastController.create({message: 'Não há mais consultas', duration: 2000});
       toast.present();
     }
   }
 
-  /** Adiciona uma nova evolução */
+  /** Adiciona uma nova consulta */
   nova() {
-    this.router.navigateByUrl(`/prontuarios/${this.area.url}/acompanhamento`);
+    this.router.navigateByUrl(`/prontuarios/${this.area.url}/consulta-clinica`);
   }
   
   /** Abre uma evoluação */
-  abrirAcompanhamento(acompanhamento) {
-    this.navExtra.set('acompanhamento', acompanhamento);
-    this.router.navigateByUrl(`/prontuarios/${this.area.url}/acompanhamento`);
+  abrirConsulta(consulta) {
+    this.navExtra.set('consulta', consulta);
+    this.router.navigateByUrl(`/prontuarios/${this.area.url}/consulta-clinica`);
   }
 
   /** Aprova uma evolução */
   async aprovar(prontuario) {
     this.alertController.create({
-      header: 'Aprovar prontuário #'+prontuario.id,
-      message: 'Deseja aprovar esse prontuário?',
+      header: 'Aprovar consulta clínica #'+prontuario.id,
+      message: 'Deseja aprovar essa consulta?',
       buttons: [
         'Cancelar',
         {text:'Confirmar', handler: async() => {
-          const resultado = await this.educacaoFisicaSrv.aprovaAcompanhamento(prontuario.id);
+          const resultado = await this.enfermagemSrv.aprovaConsulta(prontuario.id);
           if (resultado.sucesso) {
             prontuario.aprovado = true;
             this.toastController.create({message:'Operação realizada com sucesso', duration: 3000}).then(t=>t.present());
