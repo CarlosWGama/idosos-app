@@ -1,0 +1,18 @@
+Medicamento
+--- Nome (Texto)
+--- Dosagem/(Placeholder ml ou g) (Texto)
+--- Formas Farmacéuticas (Liquido, Comprimido, Capsula, Pomada, Injetável)
+--- Validade (Data)
+--- Quantidade (Entrada)
+--- Saída (Quando já saiu)
+--- Restante no estoque (O que sobrou)
+
+
+Materiais
+---- Nome
+---- Quantidade
+---- Saída
+---- Restante
+
+
+ILPI
