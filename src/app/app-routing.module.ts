@@ -23,7 +23,9 @@ const routes: Routes = [
     { path: '', canActivate:[ProfessorGuard], children: [
       { path: 'alunos', loadChildren: () => import('./pages/alunos/alunos.module').then( m => m.AlunosPageModule)},
     ]},
-  ]}
+    //Controle de Estoque
+    { path: 'estoques', loadChildren: () => import('./pages/estoques/estoques.module').then( m => m.EstoquesPageModule) }
+  ]},
 ];
 
 @NgModule({

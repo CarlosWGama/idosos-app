@@ -1,0 +1,20 @@
+<ion-content>
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Estoques</h1>
+  </div> 
+
+  <ion-list>
+    <!-- REMÉDIOS -->
+    <ion-item button  routerLink="/estoques/remedios/listar">
+      <ion-label>Remédios/Suplementos</ion-label>
+    </ion-item>
+    <!-- MATERIAIS -->
+    <ion-item button routerLink="/estoques/materiais/listar">
+      <ion-label>Materiais</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
