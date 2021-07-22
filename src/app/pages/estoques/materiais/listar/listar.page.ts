@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModeloEstoqueListarPage } from '../../estoques-listar';
+import { ModeloEstoqueListarPage } from '../../modelo-estoques-listar';
 
 @Component({
   selector: 'app-listar',
@@ -10,7 +10,7 @@ export class ListarPage extends ModeloEstoqueListarPage implements OnInit {
 
   async ngOnInit() {
     this.tipoProduto = 'materiais';
-    this.ngOnInit();
+    await super.ngOnInit();
   }
 
 }

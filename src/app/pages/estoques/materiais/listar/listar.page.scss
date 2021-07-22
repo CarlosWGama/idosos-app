@@ -1,0 +1,17 @@
+#header2 h1 {
+    font-size: 25px;
+}
+
+#produtos {
+
+    .produto {
+        display:flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+
+        b {
+            margin-bottom: -5px;
+        }
+    }
+}

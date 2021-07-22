@@ -13,7 +13,7 @@ export class EstoqueExtraService extends ApiService {
    * @param limite -> Quantos valores deve retornar
    */
   public async buscar(url: 'remedios'|'materiais' = 'remedios', inicio: number = 0, limite: number = 10): Promise<any[]> {
-    return this.get(`/estoques/${url}/${inicio}/${limite}`, true).then(resposta => {
+    return this.get(`/estoque/${url}/${inicio}/${limite}`, true).then(resposta => {
       return resposta.produtos;
     }).catch(erro => []);
   }
@@ -24,7 +24,7 @@ export class EstoqueExtraService extends ApiService {
    */
   public async cadastrar(dados: any, url: 'remedios'|'materiais' = 'remedios'): Promise<{sucesso:boolean, error?:string}> {
     console.log(dados)
-    return this.post(`/estoques/${url}`, {dados}, true).then(resposta => { return {sucesso: true} })
+    return this.post(`/estoque/${url}`, {dados}, true).then(resposta => { return {sucesso: true} })
       .catch(erro => {
       return {sucesso: false, error:Object.values(erro.error).join(',')}
     })
@@ -34,8 +34,8 @@ export class EstoqueExtraService extends ApiService {
    * @param dados -> Dados do produto
    * @param url -> Url base que será usado par ao servidor (materiais ou remedios)
    */
-  public async atualizarConsulta(dados: any, url: 'remedios'|'materiais' = 'remedios'): Promise<{sucesso:boolean, error?:string}> {
-    return this.put(`/estoques/${url}/${dados.id}`, {dados}, true).then(resposta => { return {sucesso: true} })
+  public async atualizar(dados: any, url: 'remedios'|'materiais' = 'remedios'): Promise<{sucesso:boolean, error?:string}> {
+    return this.put(`/estoque/${url}/${dados.id}`, {dados}, true).then(resposta => { return {sucesso: true} })
       .catch(erro => {
       return {sucesso: false, error:Object.values(erro.error).join(',')}
     })
@@ -46,8 +46,8 @@ export class EstoqueExtraService extends ApiService {
    * @param produtoID number
    * @param url -> Url base que será usado par ao servidor (da materia sou métodos)
    */
-  public async aprovaConsulta(produtoID: number, url: 'remedios'|'materiais' = 'remedios'): Promise<{sucesso:boolean, error?:string}> {
-    return this.delete(`/estoques/${url}/${produtoID}`, true).then(resposta => { return {sucesso: true} })
+  public async remover(produtoID: number, url: 'remedios'|'materiais' = 'remedios'): Promise<{sucesso:boolean, error?:string}> {
+    return this.delete(`/estoque/${url}/${produtoID}`, true).then(resposta => { return {sucesso: true} })
       .catch(erro => {
       return {sucesso: false, error:Object.values(erro.error).join(',')}
     })

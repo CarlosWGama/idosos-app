@@ -1,9 +1,46 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>visualizar</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="content-white">
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Material</h1>
+  </div>
 
-<ion-content>
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    
+    <!-- PRODUTO -->
+    <ion-item>
+      <ion-label>Nome do Produto:</ion-label>
+      <ion-input type="text" placeholder="Nome do produto" formControlName="nome" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="form.get('nome').invalid && form.get('nome').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Nome do produto é obrigatório
+      </ion-text>
+    </ion-item>
 
+    <!-- QUANTIDADE -->
+    <ion-item>
+      <ion-label>Quantidade:</ion-label>
+      <ion-input type="number" placeholder="quantidade de entrada" formControlName="quantidade" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <!-- SAIDA -->
+    <ion-item>
+      <ion-label>Saída:</ion-label>
+      <ion-input type="number" placeholder="quantidade de saída" formControlName="saida" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="form.get('quantidade').value && form.get('saida').value">
+      <ion-text [color]="form.get('quantidade').value - form.get('saida').value < 0 ? 'danger' : 'primary'">
+        <h3><b>Estoque:</b> {{form.get('quantidade').value - form.get('saida').value}}</h3>
+      </ion-text>
+    </ion-item>
+
+    
+    <ion-button block color="primary" expand="full" type="submit" *ngIf="acessoEdicao" [disabled]="form.invalid">
+      Salvar
+    </ion-button>
+  </form>
 </ion-content>

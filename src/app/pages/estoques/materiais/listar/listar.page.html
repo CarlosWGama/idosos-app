@@ -1,9 +1,39 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>listar</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="content-white">
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/estoques"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Materiais</h1>
+  </div> 
 
-<ion-content>
+  <!-- BOTÂO   ADICIONAR NOVO PRODUTO -->
+  <ion-fab vertical="top" horizontal="end" (click)="nova()" *ngIf="podeEditar">
+    <ion-fab-button color="light" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
 
-</ion-content>
+  <ion-list id="produtos">
+    <!-- PRODUTOS -->
+    <ion-item-sliding #ionItemSliding *ngFor="let produto of produtos">
+      <ion-item (click)="abrir(produto)"  >
+          <div class="produto">
+            <b>{{produto.nome}} </b>
+            <span *ngIf="produto.quantidade && produto.saida">Estoque ({{produto.quantidade - produto.saida}})</span>
+          </div>
+          
+      </ion-item>
+  
+      <ion-item-options side="end" *ngIf="podeEditar">
+        <ion-item-option color="danger" (click)="remover(produto)" *ngIf="!produto.aprovado">Remover</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-button (click)="buscarMais()" expand="block" shape="round" *ngIf="maisProdutos">
+    Exibir mais produtos
+  </ion-button>
+
+  </ion-content>

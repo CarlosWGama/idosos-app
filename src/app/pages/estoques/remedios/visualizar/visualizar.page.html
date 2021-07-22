@@ -1,9 +1,75 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>visualizar</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="content-white">
+  <div id="header2" class="header-pequeno">
+    <ion-buttons slot="start" id="btn-voltar">
+      <ion-back-button defaultHref="/home"></ion-back-button> VOLTAR
+    </ion-buttons>
+  
+    <h1>Remédio/Suplemento</h1>
+  </div>
 
-<ion-content>
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    
+    <!-- PRODUTO -->
+    <ion-item>
+      <ion-label>Nome do Produto:</ion-label>
+      <ion-input type="text" placeholder="Nome do produto" formControlName="nome" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="form.get('nome').invalid && form.get('nome').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Nome do produto é obrigatório
+      </ion-text>
+    </ion-item>
 
+      <!-- FORMAS FARMACEÚTICAS -->
+    <ion-item>
+      <ion-label position="floating">Forma Farmaceútica</ion-label>
+      <ion-select placeholder="Selecione a forma farmaceútica" formControlName="forma_farmaceutica">
+        <ion-select-option [value]="1">Líquido</ion-select-option>
+        <ion-select-option [value]="2">Comprimido</ion-select-option>
+        <ion-select-option [value]="3">Cápsula</ion-select-option>
+        <ion-select-option [value]="4">Pomada</ion-select-option>
+        <ion-select-option [value]="5">Injetável</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="form.get('forma_farmaceutica').invalid && form.get('forma_farmaceutica').touched" lines="none">
+      <ion-text color="danger" class="form-error">
+        Forma Farmaceútica é obrigatória
+      </ion-text>
+    </ion-item>
+
+    <!-- DOSAGEM -->
+    <ion-item>
+      <ion-label>Dosagem:</ion-label>
+      <ion-input type="text" placeholder="Exemplo - 3 gotas" formControlName="dosagem" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <!-- VALIDADE -->
+    <ion-item>
+      <ion-label>Validade:</ion-label>
+      <ion-datetime display-format="DD/MM/YYYY" max="2099-12-31" formControlName="validade" cancelText="Cancelar" doneText="Ok"[disabled]="!acessoEdicao"></ion-datetime>
+    </ion-item>
+
+    <!-- QUANTIDADE -->
+    <ion-item>
+      <ion-label>Quantidade:</ion-label>
+      <ion-input type="number" placeholder="quantidade de entrada" formControlName="quantidade" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <!-- SAIDA -->
+    <ion-item>
+      <ion-label>Saída:</ion-label>
+      <ion-input type="number" placeholder="quantidade de saída" formControlName="saida" [disabled]="!acessoEdicao"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="form.get('quantidade').value && form.get('saida').value">
+      <ion-text [color]="form.get('quantidade').value - form.get('saida').value < 0 ? 'danger' : 'primary'">
+        <h3><b>Estoque:</b> {{form.get('quantidade').value - form.get('saida').value}}</h3>
+      </ion-text>
+    </ion-item>
+
+    
+    <ion-button block color="primary" expand="full" type="submit" *ngIf="acessoEdicao" [disabled]="form.invalid">
+      Salvar
+    </ion-button>
+  </form>
 </ion-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Injectable, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, IonItemSliding, LoadingController, ToastController } from '@ionic/angular';
 import { Usuario } from '../../models/usuario';
@@ -6,11 +6,12 @@ import { EstoqueExtraService } from '../../services/estoque-extra.service';
 import { NavExtrasService } from '../../services/nav-extras.service';
 import { UsuariosService } from '../../services/usuarios.service';
 
+@Injectable()
 export abstract class ModeloEstoqueListarPage implements OnInit {
 
   farmaciaID: number = 7;
   tipoProduto: 'remedios'|'materiais' = 'remedios';
-  podeAdicionar: boolean;
+  podeEditar: boolean;
   produtos: any[] = [];
   usuario: Usuario = new Usuario();
   @ViewChild('ionItemSliding', {static: false})
@@ -29,8 +30,10 @@ export abstract class ModeloEstoqueListarPage implements OnInit {
     protected alertController: AlertController) { }
 
   async ngOnInit() {
+    await this.usuarioSrv.initialize();
     this.usuario = this.usuarioSrv.usuarioLogado;
-    this.podeAdicionar = (this.usuario.profissao_id == this.farmaciaID); //Apenas profissionais da area podem adicionar novos produtos
+    this.podeEditar = (this.usuario.profissao_id == this.farmaciaID); //Apenas profissionais da area podem adicionar novos produtos
+    console.log('Pode editar:', this.podeEditar)
   }
   
   async ionViewDidEnter() {
@@ -53,7 +56,7 @@ export abstract class ModeloEstoqueListarPage implements OnInit {
       this.inicio += this.limite;
       this.produtos = this.produtos.concat(novas);
     } else {
-      const toast = await this.toastController.create({message: 'Não há mais testes de acompanhamentos', duration: 2000});
+      const toast = await this.toastController.create({message: 'Não há mais produto', duration: 2000});
       toast.present();
     }
   }
@@ -67,5 +70,29 @@ export abstract class ModeloEstoqueListarPage implements OnInit {
   abrir(produto) {
     this.navExtra.set('produto', produto);
     this.router.navigateByUrl(`/estoques/${this.tipoProduto}/visualizar`);
+  }
+
+  // Remove um produto
+  async remover(produto) {
+    this.alertController.create({
+      message: `Deseja realmente remover o remédio ${produto.nome}?`,
+      buttons: [
+        {text:'Cancelar'},
+        {text:'Confirmar', handler: async () => {
+          const resultado = await this.estoqueSrv.remover(produto.id, this.tipoProduto);
+          if (resultado.sucesso) {
+            this.toastController.create({message:'Operação realizada com sucesso', duration: 3000}).then(t=>t.present());
+            this.ionItemSliding.closeOpened();
+          } else {
+            this.toastController.create({message:'Não foi possível completar a ação', duration: 3000}).then(t=>t.present());
+            this.ionItemSliding.closeOpened();
+          }
+
+          const index = this.produtos.indexOf(produto);
+          this.produtos.splice(index, 1);
+
+        }}
+      ]
+    }).then(a => a.present())
   }
 }

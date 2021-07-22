@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ListarPageRoutingModule } from './listar-routing.module';
 
 import { ListarPage } from './listar.page';
+import { PipesModule } from '../../../../pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    PipesModule,
     ListarPageRoutingModule
   ],
   declarations: [ListarPage]
